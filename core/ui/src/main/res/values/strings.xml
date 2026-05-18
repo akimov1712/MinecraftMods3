@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="get_started">Get started</string>
+    <string name="search_mods">Search mods</string>
+    <string name="screen_browse">Browse</string>
+    <string name="screen_favorite">Favorite</string>
+    <string name="screen_propose">Propose</string>
+    <string name="screen_help">Help</string>
+
+    <string name="mod_category_all">All</string>
+    <string name="mod_category_addon">Mods</string>
+    <string name="mod_category_maps">Maps</string>
+    <string name="mod_category_texture">Textures</string>
+    <string name="mod_category_skins">Skins</string>
+
+    <string name="mod_sorted_relevance">By relevance</string>
+    <string name="mod_sorted_most_popular">Most popular</string>
+    <string name="mod_sorted_rating">Top rated</string>
+
+</resources>

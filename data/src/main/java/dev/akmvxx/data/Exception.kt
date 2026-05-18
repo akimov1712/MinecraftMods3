@@ -1,0 +1,63 @@
+package dev.akmvxx.data
+
+import android.content.Context
+import com.google.gson.JsonParseException
+import com.google.gson.JsonSyntaxException
+import dev.akmvxx.android.isInternetAvailable
+import dev.akmvxx.common.errors.DataError
+import dev.akmvxx.common.Result
+import kotlinx.coroutines.CancellationException
+import java.net.ConnectException
+import java.net.SocketException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
+
+internal open class AppException: Exception()
+internal class NoInternetException: AppException()
+
+internal suspend fun <T> Context.exceptionWrapper(data: T? = null, block: suspend () -> Result<T, DataError>): Result<T, DataError> =
+    try {
+        withInternetCheck(this){
+            block()
+        }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: NoInternetException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.NO_INTERNET, data)
+    } catch (e: SocketTimeoutException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.REQUEST_TIMEOUT, data)
+    } catch (e: JsonSyntaxException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.SERIALIZATION, data)
+    } catch (e: JsonParseException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.SERIALIZATION, data)
+    } catch (e: IllegalStateException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.SERIALIZATION, data)
+    } catch (e: UnknownHostException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.SERVER_ERROR, data)
+    } catch (e: ConnectException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.SERVER_ERROR, data)
+    } catch (e: SocketException) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.SERVER_ERROR, data)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Result.Error(DataError.Network.UNKNOWN, data)
+    }
+
+internal inline fun <D> withInternetCheck(
+    context: Context,
+    block: () -> Result<D, DataError>
+): Result<D, DataError> {
+    return if (!isInternetAvailable(context)) {
+        throw NoInternetException()
+    } else {
+        block()
+    }
+}
