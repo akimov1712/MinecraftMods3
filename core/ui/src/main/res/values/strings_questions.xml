@@ -7,6 +7,15 @@
     <string name="help_search_placeholder">Search help</string>
     <string name="help_no_results">Nothing found. Try a different word.</string>
 
+    <!-- Help sections -->
+    <string name="help_section_getting_started">Getting started</string>
+    <string name="help_section_installing">Installing</string>
+    <string name="help_section_in_game">In the game</string>
+    <string name="help_section_content_updates">Content &amp; updates</string>
+    <string name="help_section_about_app">About the app</string>
+    <string name="help_section_saves_cleanup">Saves &amp; cleanup</string>
+    <string name="help_section_reach_out">Reach out</string>
+
     <!-- Getting started -->
     <string name="faq_account_q">Do I have to sign up?</string>
     <string name="faq_account_a">Nope. No login, no email, no password to remember. Just open the app and go.</string>

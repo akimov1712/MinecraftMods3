@@ -29,6 +29,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.akmvxx.feature.help.ui.HelpHeader
 import dev.akmvxx.feature.help.ui.HelpItem
+import dev.akmvxx.feature.help.ui.SectionHeader
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
 import dev.akmvxx.ui.components.AppTextField
@@ -50,15 +51,18 @@ private fun HelpContent(
     onIntent: (HelpIntent) -> Unit,
 ) {
     val context = LocalContext.current
-    val filteredItems = remember(state.searchQuery) {
+    val filteredSections = remember(state.searchQuery) {
         if (state.searchQuery.isBlank()) {
-            FaqItems
+            HelpSections
         } else {
-            FaqItems.filter { item ->
-                val q = context.getString(item.questionRes)
-                val a = context.getString(item.answerRes)
-                q.contains(state.searchQuery, ignoreCase = true) ||
-                        a.contains(state.searchQuery, ignoreCase = true)
+            HelpSections.mapNotNull { section ->
+                val matched = section.items.filter { item ->
+                    val q = context.getString(item.questionRes)
+                    val a = context.getString(item.answerRes)
+                    q.contains(state.searchQuery, ignoreCase = true) ||
+                            a.contains(state.searchQuery, ignoreCase = true)
+                }
+                if (matched.isEmpty()) null else section.copy(items = matched)
             }
         }
     }
@@ -91,8 +95,12 @@ private fun HelpContent(
 
         Spacer(Modifier.height(16.dp))
 
-        if (filteredItems.isEmpty()) {
-            EmptyResults(modifier = Modifier.fillMaxWidth().weight(1f))
+        if (filteredSections.isEmpty()) {
+            EmptyResults(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+            )
         } else {
             LazyColumn(
                 modifier = Modifier
@@ -106,14 +114,26 @@ private fun HelpContent(
                 ),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                items(items = filteredItems, key = { it.id }) { item ->
-                    HelpItem(
-                        question = stringResource(item.questionRes),
-                        answer = stringResource(item.answerRes),
-                        expanded = state.expandedItemId == item.id,
-                        onToggle = { onIntent(HelpIntent.ToggleExpand(item.id)) },
-                        modifier = Modifier.fillMaxWidth(),
-                    )
+                filteredSections.forEachIndexed { sectionIndex, section ->
+                    item(key = "section_${section.id}") {
+                        SectionHeader(
+                            title = stringResource(section.titleRes),
+                            modifier = Modifier.padding(
+                                top = if (sectionIndex == 0) 0.dp else 14.dp,
+                                bottom = 4.dp,
+                                start = 4.dp,
+                            ),
+                        )
+                    }
+                    items(items = section.items, key = { "${section.id}_${it.id}" }) { item ->
+                        HelpItem(
+                            question = stringResource(item.questionRes),
+                            answer = stringResource(item.answerRes),
+                            expanded = state.expandedItemId == item.id,
+                            onToggle = { onIntent(HelpIntent.ToggleExpand(item.id)) },
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
                 }
             }
         }
