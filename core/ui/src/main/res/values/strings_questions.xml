@@ -36,6 +36,9 @@
     <string name="faq_install_fail_q">Why doesn\'t the mod install?</string>
     <string name="faq_install_fail_a">Quick checks first:\n• The mod must match your Minecraft version — see the version line on the mod page.\n• Your phone needs free space.\n• Close Minecraft and reopen it (this one fixes it surprisingly often).\nStill nothing? Download the file again and retry.</string>
 
+    <string name="faq_download_stuck_q">The download just sits at 0% and won\'t move</string>
+    <string name="faq_download_stuck_a">If the progress bar isn\'t budging, your internet provider is probably blocking the server where the mods live — sometimes whole regions or carriers get cut off and we can\'t do anything about it from our side. Turn on a VPN, start the download again, and it should fly. Once the file is on your phone you can switch the VPN off — the mod itself doesn\'t need it.</string>
+
     <string name="faq_corrupted_file_q">I got a \"file corrupted\" error</string>
     <string name="faq_corrupted_file_a">Means the download cut off halfway. Delete what you have, grab it again on a stable connection (Wi-Fi if you can) and you should be good.</string>
 

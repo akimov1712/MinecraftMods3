@@ -32,6 +32,7 @@ internal val HelpSections: List<HelpSection> = listOf(
             FaqItem("how_install", R.string.faq_how_install_q, R.string.faq_how_install_a),
             FaqItem("install_pack", R.string.faq_install_pack_q, R.string.faq_install_pack_a),
             FaqItem("install_fail", R.string.faq_install_fail_q, R.string.faq_install_fail_a),
+            FaqItem("download_stuck", R.string.faq_download_stuck_q, R.string.faq_download_stuck_a),
             FaqItem("corrupted_file", R.string.faq_corrupted_file_q, R.string.faq_corrupted_file_a),
         ),
     ),
