@@ -8,10 +8,10 @@ enum class ModCategory {
     Maps;
 
     override fun toString() = when(this){
-        Texture -> "TEXTURE"
+        Texture -> "TEXTURE_PACK"
         Addon -> "ADDON"
-        Skin -> "SKIN"
-        Maps -> "MAPS"
+        Skin -> "SKIN_PACK"
+        Maps -> "WORLD"
     }
 
     fun getExtensionFile(): String = when (this) {
