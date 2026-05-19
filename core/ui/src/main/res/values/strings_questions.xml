@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Help screen chrome -->
+    <string name="help_title">Help</string>
+    <string name="help_subtitle">Quick answers to common questions.</string>
+    <string name="help_search_placeholder">Search help</string>
+    <string name="help_no_results">Nothing found. Try a different word.</string>
+
     <!-- Getting started -->
     <string name="faq_account_q">Do I have to sign up?</string>
     <string name="faq_account_a">Nope. No login, no email, no password to remember. Just open the app and go.</string>
