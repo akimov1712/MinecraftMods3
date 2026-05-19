@@ -6,11 +6,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
@@ -40,21 +41,28 @@ fun AppTextField(
     trailingIcon: ImageVector? = null,
     onTrailingIconClick: (() -> Unit)? = null,
     singleLine: Boolean = true,
+    minLines: Int = 1,
+    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     enabled: Boolean = true,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    shape: Shape = CircleShape,
-    height: Dp = 52.dp,
+    shape: Shape? = null,
+    minHeight: Dp = 52.dp,
     contentPadding: Dp = 20.dp,
 ) {
+    val isMultiline = !singleLine || minLines > 1 || maxLines > 1
+    val resolvedShape = shape ?: if (isMultiline) RoundedCornerShape(20.dp) else CircleShape
+    val verticalPadding = if (isMultiline) 14.dp else 0.dp
+    val rowAlignment = if (isMultiline) Alignment.Top else Alignment.CenterVertically
+
     Row(
         modifier = modifier
-            .height(height)
-            .clip(shape)
+            .defaultMinSize(minHeight = minHeight)
+            .clip(resolvedShape)
             .background(AppColors.BackgroundSecondary)
-            .border(width = 1.dp, color = AppColors.Outlined, shape = shape)
-            .padding(horizontal = contentPadding),
-        verticalAlignment = Alignment.CenterVertically,
+            .border(width = 1.dp, color = AppColors.Outlined, shape = resolvedShape)
+            .padding(horizontal = contentPadding, vertical = verticalPadding),
+        verticalAlignment = rowAlignment,
     ) {
         if (leadingIcon != null) {
             Icon(
@@ -78,6 +86,8 @@ fun AppTextField(
                 value = value,
                 onValueChange = onValueChange,
                 singleLine = singleLine,
+                minLines = minLines,
+                maxLines = maxLines,
                 enabled = enabled,
                 keyboardOptions = keyboardOptions,
                 visualTransformation = visualTransformation,
