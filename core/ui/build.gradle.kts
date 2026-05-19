@@ -39,6 +39,10 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
+    api(libs.coil.compose)
+    api(libs.coil.network.okhttp)
+    api(libs.compose.shimmer)
+
     api(platform(libs.androidx.compose.bom))
     api(libs.bundles.compose)
     debugApi(libs.androidx.compose.ui.tooling)
@@ -46,4 +50,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(project(":domain"))
 }

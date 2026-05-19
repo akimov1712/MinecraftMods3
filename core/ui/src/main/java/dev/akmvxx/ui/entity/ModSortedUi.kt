@@ -1,6 +1,7 @@
-package dev.akmvxx.domain.entity.mod
+package dev.akmvxx.ui.entity
 
 import androidx.annotation.StringRes
+import dev.akmvxx.domain.entity.mod.ModSorted
 import dev.akmvxx.ui.R
 
 enum class ModSortedUi(

@@ -1,35 +1,75 @@
 package dev.akmvxx.feature.browse
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.akmvxx.domain.entity.mod.ModEntity
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
+import dev.akmvxx.ui.components.AppAsyncImage
 import dev.akmvxx.ui.components.AppDropdown
 import dev.akmvxx.ui.components.AppTabRow
 import dev.akmvxx.ui.components.AppTextField
+import dev.akmvxx.ui.components.ModItem
+import dev.akmvxx.ui.components.ModsList
+import kotlin.collections.map
 
 @Composable
 fun BrowseScreen(
     viewModel: BrowseViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) { viewModel.sendIntent(BrowseIntent.HandleChangeState) }
+
+    val filterVisible by remember(state.modsListLazyState) {
+        derivedStateOf { state.modsListLazyState.firstVisibleItemIndex < 1 }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,22 +86,44 @@ fun BrowseScreen(
             placeholder = stringResource(R.string.search_mods),
             leadingIcon = Icons.Filled.Search,
         )
-        Spacer(Modifier.height(16.dp))
+
+        val height = if (filterVisible) Modifier.wrapContentHeight() else Modifier.height(0.dp)
         AppTabRow(
+            modifier = Modifier.fillMaxWidth()
+                .animateContentSize()
+                .then(height)
+                .padding(top = 16.dp),
             items = state.categories.map { stringResource(it.titleRes) },
             selectedIndex = state.categoryIndexSelected,
             onTabSelected = { viewModel.sendIntent(BrowseIntent.ChangeCategorySelected(it)) },
-            modifier = Modifier.fillMaxWidth(),
         )
-        Spacer(Modifier.height(20.dp))
-        AppDropdown(
-            items = state.sorted.map{ stringResource(it.titleRes) },
-            selectedIndex = state.sortedIndexSelected,
-            onSelected = { viewModel.sendIntent(BrowseIntent.ChangeSortedSelected(it)) },
-            modifier = Modifier.align(Alignment.End).padding(horizontal = 16.dp),
-        )
+        Spacer(Modifier.height(10.dp))
+        Box(Modifier.fillMaxWidth().weight(1f)){
+            val animateOffsetX by animateDpAsState(if (filterVisible) 0.dp else 180.dp)
+            ModsList(
+                modifier = Modifier.fillMaxSize(),
+                state = state.modsListLazyState,
+                mods = state.mods,
+                status = state.fetchModsStateUi,
+                isEndList = state.modsListEnd,
+                onRefresh = { viewModel.sendIntent(BrowseIntent.RefreshModsList) },
+                onLoadMore = { viewModel.sendIntent(BrowseIntent.FetchMods) },
+            )
+            AppDropdown(
+                items = state.sorted.map { stringResource(it.titleRes) },
+                selectedIndex = state.sortedIndexSelected,
+                onSelected = { viewModel.sendIntent(BrowseIntent.ChangeSortedSelected(it)) },
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 10.dp)
+                    .offset(x = animateOffsetX),
+            )
+        }
     }
 }
+
+
 
 @Preview
 @Composable

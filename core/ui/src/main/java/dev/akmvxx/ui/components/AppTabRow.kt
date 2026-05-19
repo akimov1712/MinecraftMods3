@@ -1,5 +1,6 @@
 package dev.akmvxx.ui.components
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
@@ -52,8 +54,8 @@ private fun AppTab(
     selected: Boolean,
     onClick: () -> Unit,
 ) {
-    val background = if (selected) AppColors.White else AppColors.BackgroundSecondary
-    val textColor = if (selected) AppColors.Black else AppColors.TextWhite.copy(alpha = 0.7f)
+    val background = if (selected) AppColors.Primary else AppColors.BackgroundSecondary
+    val textColor = if (selected) AppColors.TextWhite else AppColors.TextWhite.copy(alpha = 0.7f)
 
     Box(
         modifier = Modifier

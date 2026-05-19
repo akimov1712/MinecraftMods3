@@ -25,6 +25,6 @@ internal interface ModApi {
         @Query("skip") offset: Int,
         @Query("take") take: Int,
         @Query("sort_value") sortValue: String = "asc",
-    ): Response<List<ModDto>>
+    ): Response<ModsResponse>
 
 }

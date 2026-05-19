@@ -35,7 +35,7 @@ internal class ModRepositoryImpl @Inject constructor(
             val result = response.body()
             if (response.isSuccessful && result != null){
                 Result.Success(
-                    result.map { mod -> mod.toEntity(isFavorite = favoriteIds.contains(mod.id)) }
+                    result.mods.map { mod -> mod.toEntity(isFavorite = favoriteIds.contains(mod.id)) }
                 )
             } else {
                 Result.Error(DataError.Network.SERVER_ERROR)

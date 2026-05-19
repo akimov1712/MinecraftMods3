@@ -7,6 +7,13 @@ enum class ModCategory {
     Skin,
     Maps;
 
+    override fun toString() = when(this){
+        Texture -> "TEXTURE"
+        Addon -> "ADDON"
+        Skin -> "SKIN"
+        Maps -> "MAPS"
+    }
+
     fun getExtensionFile(): String = when (this) {
         Skin -> ".mcpack"
         Maps -> ".mcworld"

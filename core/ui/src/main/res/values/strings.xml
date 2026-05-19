@@ -9,7 +9,7 @@
     <string name="screen_help">Help</string>
 
     <string name="mod_category_all">All</string>
-    <string name="mod_category_addon">Mods</string>
+    <string name="mod_category_addon">Addons</string>
     <string name="mod_category_maps">Maps</string>
     <string name="mod_category_texture">Textures</string>
     <string name="mod_category_skins">Skins</string>
@@ -17,5 +17,25 @@
     <string name="mod_sorted_relevance">By relevance</string>
     <string name="mod_sorted_most_popular">Most popular</string>
     <string name="mod_sorted_rating">Top rated</string>
+
+    <plurals name="files">
+        <item quantity="one">%d file</item>
+        <item quantity="other">%d files</item>
+    </plurals>
+
+    <string name="mod_favorite_suffix">· Favorite</string>
+
+    <!-- Error messages -->
+    <string name="error_request_timeout">Request timeout. Please try again</string>
+    <string name="error_serialization">Failed to process data. Please try again</string>
+    <string name="error_server_error">Server error. Please try again later</string>
+    <string name="error_no_internet">No internet connection. Please check your network</string>
+    <string name="error_unknown">An unknown error occurred. Please try again</string>
+    <string name="error_invalid_data">Invalid data received. Please try again</string>
+    <string name="error_bad_request">Invalid request. Please try again</string>
+    <string name="error_not_found">Resource not found</string>
+    <string name="error_title_pagination">Failed to load</string>
+    <string name="the_list_is_empty">The list is empty</string>
+    <string name="retry">Retry</string>
 
 </resources>

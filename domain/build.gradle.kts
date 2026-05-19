@@ -39,6 +39,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":core:common"))
-    implementation(project(":core:ui"))
 
 }

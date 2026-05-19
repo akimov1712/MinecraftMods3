@@ -22,12 +22,12 @@ fun TabsScreen(
         modifier = Modifier.fillMaxSize()
             .background(AppColors.BackgroundPrimary)
     ){
-        BottomNavigationBar()
         NavDisplay(
             backStack = navigator.backStack,
             onBack = { navigator.pop() },
             entryProvider = entryProvider(builder = builder),
         )
+        BottomNavigationBar()
     }
 }
 

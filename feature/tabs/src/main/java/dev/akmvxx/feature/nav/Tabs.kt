@@ -17,12 +17,6 @@ enum class Tabs(
         navKey = TabsNavKey.Browse
     ),
 
-    Favorite(
-        titleRes = R.string.screen_favorite,
-        iconRes = R.drawable.ic_screen_favorite,
-        navKey = TabsNavKey.Favorite
-    ),
-
     Propose(
         titleRes = R.string.screen_propose,
         iconRes = R.drawable.ic_screen_propose,
@@ -34,4 +28,11 @@ enum class Tabs(
         iconRes = R.drawable.ic_screen_help,
         navKey = TabsNavKey.Help
     ),
+
+    Favorite(
+        titleRes = R.string.screen_favorite,
+        iconRes = R.drawable.ic_screen_favorite,
+        navKey = TabsNavKey.Favorite
+    ),
+
 }
