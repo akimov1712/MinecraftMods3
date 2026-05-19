@@ -12,6 +12,7 @@ import dev.akmvxx.common.onSuccess
 import dev.akmvxx.domain.useCases.mod.FetchModsUseCase
 import dev.akmvxx.ui.entity.ScreenUiState
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.launchIn
@@ -37,13 +38,18 @@ class BrowseViewModel @Inject constructor(
     private fun changeSortedSelected(index: Int) =
         _state.update { it.copy(sortedIndexSelected = index) }
 
-    private fun handleChangeState() {
-        _state
-            .map { listOf(it.searchQuery, it.sortedIndexSelected, it.categoryIndexSelected) }
-            .distinctUntilChanged()
-            .drop(1)
-            .onEach { refreshModsList() }
-            .launchIn(viewModelScope)
+    private fun observeModsChanges() {
+        viewModelScope.launch {
+            combine(
+                state.map { it.searchQuery }.distinctUntilChanged(),
+                state.map { it.sortedIndexSelected }.distinctUntilChanged(),
+                state.map { it.categoryIndexSelected }.distinctUntilChanged()
+            ) { search, type, filters ->
+                Triple(search, type, filters)
+            }.collect {
+                refreshModsList()
+            }
+        }
     }
 
     private fun refreshModsList() {
@@ -103,7 +109,7 @@ class BrowseViewModel @Inject constructor(
             is BrowseIntent.ChangeCategorySelected -> changeCategorySelected(intent.index)
             is BrowseIntent.ChangeSortedSelected -> changeSortedSelected(intent.index)
             BrowseIntent.FetchMods -> fetchMods()
-            BrowseIntent.HandleChangeState -> handleChangeState()
+            BrowseIntent.HandleChangeState -> observeModsChanges()
             BrowseIntent.RefreshModsList -> refreshModsList()
         }
     }
