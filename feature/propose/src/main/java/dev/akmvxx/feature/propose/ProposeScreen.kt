@@ -3,7 +3,6 @@ package dev.akmvxx.feature.propose
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,10 +26,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.akmvxx.feature.propose.ProposeState.TabType
 import dev.akmvxx.feature.propose.ui.LabeledField
 import dev.akmvxx.feature.propose.ui.ProposeHeader
+import dev.akmvxx.feature.propose.ui.SegmentedTabs
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
 import dev.akmvxx.ui.components.AppButton
-import dev.akmvxx.ui.components.AppTabRow
 
 @Composable
 fun ProposeScreen(
@@ -79,14 +78,13 @@ private fun ProposeContent(
             modifier = Modifier.fillMaxWidth(),
         )
 
-        AppTabRow(
+        SegmentedTabs(
             items = tabs,
             selectedIndex = state.selectedTab.ordinal,
             onTabSelected = { index ->
                 onIntent(ProposeIntent.ChangeTab(TabType.entries[index]))
             },
             modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(0.dp),
         )
 
         LabeledField(
