@@ -38,4 +38,24 @@
     <string name="the_list_is_empty">The list is empty</string>
     <string name="retry">Retry</string>
 
+    <!-- Propose screen -->
+    <string name="propose_title">Propose a mod</string>
+    <string name="propose_subtitle">Tell us what you want to see next.</string>
+    <string name="propose_tab_propose">Propose</string>
+    <string name="propose_tab_feedback">Feedback</string>
+    <string name="propose_field_email_label">Your email</string>
+    <string name="propose_field_email_hint">So we can reach out to you</string>
+    <string name="propose_field_mod_label">Mod name or link</string>
+    <string name="propose_field_mod_hint">A name, a link, or a short pitch…</string>
+    <string name="propose_field_feedback_label">What\'s on your mind?</string>
+    <string name="propose_field_feedback_hint">Bugs, ideas, anything.</string>
+    <string name="propose_send">Send</string>
+    <string name="propose_success">Sent successfully. Thanks!</string>
+
+    <!-- Propose validation errors -->
+    <string name="propose_error_email_required">Please enter your email</string>
+    <string name="propose_error_email_invalid">Please enter a valid email address</string>
+    <string name="propose_error_message_required">Please fill in the message</string>
+    <string name="propose_error_message_short">The message is too short (min 20 characters)</string>
+
 </resources>
