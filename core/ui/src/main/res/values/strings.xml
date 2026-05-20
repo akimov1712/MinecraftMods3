@@ -61,11 +61,17 @@
 
     <!-- Mod detail screen -->
     <string name="mod_section_about">About this mod</string>
-    <string name="mod_section_compatible">Compatible with</string>
-    <string name="mod_section_gallery">Screenshots</string>
+    <string name="mod_section_supported_versions">Supported versions</string>
+    <string name="mod_section_files">Files</string>
+    <string name="mod_show_more">Show more</string>
+    <string name="mod_show_less">Show less</string>
+    <string name="mod_how_to_install">How to install</string>
+    <string name="mod_not_working">Not working?</string>
     <string name="mod_download">Download</string>
     <string name="mod_back">Back</string>
+    <string name="mod_close">Close</string>
     <string name="mod_favorite_toggle">Toggle favorite</string>
+    <string name="mod_image_indicator">Image %1$d of %2$d</string>
 
     <!-- Saved (favorite) screen -->
     <string name="favorite_title">Saved mods</string>

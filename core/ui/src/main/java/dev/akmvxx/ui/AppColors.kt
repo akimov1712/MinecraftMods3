@@ -17,4 +17,10 @@ object AppColors {
     val Black = Color(0xff0E0E10)
 
     val Shimmer = Color(0xff5C6480)
+
+    // Category accents
+    val CategoryPurple = Color(0xff9B7CFF)
+    val CategoryPink = Color(0xffFF7EB6)
+    val CategoryBlue = Color(0xff5BAFE0)
+    val CategoryAmber = Color(0xffFFC83D)
 }

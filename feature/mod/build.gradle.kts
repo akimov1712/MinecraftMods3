@@ -40,6 +40,8 @@ dependencies {
 
     implementation(libs.androidx.navigation3.runtime)
 
+    implementation(libs.zoomable)
+
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
