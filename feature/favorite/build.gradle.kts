@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -38,6 +40,10 @@ dependencies {
 
     implementation(libs.androidx.navigation3.runtime)
 
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -47,6 +53,9 @@ dependencies {
 
 
     implementation(project(":core:ui"))
+    implementation(project(":core:android"))
+    implementation(project(":core:common"))
     implementation(project(":navigation"))
+    implementation(project(":domain"))
 
 }

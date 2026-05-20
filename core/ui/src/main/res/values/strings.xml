@@ -52,6 +52,14 @@
     <string name="propose_send">Send</string>
     <string name="propose_success">Sent successfully. Thanks!</string>
 
+    <!-- Saved (favorite) screen -->
+    <string name="favorite_title">Saved mods</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">No mods in your library yet</item>
+        <item quantity="one">%d mod in your library</item>
+        <item quantity="other">%d mods in your library</item>
+    </plurals>
+
     <!-- Propose validation errors -->
     <string name="propose_error_email_required">Please enter your email</string>
     <string name="propose_error_email_invalid">Please enter a valid email address</string>
