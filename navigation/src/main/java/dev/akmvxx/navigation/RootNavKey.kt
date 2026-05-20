@@ -6,5 +6,6 @@ sealed interface RootNavKey: NavKey {
 
     data object Splash: RootNavKey
     data object Tabs: RootNavKey
+    data class ModDetail(val modId: Int): RootNavKey
 
 }

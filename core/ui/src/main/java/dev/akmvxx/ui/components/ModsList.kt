@@ -22,6 +22,7 @@ fun ModsList(
     isEndList: Boolean,
     onRefresh: () -> Unit,
     onLoadMore: () -> Unit,
+    onItemClick: (ModEntity) -> Unit = {},
     contentPadding: PaddingValues = PaddingValues(
         start = 16.dp,
         end = 16.dp,
@@ -54,7 +55,7 @@ fun ModsList(
                     "${item.hashCode()}$index"
                 }
             ) { _, item ->
-                ModItem(item) { }
+                ModItem(item) { onItemClick(item) }
             }
         }
     }

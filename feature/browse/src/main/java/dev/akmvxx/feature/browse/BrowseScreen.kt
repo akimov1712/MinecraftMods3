@@ -27,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.akmvxx.navigation.RootNavKey
+import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
 import dev.akmvxx.ui.components.AppDropdown
@@ -39,6 +41,7 @@ fun BrowseScreen(
     viewModel: BrowseViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val navigator = rootNavigator()
     LaunchedEffect(Unit) { viewModel.sendIntent(BrowseIntent.HandleChangeState) }
 
     val filterVisible by remember(state.modsListLazyState) {
@@ -83,6 +86,7 @@ fun BrowseScreen(
                 isEndList = state.modsListEnd,
                 onRefresh = { viewModel.sendIntent(BrowseIntent.RefreshModsList) },
                 onLoadMore = { viewModel.sendIntent(BrowseIntent.FetchMods) },
+                onItemClick = { mod -> navigator.push(RootNavKey.ModDetail(mod.id)) },
             )
             AppDropdown(
                 items = state.sorted.map { stringResource(it.titleRes) },

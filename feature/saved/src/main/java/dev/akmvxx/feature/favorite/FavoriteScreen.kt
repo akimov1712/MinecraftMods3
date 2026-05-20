@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.akmvxx.feature.favorite.ui.FavoriteHeader
+import dev.akmvxx.navigation.RootNavKey
+import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.components.ModsList
 
@@ -22,9 +24,11 @@ fun FavoriteScreen(
     viewModel: FavoriteViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val navigator = rootNavigator()
     FavoriteContent(
         state = state,
         onIntent = viewModel::sendIntent,
+        onModClick = { mod -> navigator.push(RootNavKey.ModDetail(mod.id)) },
     )
 }
 
@@ -32,6 +36,7 @@ fun FavoriteScreen(
 private fun FavoriteContent(
     state: FavoriteState,
     onIntent: (FavoriteIntent) -> Unit,
+    onModClick: (dev.akmvxx.domain.entity.mod.ModEntity) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -56,6 +61,7 @@ private fun FavoriteContent(
             isEndList = state.modsListEnd,
             onRefresh = { onIntent(FavoriteIntent.RefreshList) },
             onLoadMore = { onIntent(FavoriteIntent.FetchMods) },
+            onItemClick = onModClick,
             contentPadding = PaddingValues(
                 start = 16.dp,
                 end = 16.dp,
