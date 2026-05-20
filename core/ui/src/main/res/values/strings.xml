@@ -23,6 +23,13 @@
         <item quantity="other">%d files</item>
     </plurals>
 
+    <plurals name="mod_versions_count">
+        <item quantity="one">%d version</item>
+        <item quantity="other">%d versions</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+
     <string name="mod_favorite_suffix">· Favorite</string>
 
     <!-- Error messages -->
@@ -51,6 +58,14 @@
     <string name="propose_field_feedback_hint">Bugs, ideas, anything.</string>
     <string name="propose_send">Send</string>
     <string name="propose_success">Sent successfully. Thanks!</string>
+
+    <!-- Mod detail screen -->
+    <string name="mod_section_about">About this mod</string>
+    <string name="mod_section_compatible">Compatible with</string>
+    <string name="mod_section_gallery">Screenshots</string>
+    <string name="mod_download">Download</string>
+    <string name="mod_back">Back</string>
+    <string name="mod_favorite_toggle">Toggle favorite</string>
 
     <!-- Saved (favorite) screen -->
     <string name="favorite_title">Saved mods</string>

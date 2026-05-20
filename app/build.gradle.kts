@@ -61,9 +61,10 @@ dependencies {
     implementation(project(":feature:tabs"))
     implementation(project(":feature:splash"))
     implementation(project(":feature:browse"))
-    implementation(project(":feature:favorite"))
+    implementation(project(":feature:saved"))
     implementation(project(":feature:propose"))
     implementation(project(":feature:help"))
+    implementation(project(":feature:mod"))
     implementation(project(":navigation"))
 
 }
