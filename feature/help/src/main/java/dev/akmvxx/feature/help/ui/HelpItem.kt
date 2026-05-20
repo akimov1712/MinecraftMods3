@@ -95,7 +95,7 @@ internal fun HelpItem(
 
 @Composable
 private fun ExpandBadge(expanded: Boolean, rotation: Float) {
-    val bgColor = if (expanded) AppColors.White else Color.Transparent
+    val bgColor = if (expanded) AppColors.Primary else Color.Transparent
     val borderColor = if (expanded) Color.Transparent else AppColors.Outlined
     val iconTint = if (expanded) AppColors.Black else AppColors.TextWhite.copy(alpha = 0.7f)
 
