@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import dev.akmvxx.ui.AppColors
 
 @Composable
-fun Modifier.onClick(onCLick: () -> Unit): Modifier {
+fun Modifier.onClick(onClick: () -> Unit): Modifier {
     val interaction = remember{ MutableInteractionSource() }
     return this.clickable(
         interactionSource = interaction,
         indication = ripple(color = AppColors.White),
-        onClick = onCLick
+        onClick = onClick
     )
 }

@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
+import dev.akmvxx.ui.utils.onClick
 
 private const val COLLAPSED_MAX_LINES = 4
 
@@ -91,7 +92,7 @@ private fun ShowMoreToggle(
         label = "chevron",
     )
     Row(
-        modifier = Modifier.clickable(onClick = onClick),
+        modifier = Modifier.onClick(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(

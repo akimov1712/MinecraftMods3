@@ -58,10 +58,10 @@ internal fun FilesSection(
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             files.forEachIndexed { index, url ->
                 val name = url.extractFileNameOrFallback(extensionFallback)
-                    ?: stringResource(
+                    ?: (stringResource(
                         R.string.mod_file_default_name,
                         index + 1,
-                    ) + extensionFallback
+                    ) + extensionFallback)
                 FileCard(
                     name = name,
                     subtitle = url.extractFileVersion(),
