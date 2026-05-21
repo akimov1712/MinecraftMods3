@@ -3,15 +3,14 @@ package dev.akmvxx.feature.mod.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.Icon
@@ -37,86 +36,63 @@ internal fun ActionsRow(
     onNotWorking: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
+    Row(
         modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        ActionCard(
+        ActionButton(
             icon = Icons.Filled.HelpOutline,
-            title = stringResource(R.string.mod_how_to_install),
-            subtitle = stringResource(R.string.mod_how_to_install_subtitle),
+            text = stringResource(R.string.mod_how_to_install),
             accent = AppColors.Primary,
             onClick = onHowToInstall,
+            modifier = Modifier.weight(1f),
         )
-        ActionCard(
+        ActionButton(
             icon = Icons.Filled.WarningAmber,
-            title = stringResource(R.string.mod_not_working),
-            subtitle = stringResource(R.string.mod_not_working_subtitle),
+            text = stringResource(R.string.mod_not_working),
             accent = AppColors.Green,
             onClick = onNotWorking,
+            modifier = Modifier.weight(1f),
         )
     }
 }
 
 @Composable
-private fun ActionCard(
+private fun ActionButton(
     icon: ImageVector,
-    title: String,
-    subtitle: String,
+    text: String,
     accent: Color,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row(
+    Column(
         modifier = modifier
-            .fillMaxWidth()
+            .height(96.dp)
             .clip(RoundedCornerShape(20.dp))
-            .background(AppColors.BackgroundSecondary)
-            .border(width = 1.dp, color = AppColors.Outlined, shape = RoundedCornerShape(20.dp))
+            .background(accent.copy(alpha = 0.12f))
+            .border(
+                width = 1.dp,
+                color = accent.copy(alpha = 0.35f),
+                shape = RoundedCornerShape(20.dp),
+            )
             .onClick(onClick = onClick)
             .padding(horizontal = 14.dp, vertical = 14.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(14.dp),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.Start,
     ) {
-        Box(
-            modifier = Modifier
-                .size(44.dp)
-                .clip(RoundedCornerShape(14.dp))
-                .background(accent.copy(alpha = 0.18f)),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = accent,
-                modifier = Modifier.size(22.dp),
-            )
-        }
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
-        ) {
-            Text(
-                text = title,
-                color = AppColors.TextWhite,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 15.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = subtitle,
-                color = AppColors.TextWhite.copy(alpha = 0.55f),
-                fontSize = 12.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-        }
         Icon(
-            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            imageVector = icon,
             contentDescription = null,
-            tint = AppColors.TextWhite.copy(alpha = 0.4f),
-            modifier = Modifier.size(20.dp),
+            tint = accent,
+            modifier = Modifier.size(26.dp),
+        )
+        Text(
+            text = text,
+            color = accent,
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 14.sp,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }

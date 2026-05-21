@@ -67,9 +67,7 @@
     <string name="mod_show_more">Show more</string>
     <string name="mod_show_less">Show less</string>
     <string name="mod_how_to_install">How to install</string>
-    <string name="mod_how_to_install_subtitle">Step-by-step guide for any device</string>
     <string name="mod_not_working">Not working?</string>
-    <string name="mod_not_working_subtitle">Common fixes and troubleshooting</string>
     <string name="mod_download">Download</string>
     <string name="mod_download_with_size">Download · %1$s</string>
     <string name="mod_back">Back</string>
