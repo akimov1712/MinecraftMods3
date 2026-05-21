@@ -12,18 +12,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.akmvxx.common.extractFileNameWithoutExtension
+import dev.akmvxx.common.extractFileNameOrFallback
 import dev.akmvxx.common.extractFileVersion
+import dev.akmvxx.domain.entity.mod.ModCategory
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
 
 @Composable
 internal fun FilesSection(
     files: List<String>,
+    category: ModCategory,
     accent: Color,
     modifier: Modifier = Modifier,
 ) {
     if (files.isEmpty()) return
+
+    val extensionFallback = category.getExtensionFile()
 
     Column(
         modifier = modifier,
@@ -53,8 +57,11 @@ internal fun FilesSection(
         }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             files.forEachIndexed { index, url ->
-                val name = url.extractFileNameWithoutExtension()
-                    ?: stringResource(R.string.mod_file_default_name, index + 1)
+                val name = url.extractFileNameOrFallback(extensionFallback)
+                    ?: stringResource(
+                        R.string.mod_file_default_name,
+                        index + 1,
+                    ) + extensionFallback
                 FileCard(
                     name = name,
                     subtitle = url.extractFileVersion(),

@@ -246,6 +246,7 @@ private fun SuccessState(
                     Spacer(Modifier.height(28.dp))
                     FilesSection(
                         files = mod.downloadableFiles,
+                        category = mod.category,
                         accent = accent,
                         modifier = Modifier.padding(horizontal = HorizontalPadding),
                     )

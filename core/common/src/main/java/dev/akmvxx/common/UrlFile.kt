@@ -50,6 +50,21 @@ fun String.extractFileExtension(): String? {
 }
 
 /**
+ * Returns file name guaranteed to have an extension. If the URL has no extension
+ * in its last segment, appends [extensionFallback] (leading dot optional).
+ *
+ * Examples:
+ *  - ".../Legends%20pack.mcpack".extractFileNameOrFallback(".mcaddon") → "Legends pack.mcpack"
+ *  - ".../warhammer40kboltgun".extractFileNameOrFallback("mcaddon")    → "warhammer40kboltgun.mcaddon"
+ *  - ".../api/download/781730".extractFileNameOrFallback(".mcaddon")   → "781730.mcaddon"
+ */
+fun String.extractFileNameOrFallback(extensionFallback: String): String? {
+    val name = extractFileName() ?: return null
+    if (name.contains('.')) return name
+    return "$name.${extensionFallback.removePrefix(".")}"
+}
+
+/**
  * Extracts version segment from a URL or file name.
  *
  * Examples:
