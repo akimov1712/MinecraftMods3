@@ -3,7 +3,6 @@ package dev.akmvxx.feature.mod.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -65,33 +64,33 @@ private fun ActionButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
+    Row(
         modifier = modifier
-            .height(96.dp)
-            .clip(RoundedCornerShape(20.dp))
+            .height(48.dp)
+            .clip(RoundedCornerShape(14.dp))
             .background(accent.copy(alpha = 0.12f))
             .border(
                 width = 1.dp,
                 color = accent.copy(alpha = 0.35f),
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(14.dp),
             )
             .onClick(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 14.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.Start,
+            .padding(horizontal = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Icon(
             imageVector = icon,
             contentDescription = null,
             tint = accent,
-            modifier = Modifier.size(26.dp),
+            modifier = Modifier.size(18.dp),
         )
         Text(
             text = text,
             color = accent,
             fontWeight = FontWeight.SemiBold,
-            fontSize = 14.sp,
-            maxLines = 2,
+            fontSize = 13.sp,
+            maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
     }

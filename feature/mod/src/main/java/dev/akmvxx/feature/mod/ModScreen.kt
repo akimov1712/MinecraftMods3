@@ -226,6 +226,14 @@ private fun SuccessState(
                     modifier = Modifier.padding(horizontal = HorizontalPadding),
                 )
 
+                Spacer(Modifier.height(16.dp))
+
+                ActionsRow(
+                    onHowToInstall = {},
+                    onNotWorking = {},
+                    modifier = Modifier.padding(horizontal = HorizontalPadding),
+                )
+
                 if (mod.aboutModMessage.isNotBlank()) {
                     Spacer(Modifier.height(24.dp))
                     ModDescription(
@@ -251,14 +259,6 @@ private fun SuccessState(
                         modifier = Modifier.padding(horizontal = HorizontalPadding),
                     )
                 }
-
-                Spacer(Modifier.height(20.dp))
-
-                ActionsRow(
-                    onHowToInstall = {},
-                    onNotWorking = {},
-                    modifier = Modifier.padding(horizontal = HorizontalPadding),
-                )
 
                 Spacer(Modifier.height(140.dp))
             }
