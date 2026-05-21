@@ -6,6 +6,7 @@ import dev.akmvxx.ui.entity.ScreenUiState
 data class ModState(
     val mod: ModEntity? = null,
     val status: ScreenUiState = ScreenUiState.Loading,
+    val fileSizeBytes: Long? = null,
 )
 
 sealed interface ModIntent {

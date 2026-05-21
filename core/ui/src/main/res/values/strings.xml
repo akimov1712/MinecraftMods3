@@ -68,6 +68,7 @@
     <string name="mod_how_to_install">How to install</string>
     <string name="mod_not_working">Not working?</string>
     <string name="mod_download">Download</string>
+    <string name="mod_download_with_size">Download · %1$s</string>
     <string name="mod_back">Back</string>
     <string name="mod_close">Close</string>
     <string name="mod_favorite_toggle">Toggle favorite</string>

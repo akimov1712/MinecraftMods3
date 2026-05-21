@@ -12,6 +12,7 @@ import dev.akmvxx.domain.useCases.bug.ReportBugUseCase
 import dev.akmvxx.domain.useCases.favorite.ChangeStatusFavoriteUseCase
 import dev.akmvxx.domain.useCases.favorite.FetchFavoriteModsUseCase
 import dev.akmvxx.domain.useCases.favorite.GetCountFavoriteUseCase
+import dev.akmvxx.domain.useCases.mod.FetchFileSizeUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModsUseCase
 import dev.akmvxx.domain.useCases.propose.ProposeModUseCase
@@ -29,6 +30,10 @@ internal object UseCasesModule {
     @Provides
     fun provideFetchModUseCase(repository: ModRepository): FetchModUseCase =
         FetchModUseCase(repository)
+
+    @Provides
+    fun provideFetchFileSizeUseCase(repository: ModRepository): FetchFileSizeUseCase =
+        FetchFileSizeUseCase(repository)
 
     @Provides
     fun provideGetCountFavoriteUseCase(repository: FavoriteRepository): GetCountFavoriteUseCase =

@@ -10,6 +10,7 @@ import dev.akmvxx.common.errors.DataError
 import dev.akmvxx.common.onError
 import dev.akmvxx.common.onSuccess
 import dev.akmvxx.domain.useCases.favorite.ChangeStatusFavoriteUseCase
+import dev.akmvxx.domain.useCases.mod.FetchFileSizeUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModUseCase
 import dev.akmvxx.ui.R
 import dev.akmvxx.ui.entity.ScreenUiState
@@ -21,24 +22,35 @@ import javax.inject.Inject
 class ModViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val fetchModUseCase: FetchModUseCase,
+    private val fetchFileSizeUseCase: FetchFileSizeUseCase,
     private val changeStatusFavoriteUseCase: ChangeStatusFavoriteUseCase,
     private val snackbarManager: SnackbarManager,
 ) : MVI<ModIntent, ModState, ModEvent>(ModState()) {
 
     private fun loadMod(modId: Int) {
         viewModelScope.launch {
-            _state.update { it.copy(status = ScreenUiState.Loading) }
+            _state.update { it.copy(status = ScreenUiState.Loading, fileSizeBytes = null) }
             fetchModUseCase.fetch(modId)
                 .onSuccess { mod ->
                     _state.update {
                         it.copy(mod = mod, status = ScreenUiState.Success)
                     }
+                    mod.downloadableFiles.firstOrNull()?.let { loadFileSize(it) }
                 }
                 .onError { error, _ ->
                     val messageRes = networkMessage(error)
                     val message = context.getString(messageRes)
                     snackbarManager.showMessage(message)
                     _state.update { it.copy(status = ScreenUiState.Error(message)) }
+                }
+        }
+    }
+
+    private fun loadFileSize(url: String) {
+        viewModelScope.launch {
+            fetchFileSizeUseCase.fetch(url)
+                .onSuccess { size ->
+                    _state.update { it.copy(fileSizeBytes = size) }
                 }
         }
     }

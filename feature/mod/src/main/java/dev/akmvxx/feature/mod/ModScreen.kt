@@ -103,6 +103,7 @@ private fun ModContent(
                 state.mod?.let { mod ->
                     SuccessState(
                         mod = mod,
+                        fileSizeBytes = state.fileSizeBytes,
                         onBack = onBack,
                         onRefresh = onRetry,
                         onIntent = onIntent,
@@ -160,6 +161,7 @@ private fun ErrorState(
 @Composable
 private fun SuccessState(
     mod: ModEntity,
+    fileSizeBytes: Long?,
     onBack: () -> Unit,
     onRefresh: () -> Unit,
     onIntent: (ModIntent) -> Unit,
@@ -271,6 +273,7 @@ private fun SuccessState(
             onDownload = { onIntent(ModIntent.Download) },
             onFavoriteToggle = { onIntent(ModIntent.ToggleFavorite) },
             accent = accent,
+            fileSizeBytes = fileSizeBytes,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()

@@ -54,4 +54,15 @@ internal class ModRepositoryImpl @Inject constructor(
             }
         }
 
+    override suspend fun fetchFileSize(url: String): Result<Long, DataError> =
+        context.exceptionWrapper {
+            val response = api.fetchFileMeta(url)
+            val size = response.headers()["Content-Length"]?.toLongOrNull()
+            if (response.isSuccessful && size != null && size > 0L) {
+                Result.Success(size)
+            } else {
+                Result.Error(DataError.Network.NOT_FOUND)
+            }
+        }
+
 }

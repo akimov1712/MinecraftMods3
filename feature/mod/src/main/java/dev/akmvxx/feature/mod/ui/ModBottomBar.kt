@@ -1,5 +1,6 @@
 package dev.akmvxx.feature.mod.ui
 
+import android.text.format.Formatter
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dev.akmvxx.ui.AppColors
@@ -36,7 +38,15 @@ internal fun ModBottomBar(
     onFavoriteToggle: () -> Unit,
     modifier: Modifier = Modifier,
     accent: Color = AppColors.Primary,
+    fileSizeBytes: Long? = null,
 ) {
+    val context = LocalContext.current
+    val downloadText = if (fileSizeBytes != null && fileSizeBytes > 0L) {
+        val formatted = Formatter.formatShortFileSize(context, fileSizeBytes)
+        stringResource(R.string.mod_download_with_size, formatted)
+    } else {
+        stringResource(R.string.mod_download)
+    }
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -54,7 +64,7 @@ internal fun ModBottomBar(
                 ),
         ) {
             AppButton(
-                text = stringResource(R.string.mod_download),
+                text = downloadText,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),

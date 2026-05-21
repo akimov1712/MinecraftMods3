@@ -3,9 +3,11 @@ package dev.akmvxx.data.source.remote.mod
 import dev.akmvxx.domain.entity.mod.ModCategory
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.HEAD
 import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 internal interface ModApi {
 
@@ -14,6 +16,9 @@ internal interface ModApi {
         @Path("id") modId: Int,
         @Header("Language") language: String
     ): Response<ModDto>
+
+    @HEAD
+    suspend fun fetchFileMeta(@Url url: String): Response<Void>
 
     @GET("v1/apps/{id}/mod/actived")
     suspend fun fetchMods(
