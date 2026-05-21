@@ -23,16 +23,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.components.AppAsyncImage
+import dev.akmvxx.ui.utils.onClick
 
 @Composable
 internal fun ModCarousel(
     images: List<String>,
     onImageClick: (startIndex: Int) -> Unit,
     modifier: Modifier = Modifier,
+    parallaxOffset: () -> Float = { 0f },
 ) {
     if (images.isEmpty()) return
 
@@ -45,12 +48,14 @@ internal fun ModCarousel(
     ) {
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer { translationY = parallaxOffset() * 0.5f },
         ) { page ->
             AppAsyncImage(
                 modifier = Modifier
                     .fillMaxSize()
-                    .clickable { onImageClick(page) },
+                    .onClick { onImageClick(page) },
                 url = images[page],
                 contentScale = ContentScale.Crop,
             )

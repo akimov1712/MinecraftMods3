@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -44,6 +46,7 @@ import dev.akmvxx.feature.mod.ui.ModBottomBar
 import dev.akmvxx.feature.mod.ui.ModCarousel
 import dev.akmvxx.feature.mod.ui.ModDescription
 import dev.akmvxx.feature.mod.ui.ModScreenShimmer
+import dev.akmvxx.feature.mod.ui.StickyToolbar
 import dev.akmvxx.feature.mod.ui.SupportedVersionsSection
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
@@ -54,6 +57,7 @@ import dev.akmvxx.ui.entity.ScreenUiState
 import dev.akmvxx.ui.utils.onClick
 
 private val HorizontalPadding = 20.dp
+private val StickyHeaderTriggerDp = 220.dp
 
 @Composable
 fun ModScreen(
@@ -168,6 +172,14 @@ private fun SuccessState(
 
     var viewerStartIndex by remember { mutableStateOf<Int?>(null) }
     val accent = mod.category.accentColor()
+    val scrollState = rememberScrollState()
+    val density = LocalDensity.current
+    val stickyHeaderTriggerPx = remember(density) {
+        with(density) { StickyHeaderTriggerDp.toPx() }
+    }
+    val showStickyHeader by remember {
+        derivedStateOf { scrollState.value > stickyHeaderTriggerPx }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         AppPullRefresh(
@@ -177,12 +189,13 @@ private fun SuccessState(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .verticalScroll(rememberScrollState()),
+                    .verticalScroll(scrollState),
             ) {
                 Box(modifier = Modifier.fillMaxWidth()) {
                     ModCarousel(
                         images = images,
                         onImageClick = { startIndex -> viewerStartIndex = startIndex },
+                        parallaxOffset = { scrollState.value.toFloat() },
                     )
                     BackButton(
                         onClick = onBack,
@@ -258,6 +271,13 @@ private fun SuccessState(
                 .fillMaxWidth()
                 .navigationBarsPadding()
                 .padding(horizontal = HorizontalPadding, vertical = 16.dp),
+        )
+
+        StickyToolbar(
+            visible = showStickyHeader,
+            title = mod.title,
+            onBack = onBack,
+            modifier = Modifier.align(Alignment.TopCenter),
         )
 
         viewerStartIndex?.let { startIndex ->
