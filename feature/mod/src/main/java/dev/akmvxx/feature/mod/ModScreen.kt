@@ -2,7 +2,6 @@ package dev.akmvxx.feature.mod
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +17,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,7 +30,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -46,11 +43,13 @@ import dev.akmvxx.feature.mod.ui.ImageViewerDialog
 import dev.akmvxx.feature.mod.ui.ModBottomBar
 import dev.akmvxx.feature.mod.ui.ModCarousel
 import dev.akmvxx.feature.mod.ui.ModDescription
+import dev.akmvxx.feature.mod.ui.ModScreenShimmer
 import dev.akmvxx.feature.mod.ui.SupportedVersionsSection
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
-import dev.akmvxx.ui.components.AppButton
+import dev.akmvxx.ui.components.AppPullRefresh
+import dev.akmvxx.ui.components.ListErrorBlock
 import dev.akmvxx.ui.entity.ScreenUiState
 import dev.akmvxx.ui.utils.onClick
 
@@ -89,7 +88,7 @@ private fun ModContent(
             .background(AppColors.BackgroundPrimary),
     ) {
         when (val status = state.status) {
-            is ScreenUiState.Loading -> LoadingState()
+            is ScreenUiState.Loading -> LoadingState(onBack = onBack)
             is ScreenUiState.Error -> ErrorState(
                 message = status.message,
                 onBack = onBack,
@@ -100,6 +99,7 @@ private fun ModContent(
                     SuccessState(
                         mod = mod,
                         onBack = onBack,
+                        onRefresh = onRetry,
                         onIntent = onIntent,
                     )
                 }
@@ -110,15 +110,15 @@ private fun ModContent(
 }
 
 @Composable
-private fun LoadingState() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        CircularProgressIndicator(
-            color = AppColors.Primary,
-            strokeWidth = 2.5.dp,
-            modifier = Modifier.size(36.dp),
+private fun LoadingState(onBack: () -> Unit) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        ModScreenShimmer()
+        BackButton(
+            onClick = onBack,
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .statusBarsPadding()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
         )
     }
 }
@@ -129,35 +129,25 @@ private fun ErrorState(
     onBack: () -> Unit,
     onRetry: () -> Unit,
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(
-            text = message,
-            color = AppColors.TextWhite.copy(alpha = 0.8f),
-            fontSize = 15.sp,
-            textAlign = TextAlign.Center,
-        )
-        Spacer(Modifier.height(20.dp))
-        AppButton(
-            text = stringResource(R.string.retry),
-            onClick = onRetry,
+    Box(modifier = Modifier.fillMaxSize()) {
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(52.dp),
-        )
-        Spacer(Modifier.height(10.dp))
-        AppButton(
-            text = stringResource(R.string.mod_back),
+                .fillMaxSize()
+                .padding(horizontal = HorizontalPadding),
+            contentAlignment = Alignment.Center,
+        ) {
+            ListErrorBlock(
+                title = stringResource(R.string.error_title_pagination),
+                message = message,
+                onClickRetry = onRetry,
+            )
+        }
+        BackButton(
             onClick = onBack,
-            containerColor = AppColors.BackgroundSecondary,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(52.dp),
+                .align(Alignment.TopStart)
+                .statusBarsPadding()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
         )
     }
 }
@@ -166,6 +156,7 @@ private fun ErrorState(
 private fun SuccessState(
     mod: ModEntity,
     onBack: () -> Unit,
+    onRefresh: () -> Unit,
     onIntent: (ModIntent) -> Unit,
 ) {
     val images = remember(mod.id, mod.imageUrl, mod.gallery) {
@@ -179,78 +170,83 @@ private fun SuccessState(
     val accent = mod.category.accentColor()
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+        AppPullRefresh(
+            modifier = Modifier.fillMaxSize(),
+            onRefresh = onRefresh,
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                ModCarousel(
-                    images = images,
-                    onImageClick = { startIndex -> viewerStartIndex = startIndex },
-                )
-                BackButton(
-                    onClick = onBack,
-                    modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .statusBarsPadding()
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
-                )
-            }
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+            ) {
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    ModCarousel(
+                        images = images,
+                        onImageClick = { startIndex -> viewerStartIndex = startIndex },
+                    )
+                    BackButton(
+                        onClick = onBack,
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .statusBarsPadding()
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                    )
+                }
 
-            Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(8.dp))
 
-            CategoryPill(
-                category = mod.category,
-                modifier = Modifier.padding(horizontal = HorizontalPadding),
-            )
-
-            Spacer(Modifier.height(12.dp))
-
-            Text(
-                text = mod.title,
-                color = AppColors.TextWhite,
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 28.sp,
-                lineHeight = 32.sp,
-                letterSpacing = (-0.5).sp,
-                modifier = Modifier.padding(horizontal = HorizontalPadding),
-            )
-
-            if (mod.aboutModMessage.isNotBlank()) {
-                Spacer(Modifier.height(24.dp))
-                ModDescription(
-                    text = mod.aboutModMessage,
+                CategoryPill(
+                    category = mod.category,
                     modifier = Modifier.padding(horizontal = HorizontalPadding),
                 )
-            }
 
-            if (mod.supportVersions.isNotEmpty()) {
-                Spacer(Modifier.height(28.dp))
-                SupportedVersionsSection(
-                    versions = mod.supportVersions,
+                Spacer(Modifier.height(12.dp))
+
+                Text(
+                    text = mod.title,
+                    color = AppColors.TextWhite,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 28.sp,
+                    lineHeight = 32.sp,
+                    letterSpacing = (-0.5).sp,
                     modifier = Modifier.padding(horizontal = HorizontalPadding),
                 )
-            }
 
-            if (mod.downloadableFiles.isNotEmpty()) {
-                Spacer(Modifier.height(28.dp))
-                FilesSection(
-                    files = mod.downloadableFiles,
-                    accent = accent,
+                if (mod.aboutModMessage.isNotBlank()) {
+                    Spacer(Modifier.height(24.dp))
+                    ModDescription(
+                        text = mod.aboutModMessage,
+                        modifier = Modifier.padding(horizontal = HorizontalPadding),
+                    )
+                }
+
+                if (mod.supportVersions.isNotEmpty()) {
+                    Spacer(Modifier.height(28.dp))
+                    SupportedVersionsSection(
+                        versions = mod.supportVersions,
+                        modifier = Modifier.padding(horizontal = HorizontalPadding),
+                    )
+                }
+
+                if (mod.downloadableFiles.isNotEmpty()) {
+                    Spacer(Modifier.height(28.dp))
+                    FilesSection(
+                        files = mod.downloadableFiles,
+                        accent = accent,
+                        modifier = Modifier.padding(horizontal = HorizontalPadding),
+                    )
+                }
+
+                Spacer(Modifier.height(20.dp))
+
+                ActionsRow(
+                    onHowToInstall = {},
+                    onNotWorking = {},
                     modifier = Modifier.padding(horizontal = HorizontalPadding),
                 )
+
+                Spacer(Modifier.height(140.dp))
             }
-
-            Spacer(Modifier.height(20.dp))
-
-            ActionsRow(
-                onHowToInstall = {},
-                onNotWorking = {},
-                modifier = Modifier.padding(horizontal = HorizontalPadding),
-            )
-
-            Spacer(Modifier.height(140.dp))
         }
 
         ModBottomBar(
