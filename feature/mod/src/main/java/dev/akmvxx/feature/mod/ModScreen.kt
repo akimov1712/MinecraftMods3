@@ -48,6 +48,7 @@ import dev.akmvxx.feature.mod.ui.ModDescription
 import dev.akmvxx.feature.mod.ui.ModScreenShimmer
 import dev.akmvxx.feature.mod.ui.StickyToolbar
 import dev.akmvxx.feature.mod.ui.SupportedVersionsSection
+import dev.akmvxx.feature.mod.ui.rememberDominantColor
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
@@ -171,7 +172,10 @@ private fun SuccessState(
     }
 
     var viewerStartIndex by remember { mutableStateOf<Int?>(null) }
-    val accent = mod.category.accentColor()
+    val accent = rememberDominantColor(
+        url = mod.imageUrl,
+        fallback = mod.category.accentColor(),
+    )
     val scrollState = rememberScrollState()
     val density = LocalDensity.current
     val stickyHeaderTriggerPx = remember(density) {
@@ -266,6 +270,7 @@ private fun SuccessState(
             isFavorite = mod.isFavorite,
             onDownload = { onIntent(ModIntent.Download) },
             onFavoriteToggle = { onIntent(ModIntent.ToggleFavorite) },
+            accent = accent,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
