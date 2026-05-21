@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import androidx.annotation.RequiresApi
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.akmvxx.domain.entity.SaveFileState
 import dev.akmvxx.domain.repository.SaveRepository
@@ -100,6 +101,7 @@ internal class SaveRepositoryImpl @Inject constructor(
             createLegacyTarget(name)
         }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun createMediaStoreTarget(name: String): SaveTarget? {
         val resolver = context.contentResolver
         val collection = MediaStore.Downloads.EXTERNAL_CONTENT_URI
