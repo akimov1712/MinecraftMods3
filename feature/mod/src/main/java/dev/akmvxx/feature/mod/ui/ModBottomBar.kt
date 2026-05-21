@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
@@ -20,9 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.dropShadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -37,7 +33,6 @@ internal fun ModBottomBar(
     onDownload: () -> Unit,
     onFavoriteToggle: () -> Unit,
     modifier: Modifier = Modifier,
-    accent: Color = AppColors.Primary,
     fileSizeBytes: Long? = null,
 ) {
     val context = LocalContext.current
@@ -52,37 +47,23 @@ internal fun ModBottomBar(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
+        AppButton(
+            text = downloadText,
             modifier = Modifier
                 .weight(1f)
-                .dropShadow(
-                    shape = RoundedCornerShape(32.dp),
-                    shadow = Shadow(
-                        radius = 16.dp,
-                        color = accent.copy(alpha = 0.5f),
-                    ),
-                ),
-        ) {
-            AppButton(
-                text = downloadText,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
-                containerColor = accent,
-                startIcon = {
-                    Icon(
-                        imageVector = Icons.Filled.Download,
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp),
-                    )
-                },
-                onClick = onDownload,
-            )
-        }
+                .height(56.dp),
+            startIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Download,
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                )
+            },
+            onClick = onDownload,
+        )
 
         FavoriteCircle(
             isFavorite = isFavorite,
-            accent = accent,
             onClick = onFavoriteToggle,
         )
     }
@@ -91,7 +72,6 @@ internal fun ModBottomBar(
 @Composable
 private fun FavoriteCircle(
     isFavorite: Boolean,
-    accent: Color,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -107,7 +87,7 @@ private fun FavoriteCircle(
         Icon(
             imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
             contentDescription = stringResource(R.string.mod_favorite_toggle),
-            tint = if (isFavorite) accent else AppColors.TextWhite.copy(alpha = 0.7f),
+            tint = if (isFavorite) AppColors.Primary else AppColors.TextWhite.copy(alpha = 0.7f),
             modifier = Modifier.size(22.dp),
         )
     }

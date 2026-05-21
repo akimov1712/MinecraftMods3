@@ -23,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import dev.akmvxx.ui.AppColors
@@ -35,7 +34,6 @@ internal fun ModCarousel(
     images: List<String>,
     onImageClick: (startIndex: Int) -> Unit,
     modifier: Modifier = Modifier,
-    parallaxOffset: () -> Float = { 0f },
 ) {
     if (images.isEmpty()) return
 
@@ -48,9 +46,7 @@ internal fun ModCarousel(
     ) {
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier
-                .fillMaxSize()
-                .graphicsLayer { translationY = parallaxOffset() * 0.5f },
+            modifier = Modifier.fillMaxSize(),
         ) { page ->
             AppAsyncImage(
                 modifier = Modifier
