@@ -8,6 +8,7 @@ import dev.akmvxx.domain.repository.BugRepository
 import dev.akmvxx.domain.repository.FavoriteRepository
 import dev.akmvxx.domain.repository.ModRepository
 import dev.akmvxx.domain.repository.ProposeRepository
+import dev.akmvxx.domain.repository.SaveRepository
 import dev.akmvxx.domain.useCases.bug.ReportBugUseCase
 import dev.akmvxx.domain.useCases.favorite.ChangeStatusFavoriteUseCase
 import dev.akmvxx.domain.useCases.favorite.FetchFavoriteModsUseCase
@@ -16,6 +17,7 @@ import dev.akmvxx.domain.useCases.mod.FetchFileSizeUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModsUseCase
 import dev.akmvxx.domain.useCases.propose.ProposeModUseCase
+import dev.akmvxx.domain.useCases.save.SaveFileUseCase
 import dev.akmvxx.domain.validation.bug.BugValidator
 import dev.akmvxx.domain.validation.propose.ProposeValidator
 
@@ -58,5 +60,9 @@ internal object UseCasesModule {
         repository: ProposeRepository,
         validator: ProposeValidator,
     ): ProposeModUseCase = ProposeModUseCase(repository, validator)
+
+    @Provides
+    fun provideSaveFileUseCase(repository: SaveRepository): SaveFileUseCase =
+        SaveFileUseCase(repository)
 
 }
