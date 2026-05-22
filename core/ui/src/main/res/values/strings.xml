@@ -87,6 +87,16 @@
     <string name="mod_back">Back</string>
     <string name="mod_close">Close</string>
     <string name="mod_favorite_toggle">Toggle favorite</string>
+
+    <!-- Report a problem dialog (from mod detail) -->
+    <string name="mod_report_title">Report a problem</string>
+    <string name="mod_report_subtitle">Tell us what\'s wrong with %1$s and we\'ll look into it.</string>
+    <string name="mod_report_subtitle_generic">Tell us what\'s wrong and we\'ll look into it.</string>
+    <string name="mod_report_message_label">What\'s the issue?</string>
+    <string name="mod_report_message_hint">Crash on install, missing blocks, ...</string>
+    <string name="mod_report_send">Send report</string>
+    <string name="mod_report_cancel">Cancel</string>
+    <string name="mod_report_success">Thanks! We\'ll look into it</string>
     <string name="mod_image_indicator">Image %1$d of %2$d</string>
 
     <!-- Saved (favorite) screen -->

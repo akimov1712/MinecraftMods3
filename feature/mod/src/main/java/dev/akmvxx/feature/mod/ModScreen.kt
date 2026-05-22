@@ -46,6 +46,7 @@ import dev.akmvxx.feature.mod.ui.ModBottomBar
 import dev.akmvxx.feature.mod.ui.ModCarousel
 import dev.akmvxx.feature.mod.ui.ModDescription
 import dev.akmvxx.feature.mod.ui.ModScreenShimmer
+import dev.akmvxx.feature.mod.ui.ReportDialog
 import dev.akmvxx.feature.mod.ui.StickyToolbar
 import dev.akmvxx.feature.mod.ui.SupportedVersionsSection
 import dev.akmvxx.navigation.RootNavKey
@@ -178,6 +179,7 @@ private fun SuccessState(
     }
 
     var viewerStartIndex by remember { mutableStateOf<Int?>(null) }
+    var reportDialogVisible by remember { mutableStateOf(false) }
     val accent = mod.category.accentColor()
     val scrollState = rememberScrollState()
     val density = LocalDensity.current
@@ -235,7 +237,7 @@ private fun SuccessState(
 
                 ActionsRow(
                     onHowToInstall = {},
-                    onNotWorking = {},
+                    onNotWorking = { reportDialogVisible = true },
                     modifier = Modifier.padding(horizontal = HorizontalPadding),
                 )
 
@@ -294,6 +296,13 @@ private fun SuccessState(
                 images = images,
                 startIndex = startIndex,
                 onDismiss = { viewerStartIndex = null },
+            )
+        }
+
+        if (reportDialogVisible) {
+            ReportDialog(
+                modTitle = mod.title,
+                onDismiss = { reportDialogVisible = false },
             )
         }
     }
