@@ -2,11 +2,13 @@ package dev.akmvxx.data.repository
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.webkit.MimeTypeMap
 import androidx.annotation.RequiresApi
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.akmvxx.domain.entity.SaveFileState
@@ -18,6 +20,7 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.File
@@ -68,6 +71,70 @@ internal class SaveRepositoryImpl @Inject constructor(
             emit(SaveFileState.Error)
         }
     }.flowOn(Dispatchers.IO)
+
+    override suspend fun isFileSaved(name: String): Boolean = withContext(Dispatchers.IO) {
+        findSavedFileUri(name) != null
+    }
+
+    override suspend fun openFile(name: String): Boolean = withContext(Dispatchers.IO) {
+        val uri = findSavedFileUri(name) ?: return@withContext false
+        val mime = mimeTypeFor(name)
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, mime)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        runCatching { context.startActivity(intent) }
+            .onFailure { Log.e(LOG_TAG, "Failed to open $name", it) }
+            .isSuccess
+    }
+
+    private fun findSavedFileUri(name: String): Uri? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            findInMediaStore(name)
+        } else {
+            findInLegacy(name)
+        }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun findInMediaStore(name: String): Uri? {
+        val collection = MediaStore.Downloads.EXTERNAL_CONTENT_URI
+        val projection = arrayOf(MediaStore.Downloads._ID)
+        val selection =
+            "${MediaStore.Downloads.DISPLAY_NAME} = ? AND " +
+                    "${MediaStore.Downloads.RELATIVE_PATH} LIKE ? AND " +
+                    "${MediaStore.Downloads.IS_PENDING} = 0"
+        val selectionArgs = arrayOf(name, "%${Environment.DIRECTORY_DOWNLOADS}/$SUBDIR%")
+
+        return context.contentResolver.query(
+            collection,
+            projection,
+            selection,
+            selectionArgs,
+            null,
+        )?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Downloads._ID))
+                Uri.withAppendedPath(collection, id.toString())
+            } else null
+        }
+    }
+
+    private fun findInLegacy(name: String): Uri? {
+        val downloadsDir = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+            SUBDIR,
+        )
+        val file = File(downloadsDir, name)
+        return if (file.exists()) Uri.fromFile(file) else null
+    }
+
+    private fun mimeTypeFor(name: String): String {
+        val extension = name.substringAfterLast('.', "").lowercase()
+        if (extension.isBlank()) return "application/octet-stream"
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
+            ?: "application/octet-stream"
+    }
 
     private suspend inline fun streamWithProgress(
         input: InputStream,

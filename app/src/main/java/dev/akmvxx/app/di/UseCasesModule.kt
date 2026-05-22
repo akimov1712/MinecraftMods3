@@ -17,6 +17,8 @@ import dev.akmvxx.domain.useCases.mod.FetchFileSizeUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModUseCase
 import dev.akmvxx.domain.useCases.mod.FetchModsUseCase
 import dev.akmvxx.domain.useCases.propose.ProposeModUseCase
+import dev.akmvxx.domain.useCases.save.IsFileSavedUseCase
+import dev.akmvxx.domain.useCases.save.OpenSavedFileUseCase
 import dev.akmvxx.domain.useCases.save.SaveFileUseCase
 import dev.akmvxx.domain.validation.bug.BugValidator
 import dev.akmvxx.domain.validation.propose.ProposeValidator
@@ -64,5 +66,13 @@ internal object UseCasesModule {
     @Provides
     fun provideSaveFileUseCase(repository: SaveRepository): SaveFileUseCase =
         SaveFileUseCase(repository)
+
+    @Provides
+    fun provideIsFileSavedUseCase(repository: SaveRepository): IsFileSavedUseCase =
+        IsFileSavedUseCase(repository)
+
+    @Provides
+    fun provideOpenSavedFileUseCase(repository: SaveRepository): OpenSavedFileUseCase =
+        OpenSavedFileUseCase(repository)
 
 }
