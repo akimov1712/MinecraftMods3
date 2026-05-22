@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/browse" />
+            <option value="$PROJECT_DIR$/feature/files" />
             <option value="$PROJECT_DIR$/feature/help" />
             <option value="$PROJECT_DIR$/feature/mod" />
             <option value="$PROJECT_DIR$/feature/propose" />

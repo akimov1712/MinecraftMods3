@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -72,6 +73,7 @@ internal fun FileRow(
                 verticalArrangement = Arrangement.spacedBy(2.dp),
             ) {
                 Text(
+                    modifier = Modifier.basicMarquee(),
                     text = item.name,
                     color = AppColors.TextWhite,
                     fontWeight = FontWeight.SemiBold,
@@ -99,7 +101,7 @@ internal fun FileRow(
             if (item.status is FileStatus.Downloading) {
                 ProgressBlock(status = item.status)
             }
-        
+
     }
 }
 

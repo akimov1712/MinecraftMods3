@@ -57,7 +57,7 @@ internal fun ReportDialog(
         properties = DialogProperties(
             dismissOnBackPress = !state.isLoading,
             dismissOnClickOutside = !state.isLoading,
-            usePlatformDefaultWidth = true,
+            usePlatformDefaultWidth = false,
         ),
     ) {
         ReportDialogContent(
@@ -79,6 +79,7 @@ private fun ReportDialogContent(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 20.dp)
             .clip(RoundedCornerShape(24.dp))
             .background(AppColors.BackgroundSecondary)
             .border(
