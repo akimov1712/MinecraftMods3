@@ -70,6 +70,8 @@
     <string name="files_open_failed">Couldn\'t open the file. Try again or open it from Downloads manually</string>
     <string name="files_download_failed">Download failed. Please try again</string>
     <string name="files_back">Back</string>
+    <string name="files_vpn_hint_title">Download stuck?</string>
+    <string name="files_vpn_hint_body">Your provider is probably blocking the server we host mods on. Turn on a VPN and try again — once the file is on your phone you can switch it off.</string>
 
     <!-- Mod detail screen -->
     <string name="mod_section_about">About this mod</string>

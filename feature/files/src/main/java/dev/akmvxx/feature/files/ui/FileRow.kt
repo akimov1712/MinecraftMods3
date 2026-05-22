@@ -95,15 +95,11 @@ internal fun FileRow(
             )
         }
 
-        AnimatedVisibility(
-            visible = item.status is FileStatus.Downloading,
-            enter = fadeIn(),
-            exit = fadeOut(),
-        ) {
+
             if (item.status is FileStatus.Downloading) {
                 ProgressBlock(status = item.status)
             }
-        }
+        
     }
 }
 

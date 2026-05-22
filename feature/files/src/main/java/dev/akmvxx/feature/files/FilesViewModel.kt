@@ -19,7 +19,7 @@ import dev.akmvxx.domain.useCases.save.SaveFileUseCase
 import dev.akmvxx.ui.R
 import dev.akmvxx.ui.entity.ScreenUiState
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,6 +36,7 @@ class FilesViewModel @Inject constructor(
 ) : MVI<FilesIntent, FilesState, FilesEvent>(FilesState()) {
 
     private val downloadJobs = mutableMapOf<String, Job>()
+    private val stallWatchers = mutableMapOf<String, Job>()
 
     private fun loadFiles(modId: Int) {
         viewModelScope.launch {
@@ -74,8 +75,7 @@ class FilesViewModel @Inject constructor(
 
     private fun resolveExistingStatus(url: String, name: String) {
         viewModelScope.launch {
-            val isSaved = isFileSavedUseCase.isSaved(name)
-            if (isSaved) {
+            if (isFileSavedUseCase.isSaved(name)) {
                 updateItemStatus(url) { FileStatus.Downloaded }
             }
         }
@@ -97,30 +97,34 @@ class FilesViewModel @Inject constructor(
             return
         }
 
-        updateItemStatus(url) {
-            FileStatus.Downloading(downloadedBytes = 0L, totalBytes = item.sizeBytes ?: 0L)
+        updateItem(url) {
+            it.copy(
+                status = FileStatus.Downloading(
+                    downloadedBytes = 0L,
+                    totalBytes = it.sizeBytes ?: 0L,
+                ),
+                stalled = false,
+            )
         }
+        scheduleStallWatcher(url)
 
         downloadJobs[url] = viewModelScope.launch {
             saveFileUseCase.save(url, item.name).collect { saveState ->
                 when (saveState) {
-                    is SaveFileState.Saving -> updateItemStatus(url) {
-                        FileStatus.Downloading(
-                            downloadedBytes = saveState.downloadedBytes,
-                            totalBytes = saveState.totalBytes,
-                        )
-                    }
+                    is SaveFileState.Saving -> handleSaving(url, saveState)
                     SaveFileState.Success -> {
-                        updateItemStatus(url) { FileStatus.Downloaded }
-                        findItem(url)?.sizeBytes?.let { /* already known */ }
-                            ?: run {
-                                // backfill total bytes once we know it
-                            }
+                        cancelStallWatcher(url)
+                        updateItem(url) {
+                            it.copy(status = FileStatus.Downloaded, stalled = false)
+                        }
                     }
                     SaveFileState.Error -> {
-                        updateItemStatus(url) { FileStatus.Idle }
+                        cancelStallWatcher(url)
+                        updateItem(url) {
+                            it.copy(status = FileStatus.Idle, stalled = false)
+                        }
                         snackbarManager.showMessage(
-                            context.getString(R.string.files_download_failed)
+                            context.getString(R.string.files_download_failed),
                         )
                     }
                 }
@@ -129,9 +133,27 @@ class FilesViewModel @Inject constructor(
         }
     }
 
+    private fun handleSaving(url: String, saving: SaveFileState.Saving) {
+        val current = findItem(url) ?: return
+        val previousBytes = (current.status as? FileStatus.Downloading)?.downloadedBytes ?: 0L
+        val madeProgress = saving.downloadedBytes > previousBytes
+
+        updateItem(url) {
+            it.copy(
+                status = FileStatus.Downloading(
+                    downloadedBytes = saving.downloadedBytes,
+                    totalBytes = saving.totalBytes,
+                ),
+                stalled = if (madeProgress) false else it.stalled,
+            )
+        }
+        scheduleStallWatcher(url)
+    }
+
     private fun cancelDownload(url: String) {
         downloadJobs.remove(url)?.cancel()
-        updateItemStatus(url) { FileStatus.Idle }
+        cancelStallWatcher(url)
+        updateItem(url) { it.copy(status = FileStatus.Idle, stalled = false) }
     }
 
     private fun install(url: String) {
@@ -144,6 +166,22 @@ class FilesViewModel @Inject constructor(
         }
     }
 
+    private fun scheduleStallWatcher(url: String) {
+        stallWatchers[url]?.cancel()
+        stallWatchers[url] = viewModelScope.launch {
+            delay(STALL_THRESHOLD_MS)
+            updateItem(url) { current ->
+                if (current.status is FileStatus.Downloading) {
+                    current.copy(stalled = true)
+                } else current
+            }
+        }
+    }
+
+    private fun cancelStallWatcher(url: String) {
+        stallWatchers.remove(url)?.cancel()
+    }
+
     private fun findItem(url: String): FileItemUi? =
         _state.value.items.firstOrNull { it.url == url }
 
@@ -152,7 +190,7 @@ class FilesViewModel @Inject constructor(
             state.copy(
                 items = state.items.map { item ->
                     if (item.url == url) transform(item) else item
-                }
+                },
             )
         }
     }
@@ -175,6 +213,16 @@ class FilesViewModel @Inject constructor(
         DataError.Network.NOT_FOUND -> R.string.error_not_found
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        // viewModelScope.cancel() already propagates cancellation to all
+        // child download jobs, which makes SaveRepositoryImpl drop the
+        // partially written file via its CancellationException handler.
+        // Maps are cleared just to keep state tidy.
+        downloadJobs.clear()
+        stallWatchers.clear()
+    }
+
     override suspend fun handleIntent(intent: FilesIntent) {
         when (intent) {
             is FilesIntent.Load -> loadFiles(intent.modId)
@@ -182,5 +230,9 @@ class FilesViewModel @Inject constructor(
             is FilesIntent.CancelDownload -> cancelDownload(intent.url)
             is FilesIntent.Install -> install(intent.url)
         }
+    }
+
+    private companion object {
+        const val STALL_THRESHOLD_MS = 5_000L
     }
 }

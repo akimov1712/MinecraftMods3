@@ -1,5 +1,10 @@
 package dev.akmvxx.feature.files
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,6 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.akmvxx.feature.files.ui.FileRow
 import dev.akmvxx.feature.files.ui.FilesHeader
+import dev.akmvxx.feature.files.ui.VpnHintBanner
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
@@ -152,6 +158,15 @@ private fun SuccessState(
                 onBack = onBack,
                 modifier = Modifier.padding(bottom = 8.dp),
             )
+        }
+        item(key = "vpn_hint") {
+            AnimatedVisibility(
+                visible = state.showVpnHint,
+                enter = fadeIn() + expandVertically(),
+                exit = fadeOut() + shrinkVertically(),
+            ) {
+                VpnHintBanner(modifier = Modifier.padding(bottom = 4.dp))
+            }
         }
         items(items = state.items, key = { it.url }) { item ->
             FileRow(

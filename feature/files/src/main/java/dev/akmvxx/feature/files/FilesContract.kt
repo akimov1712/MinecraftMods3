@@ -6,13 +6,16 @@ data class FilesState(
     val modTitle: String = "",
     val items: List<FileItemUi> = emptyList(),
     val status: ScreenUiState = ScreenUiState.Loading,
-)
+) {
+    val showVpnHint: Boolean get() = items.any { it.stalled }
+}
 
 data class FileItemUi(
     val url: String,
     val name: String,
     val sizeBytes: Long?,
     val status: FileStatus,
+    val stalled: Boolean = false,
 )
 
 sealed interface FileStatus {
