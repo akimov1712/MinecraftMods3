@@ -59,6 +59,18 @@
     <string name="propose_send">Send</string>
     <string name="propose_success">Sent successfully. Thanks!</string>
 
+    <!-- Files screen -->
+    <string name="files_title">Files</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">Get</string>
+    <string name="files_install">Install</string>
+    <string name="files_downloading">Downloading</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">Cancel</string>
+    <string name="files_open_failed">Couldn\'t open the file. Try again or open it from Downloads manually</string>
+    <string name="files_download_failed">Download failed. Please try again</string>
+    <string name="files_back">Back</string>
+
     <!-- Mod detail screen -->
     <string name="mod_section_about">About this mod</string>
     <string name="mod_section_supported_versions">Supported versions</string>

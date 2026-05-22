@@ -5,6 +5,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import dev.akmvxx.feature.browse.browseEntry
 import dev.akmvxx.feature.favorite.favoriteEntry
+import dev.akmvxx.feature.files.filesEntry
 import dev.akmvxx.feature.help.helpEntry
 import dev.akmvxx.feature.mod.modEntry
 import dev.akmvxx.feature.nav.TabsScreen
@@ -32,6 +33,7 @@ fun RootNavigation() {
                 }
             }
             modEntry()
+            filesEntry()
         },
     )
 }

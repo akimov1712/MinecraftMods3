@@ -1,24 +1,21 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
 }
 
 android {
-    namespace = "dev.akmvxx.app"
+    namespace = "dev.akmvxx.feature.files"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "dev.akmvxx.minecraftmods3"
         minSdk = 26
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -40,32 +37,23 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.bundles.compose)
 
     implementation(libs.androidx.navigation3.runtime)
-    implementation(libs.androidx.navigation3.ui)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
 
-    implementation(project(":data"))
-    implementation(project(":domain"))
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
     implementation(project(":core:ui"))
     implementation(project(":core:android"))
     implementation(project(":core:common"))
-    implementation(project(":feature:tabs"))
-    implementation(project(":feature:splash"))
-    implementation(project(":feature:browse"))
-    implementation(project(":feature:saved"))
-    implementation(project(":feature:propose"))
-    implementation(project(":feature:help"))
-    implementation(project(":feature:mod"))
-    implementation(project(":feature:files"))
     implementation(project(":navigation"))
-
+    implementation(project(":domain"))
 }
