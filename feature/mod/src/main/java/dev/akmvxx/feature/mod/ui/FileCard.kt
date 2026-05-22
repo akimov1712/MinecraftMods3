@@ -2,6 +2,7 @@ package dev.akmvxx.feature.mod.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +33,7 @@ internal fun FileCard(
     subtitle: String?,
     accent: Color,
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier
@@ -39,6 +41,7 @@ internal fun FileCard(
             .clip(RoundedCornerShape(18.dp))
             .background(AppColors.BackgroundSecondary)
             .border(width = 1.dp, color = AppColors.Outlined, shape = RoundedCornerShape(18.dp))
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
             .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(14.dp),

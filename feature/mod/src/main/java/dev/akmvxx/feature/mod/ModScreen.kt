@@ -48,6 +48,7 @@ import dev.akmvxx.feature.mod.ui.ModDescription
 import dev.akmvxx.feature.mod.ui.ModScreenShimmer
 import dev.akmvxx.feature.mod.ui.StickyToolbar
 import dev.akmvxx.feature.mod.ui.SupportedVersionsSection
+import dev.akmvxx.navigation.RootNavKey
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R
@@ -75,6 +76,7 @@ fun ModScreen(
         state = state,
         onBack = { navigator.pop() },
         onRetry = { viewModel.sendIntent(ModIntent.LoadMod(modId)) },
+        onOpenFiles = { navigator.push(RootNavKey.Files(modId = modId)) },
         onIntent = viewModel::sendIntent,
     )
 }
@@ -84,6 +86,7 @@ private fun ModContent(
     state: ModState,
     onBack: () -> Unit,
     onRetry: () -> Unit,
+    onOpenFiles: () -> Unit,
     onIntent: (ModIntent) -> Unit,
 ) {
     Box(
@@ -105,6 +108,7 @@ private fun ModContent(
                         fileSizeBytes = state.fileSizeBytes,
                         onBack = onBack,
                         onRefresh = onRetry,
+                        onOpenFiles = onOpenFiles,
                         onIntent = onIntent,
                     )
                 }
@@ -163,6 +167,7 @@ private fun SuccessState(
     fileSizeBytes: Long?,
     onBack: () -> Unit,
     onRefresh: () -> Unit,
+    onOpenFiles: () -> Unit,
     onIntent: (ModIntent) -> Unit,
 ) {
     val images = remember(mod.id, mod.imageUrl, mod.gallery) {
@@ -257,6 +262,7 @@ private fun SuccessState(
                         category = mod.category,
                         accent = accent,
                         modifier = Modifier.padding(horizontal = HorizontalPadding),
+                        onFileClick = { onOpenFiles() },
                     )
                 }
 
@@ -266,7 +272,7 @@ private fun SuccessState(
 
         ModBottomBar(
             isFavorite = mod.isFavorite,
-            onDownload = { onIntent(ModIntent.Download) },
+            onDownload = onOpenFiles,
             onFavoriteToggle = { onIntent(ModIntent.ToggleFavorite) },
             fileSizeBytes = fileSizeBytes,
             modifier = Modifier

@@ -24,6 +24,7 @@ internal fun FilesSection(
     category: ModCategory,
     accent: Color,
     modifier: Modifier = Modifier,
+    onFileClick: ((url: String) -> Unit)? = null,
 ) {
     if (files.isEmpty()) return
 
@@ -66,6 +67,7 @@ internal fun FilesSection(
                     name = name,
                     subtitle = url.extractFileVersion(),
                     accent = accent,
+                    onClick = onFileClick?.let { handler -> { handler(url) } },
                 )
             }
         }
