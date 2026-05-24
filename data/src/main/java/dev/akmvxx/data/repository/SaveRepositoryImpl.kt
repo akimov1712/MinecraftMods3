@@ -8,8 +8,8 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import android.webkit.MimeTypeMap
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.akmvxx.domain.entity.SaveFileState
 import dev.akmvxx.domain.repository.SaveRepository
@@ -73,67 +73,37 @@ internal class SaveRepositoryImpl @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
     override suspend fun isFileSaved(name: String): Boolean = withContext(Dispatchers.IO) {
-        findSavedFileUri(name) != null
+        savedFile(name).let { it.exists() && it.isFile }
     }
 
     override suspend fun openFile(name: String): Boolean = withContext(Dispatchers.IO) {
-        val uri = findSavedFileUri(name) ?: return@withContext false
-        val mime = mimeTypeFor(name)
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            setDataAndType(uri, mime)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        }
-        runCatching { context.startActivity(intent) }
-            .onFailure { Log.e(LOG_TAG, "Failed to open $name", it) }
-            .isSuccess
+        val file = savedFile(name)
+        if (!file.exists() || !file.isFile) return@withContext false
+
+        runCatching {
+            val uri = FileProvider.getUriForFile(
+                context,
+                "${context.packageName}.provider",
+                file,
+            )
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                setDataAndType(uri, MIME_TYPE)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            context.startActivity(intent)
+        }.onFailure {
+            Log.e(LOG_TAG, "Failed to open $name", it)
+        }.isSuccess
     }
 
-    private fun findSavedFileUri(name: String): Uri? =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            findInMediaStore(name)
-        } else {
-            findInLegacy(name)
-        }
-
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun findInMediaStore(name: String): Uri? {
-        val collection = MediaStore.Downloads.EXTERNAL_CONTENT_URI
-        val projection = arrayOf(MediaStore.Downloads._ID)
-        val selection =
-            "${MediaStore.Downloads.DISPLAY_NAME} = ? AND " +
-                    "${MediaStore.Downloads.RELATIVE_PATH} LIKE ? AND " +
-                    "${MediaStore.Downloads.IS_PENDING} = 0"
-        val selectionArgs = arrayOf(name, "%${Environment.DIRECTORY_DOWNLOADS}/$SUBDIR%")
-
-        return context.contentResolver.query(
-            collection,
-            projection,
-            selection,
-            selectionArgs,
-            null,
-        )?.use { cursor ->
-            if (cursor.moveToFirst()) {
-                val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Downloads._ID))
-                Uri.withAppendedPath(collection, id.toString())
-            } else null
-        }
-    }
-
-    private fun findInLegacy(name: String): Uri? {
-        val downloadsDir = File(
+    @Suppress("DEPRECATION")
+    private fun savedFile(name: String): File {
+        val dir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
             SUBDIR,
         )
-        val file = File(downloadsDir, name)
-        return if (file.exists()) Uri.fromFile(file) else null
-    }
-
-    private fun mimeTypeFor(name: String): String {
-        val extension = name.substringAfterLast('.', "").lowercase()
-        if (extension.isBlank()) return "application/octet-stream"
-        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
-            ?: "application/octet-stream"
+        return File(dir, name)
     }
 
     private suspend inline fun streamWithProgress(
@@ -195,6 +165,7 @@ internal class SaveRepositoryImpl @Inject constructor(
         )
     }
 
+    @Suppress("DEPRECATION")
     private fun createLegacyTarget(name: String): SaveTarget? {
         val downloadsDir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
@@ -238,5 +209,6 @@ internal class SaveRepositoryImpl @Inject constructor(
         const val LOG_TAG = "SaveRepository"
         const val SUBDIR = "Mods"
         const val EMIT_THRESHOLD_BYTES = 64L * 1024L
+        const val MIME_TYPE = "application/octet-stream"
     }
 }
