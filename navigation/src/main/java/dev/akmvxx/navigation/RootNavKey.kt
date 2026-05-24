@@ -8,5 +8,6 @@ sealed interface RootNavKey : NavKey {
     data object Tabs : RootNavKey
     data class ModDetail(val modId: Int) : RootNavKey
     data class Files(val modId: Int) : RootNavKey
+    data object InstallGuide : RootNavKey
 
 }
