@@ -26,13 +26,10 @@
     <string name="guide_step_6_title">Minecraft will open automatically</string>
     <string name="guide_step_6_text">The mod will be imported. Wait until the game finishes loading the content.</string>
 
-    <string name="guide_step_7_title">Enable Experimental features</string>
-    <string name="guide_step_7_text">When creating a new world, scroll down in the world settings and turn on "Experimental gameplay" — most mods need it.</string>
+    <string name="guide_step_7_title">Enable Experimental features and mod in world settings</string>
+    <string name="guide_step_7_text">When creating a new world, scroll down in the world settings and turn on "Experimental gameplay" — most mods need it. In "Behavior packs" or "Resource packs" find the mod you just installed and tap "Activate".</string>
 
-    <string name="guide_step_8_title">Activate the mod in world settings</string>
-    <string name="guide_step_8_text">In "Behavior packs" or "Resource packs" find the mod you just installed and tap "Activate".</string>
-
-    <string name="guide_step_9_title">Jump into the world</string>
-    <string name="guide_step_9_text">Create the world and start playing — the mod is now active and ready to use.</string>
+    <string name="guide_step_8_title">Jump into the world</string>
+    <string name="guide_step_8_text">Create the world and start playing — the mod is now active and ready to use.</string>
 
 </resources>

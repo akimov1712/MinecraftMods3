@@ -36,7 +36,7 @@ internal fun StepCard(
     number: Int,
     title: String,
     text: String,
-    @DrawableRes screenshotRes: Int,
+    @DrawableRes screenshotRes: Int?,
     isPlaceholder: Boolean,
     modifier: Modifier = Modifier,
 ) {
@@ -72,13 +72,14 @@ internal fun StepCard(
             }
         }
 
-        Spacer(Modifier.height(16.dp))
-
-        Screenshot(
-            number = number,
-            screenshotRes = screenshotRes,
-            isPlaceholder = isPlaceholder,
-        )
+        screenshotRes?.let {
+            Spacer(Modifier.height(16.dp))
+            Screenshot(
+                number = number,
+                screenshotRes = screenshotRes,
+                isPlaceholder = isPlaceholder,
+            )
+        }
     }
 }
 
@@ -109,7 +110,6 @@ private fun Screenshot(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(9f / 16f)
             .clip(RoundedCornerShape(14.dp))
             .background(AppColors.BackgroundPrimary)
             .border(
