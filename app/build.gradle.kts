@@ -66,6 +66,7 @@ dependencies {
     implementation(project(":feature:help"))
     implementation(project(":feature:mod"))
     implementation(project(":feature:files"))
+    implementation(project(":feature:guide"))
     implementation(project(":navigation"))
 
 }

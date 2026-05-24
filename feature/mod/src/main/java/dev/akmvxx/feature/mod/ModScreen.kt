@@ -78,6 +78,7 @@ fun ModScreen(
         onBack = { navigator.pop() },
         onRetry = { viewModel.sendIntent(ModIntent.LoadMod(modId)) },
         onOpenFiles = { navigator.push(RootNavKey.Files(modId = modId)) },
+        onOpenInstallGuide = { navigator.push(RootNavKey.InstallGuide) },
         onIntent = viewModel::sendIntent,
     )
 }
@@ -88,6 +89,7 @@ private fun ModContent(
     onBack: () -> Unit,
     onRetry: () -> Unit,
     onOpenFiles: () -> Unit,
+    onOpenInstallGuide: () -> Unit,
     onIntent: (ModIntent) -> Unit,
 ) {
     Box(
@@ -110,6 +112,7 @@ private fun ModContent(
                         onBack = onBack,
                         onRefresh = onRetry,
                         onOpenFiles = onOpenFiles,
+                        onOpenInstallGuide = onOpenInstallGuide,
                         onIntent = onIntent,
                     )
                 }
@@ -169,6 +172,7 @@ private fun SuccessState(
     onBack: () -> Unit,
     onRefresh: () -> Unit,
     onOpenFiles: () -> Unit,
+    onOpenInstallGuide: () -> Unit,
     onIntent: (ModIntent) -> Unit,
 ) {
     val images = remember(mod.id, mod.imageUrl, mod.gallery) {
@@ -236,7 +240,7 @@ private fun SuccessState(
                 Spacer(Modifier.height(16.dp))
 
                 ActionsRow(
-                    onHowToInstall = {},
+                    onHowToInstall = onOpenInstallGuide,
                     onNotWorking = { reportDialogVisible = true },
                     modifier = Modifier.padding(horizontal = HorizontalPadding),
                 )
