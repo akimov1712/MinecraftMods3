@@ -39,6 +39,7 @@ android {
 dependencies {
 
     implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.activity.compose)
 
     implementation(libs.zoomable)
 
@@ -56,6 +57,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:android"))
     implementation(project(":core:common"))
+    implementation(project(":core:ads"))
     implementation(project(":navigation"))
     implementation(project(":domain"))
 }
