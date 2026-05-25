@@ -1,6 +1,7 @@
 package dev.akmvxx.data.repository
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.akmvxx.common.Result
 import dev.akmvxx.common.errors.DataError
 import dev.akmvxx.data.BuildConfig
@@ -8,23 +9,22 @@ import dev.akmvxx.data.exceptionWrapper
 import dev.akmvxx.data.source.local.settings.AppSettings
 import dev.akmvxx.data.source.local.settings.SettingsKey
 import dev.akmvxx.data.source.remote.settings.SettingsApi
-import dev.akmvxx.data.source.remote.settings.SettingsDto
 import dev.akmvxx.domain.entity.settings.AdChangePercentEntity
 import dev.akmvxx.domain.entity.settings.AdEnabledEntity
 import dev.akmvxx.domain.entity.settings.SettingsEntity
 import dev.akmvxx.domain.entity.settings.SettingsEntity.NativeType
 import dev.akmvxx.domain.repository.SettingsRepository
+import javax.inject.Inject
 
-class SettingsRepositoryImpl(
-    private val context: Context,
+internal class SettingsRepositoryImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val api: SettingsApi,
-    private val appSettings: AppSettings
-): SettingsRepository {
+    private val appSettings: AppSettings,
+) : SettingsRepository {
 
     private suspend fun loadSettings(): SettingsEntity? {
         val response = api.loadConfiguration(BuildConfig.APP_ID)
-        val result = response.body()
-        return result?.sdk?.toEntity().takeIf { response.isSuccessful }
+        return response.body()?.sdk?.toEntity().takeIf { response.isSuccessful }
     }
 
     override suspend fun getSettings(): Result<SettingsEntity, DataError> =
