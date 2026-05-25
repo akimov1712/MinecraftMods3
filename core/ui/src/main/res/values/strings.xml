@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">Ad</string>
     <string name="get_started">Get started</string>
     <string name="search_mods">Search mods</string>
     <string name="screen_browse">Browse</string>
