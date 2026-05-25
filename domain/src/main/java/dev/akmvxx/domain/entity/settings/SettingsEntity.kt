@@ -1,7 +1,5 @@
 package dev.akmvxx.domain.entity.settings
 
-import android.os.Parcelable
-
 data class SettingsEntity(
    val adEnabled: AdEnabledEntity,
    val adChangePercent: AdChangePercentEntity,
@@ -9,10 +7,10 @@ data class SettingsEntity(
    val cooldownAdSecond: Int,
    val preloadSize: Int,
    val intervalNative: Int,
-   val nativeType: NativeTypeEnum
+   val nativeType: NativeType
 ){
 
-    enum class NativeTypeEnum{
+    enum class NativeType{
 
         BANNER,
         NATIVE;

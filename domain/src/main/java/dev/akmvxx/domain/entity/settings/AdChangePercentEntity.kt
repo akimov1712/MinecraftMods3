@@ -1,7 +1,7 @@
 package dev.akmvxx.domain.entity.settings
 
 data class AdChangePercentEntity(
-    val open: Boolean,
-    val native: Boolean,
-    val inter: Boolean,
+    val open: Int,
+    val native: Int,
+    val inter: Int,
 )
