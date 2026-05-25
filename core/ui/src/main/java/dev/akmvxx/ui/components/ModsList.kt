@@ -23,6 +23,8 @@ fun ModsList(
     onRefresh: () -> Unit,
     onLoadMore: () -> Unit,
     onItemClick: (ModEntity) -> Unit = {},
+    adInterval: Int = 0,
+    adContent: (@Composable () -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(
         start = 16.dp,
         end = 16.dp,
@@ -54,8 +56,11 @@ fun ModsList(
                 key = { index, item ->
                     "${item.hashCode()}$index"
                 }
-            ) { _, item ->
+            ) { index, item ->
                 ModItem(item) { onItemClick(item) }
+                if (adContent != null && adInterval > 0 && (index + 1) % adInterval == 0) {
+                    adContent()
+                }
             }
         }
     }

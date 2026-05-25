@@ -54,6 +54,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:android"))
     implementation(project(":core:common"))
+    implementation(project(":core:ads"))
     implementation(project(":navigation"))
     implementation(project(":domain"))
 }
