@@ -36,6 +36,7 @@ fun RootNavigation() {
             modEntry()
             filesEntry()
             guideEntry()
+            adShowEntry()
         },
     )
 }
