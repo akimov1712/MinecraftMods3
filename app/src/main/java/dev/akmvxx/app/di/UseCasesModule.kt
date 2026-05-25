@@ -9,6 +9,7 @@ import dev.akmvxx.domain.repository.FavoriteRepository
 import dev.akmvxx.domain.repository.ModRepository
 import dev.akmvxx.domain.repository.ProposeRepository
 import dev.akmvxx.domain.repository.SaveRepository
+import dev.akmvxx.domain.repository.SettingsRepository
 import dev.akmvxx.domain.useCases.bug.ReportBugUseCase
 import dev.akmvxx.domain.useCases.favorite.ChangeStatusFavoriteUseCase
 import dev.akmvxx.domain.useCases.favorite.FetchFavoriteModsUseCase
@@ -20,6 +21,7 @@ import dev.akmvxx.domain.useCases.propose.ProposeModUseCase
 import dev.akmvxx.domain.useCases.save.IsFileSavedUseCase
 import dev.akmvxx.domain.useCases.save.OpenSavedFileUseCase
 import dev.akmvxx.domain.useCases.save.SaveFileUseCase
+import dev.akmvxx.domain.useCases.settings.GetSettingsUseCase
 import dev.akmvxx.domain.validation.bug.BugValidator
 import dev.akmvxx.domain.validation.propose.ProposeValidator
 
@@ -74,5 +76,10 @@ internal object UseCasesModule {
     @Provides
     fun provideOpenSavedFileUseCase(repository: SaveRepository): OpenSavedFileUseCase =
         OpenSavedFileUseCase(repository)
+
+
+    @Provides
+    fun provideFetchSettingsUseCase(repository: SettingsRepository): GetSettingsUseCase =
+        GetSettingsUseCase(repository)
 
 }

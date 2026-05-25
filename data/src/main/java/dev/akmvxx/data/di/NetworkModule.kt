@@ -8,6 +8,7 @@ import dev.akmvxx.data.BuildConfig
 import dev.akmvxx.data.source.remote.bug.BugApi
 import dev.akmvxx.data.source.remote.mod.ModApi
 import dev.akmvxx.data.source.remote.propose.ProposeApi
+import dev.akmvxx.data.source.remote.settings.SettingsApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -53,5 +54,11 @@ internal object NetworkModule {
     @Singleton
     fun provideModApi(retrofit: Retrofit): ModApi =
         retrofit.create(ModApi::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideSettingsApi(retrofit: Retrofit): SettingsApi =
+        retrofit.create(SettingsApi::class.java)
 
 }
