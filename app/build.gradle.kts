@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.cas)
 }
 
 android {
@@ -19,6 +20,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "APPLICATION_ID", "\"$applicationId\"")
     }
 
     buildTypes {
@@ -36,6 +39,36 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+}
+
+cas {
+    includeOptimalAds = true
+    adapters {
+        ironSource = true
+        googleAds = true
+        unityAds = true
+        kidoz = true
+        liftoffMonetize = true
+        inMobi = true
+        chartboost = true
+        dtExchange = true
+        mintegral = true
+        appLovin = true
+        audienceNetwork = true
+        pangle = true
+        yangoAds = true
+        bigoAds = true
+        casExchange = true
+        startIO = true
+        hyprMX = true
+        ysoNetwork = true
+        ogury = true
+        prado = true
+        superAwesome = true
+        smaato = true
+        maticoo = true
     }
 }
 
@@ -58,6 +91,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:android"))
     implementation(project(":core:common"))
+    implementation(project(":core:ads"))
     implementation(project(":feature:tabs"))
     implementation(project(":feature:splash"))
     implementation(project(":feature:browse"))
