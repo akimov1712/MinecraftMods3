@@ -7,9 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import dev.akmvxx.ads.banner.BannerAdPool
+import dev.akmvxx.ads.banner.BannerAdSlots
 import dev.akmvxx.ads.banner.BannerAdView
 import dev.akmvxx.ads.nativead.FullscreenNativeAdView
 import dev.akmvxx.ads.nativead.NativeAdPool
+import dev.akmvxx.ads.nativead.NativeAdSlots
 import dev.akmvxx.ads.nativead.NativeAdView
 import dev.akmvxx.ads.util.isShowNextAd
 import dev.akmvxx.domain.entity.settings.SettingsEntity
@@ -84,16 +86,23 @@ object NativeAds {
 
     fun isBanner(): Boolean = active is ActiveType.Banner
 
+    /**
+     * Renders an ad for the given slot. [slotKey] must be unique and stable
+     * across recompositions for a given screen position — e.g. the row index
+     * inside a LazyColumn. The same key always resolves to the same ad
+     * instance and the same View hierarchy, so scrolling never restarts
+     * autoplay video and never re-pops the preloaded pool.
+     */
     @Composable
-    fun Show(slot: Slot, modifier: Modifier = Modifier) {
+    fun Show(slot: Slot, slotKey: String, modifier: Modifier = Modifier) {
         if (!initialized) return
         if (!isShowNextAd(showChance)) return
 
         when (active) {
-            ActiveType.Banner -> BannerAdView(modifier)
+            ActiveType.Banner -> BannerAdView(slotKey = slotKey, modifier = modifier)
             ActiveType.Native -> when (slot) {
-                Slot.Fullscreen -> FullscreenNativeAdView()
-                Slot.Inline -> NativeAdView(modifier = modifier)
+                Slot.Fullscreen -> FullscreenNativeAdView(slotKey = slotKey)
+                Slot.Inline -> NativeAdView(slotKey = slotKey, modifier = modifier)
             }
 
             ActiveType.None -> Unit
@@ -103,8 +112,14 @@ object NativeAds {
     fun destroy() {
         if (!initialized) return
         when (active) {
-            ActiveType.Banner -> BannerAdPool.destroy()
-            ActiveType.Native -> NativeAdPool.destroy()
+            ActiveType.Banner -> {
+                BannerAdSlots.releaseAll()
+                BannerAdPool.destroy()
+            }
+            ActiveType.Native -> {
+                NativeAdSlots.releaseAll()
+                NativeAdPool.destroy()
+            }
             ActiveType.None -> Unit
         }
         active = ActiveType.None

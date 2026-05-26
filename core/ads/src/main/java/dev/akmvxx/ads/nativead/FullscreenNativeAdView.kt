@@ -1,5 +1,6 @@
 package dev.akmvxx.ads.nativead
 
+import android.view.ViewGroup
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -9,17 +10,18 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.doOnLayout
 
 @Composable
-internal fun FullscreenNativeAdView() {
+internal fun FullscreenNativeAdView(slotKey: String) {
     val context = LocalContext.current
-    val ad = remember { NativeAdPool.pop() } ?: return
-    val views = remember { buildFullscreenNativeAdView(context) }
+    val holder = remember(slotKey) {
+        NativeAdSlots.acquireFullscreen(context, slotKey)
+    } ?: return
 
     AndroidView(
         modifier = Modifier.fillMaxSize(),
         factory = {
-            views.bindToRoot()
-            views.root.doOnLayout { views.root.bindAdContent(ad) }
-            views.root
+            (holder.views.root.parent as? ViewGroup)?.removeView(holder.views.root)
+            holder.views.root.doOnLayout { holder.views.root.bindAdContent(holder.ad) }
+            holder.views.root
         }
     )
 }

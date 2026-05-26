@@ -1,5 +1,6 @@
 package dev.akmvxx.ads.nativead
 
+import android.view.ViewGroup
 import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -12,17 +13,18 @@ import androidx.core.view.doOnAttach
 import dev.akmvxx.ui.AppColors
 
 @Composable
-internal fun NativeAdView(modifier: Modifier = Modifier) {
+internal fun NativeAdView(slotKey: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    val nativeAd = remember { NativeAdPool.pop() } ?: return
-    val views = remember { buildInlineNativeAdView(context) }
+    val holder = remember(slotKey) {
+        NativeAdSlots.acquireInline(context, slotKey)
+    } ?: return
 
     AndroidView(
         modifier = modifier.border(1.dp, AppColors.Outlined, RoundedCornerShape(8.dp)),
         factory = {
-            views.bindToRoot()
-            views.root.doOnAttach { views.root.bindAdContent(nativeAd) }
-            views.root
+            (holder.views.root.parent as? ViewGroup)?.removeView(holder.views.root)
+            holder.views.root.doOnAttach { holder.views.root.bindAdContent(holder.ad) }
+            holder.views.root
         }
     )
 }

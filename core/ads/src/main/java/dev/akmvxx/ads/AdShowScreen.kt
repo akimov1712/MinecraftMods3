@@ -19,6 +19,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import dev.akmvxx.ui.AppColors
 
+private const val FULLSCREEN_AD_SLOT = "fullscreen"
+
 @Composable
 fun AdShowScreen(onClose: () -> Unit) {
     Box(
@@ -27,7 +29,7 @@ fun AdShowScreen(onClose: () -> Unit) {
             .background(AppColors.BackgroundPrimary)
             .systemBarsPadding()
     ) {
-        NativeAds.Show(slot = NativeAds.Slot.Fullscreen)
+        NativeAds.Show(slot = NativeAds.Slot.Fullscreen, slotKey = FULLSCREEN_AD_SLOT)
 
         Icon(
             modifier = Modifier
