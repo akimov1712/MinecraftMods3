@@ -3,10 +3,8 @@ package dev.akmvxx.ui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,7 +22,7 @@ fun ModsList(
     onLoadMore: () -> Unit,
     onItemClick: (ModEntity) -> Unit = {},
     adInterval: Int = 0,
-    adContent: (@Composable () -> Unit)? = null,
+    adContent: (@Composable (slotKey: String) -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(
         start = 16.dp,
         end = 16.dp,
@@ -50,16 +48,16 @@ fun ModsList(
                     ModItemShimmer()
                 }
             },
-        ) {
-            itemsIndexed(
-                items = mods,
-                key = { index, item ->
-                    "${item.hashCode()}$index"
+        ) { rows ->
+            rows.forEachIndexed { index, mod ->
+                item(key = "mod-${mod.id}", contentType = MOD_CONTENT_TYPE) {
+                    ModItem(mod) { onItemClick(mod) }
                 }
-            ) { index, item ->
-                ModItem(item) { onItemClick(item) }
                 if (adContent != null && adInterval > 0 && (index + 1) % adInterval == 0) {
-                    adContent()
+                    val slot = index / adInterval
+                    item(key = "ad-$slot", contentType = AD_CONTENT_TYPE) {
+                        adContent("ad-$slot")
+                    }
                 }
             }
         }
@@ -67,4 +65,5 @@ fun ModsList(
 }
 
 private const val SHIMMER_ITEMS_COUNT = 4
-
+private const val MOD_CONTENT_TYPE = "mod"
+private const val AD_CONTENT_TYPE = "ad"

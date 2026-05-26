@@ -89,9 +89,10 @@ fun BrowseScreen(
                 onLoadMore = { viewModel.sendIntent(BrowseIntent.FetchMods) },
                 onItemClick = { mod -> navigator.push(RootNavKey.ModDetail(mod.id)) },
                 adInterval = NATIVE_AD_INTERVAL,
-                adContent = {
+                adContent = { slotKey ->
                     NativeAds.Show(
                         slot = NativeAds.Slot.Inline,
+                        slotKey = slotKey,
                         modifier = Modifier.fillMaxWidth(),
                     )
                 },
