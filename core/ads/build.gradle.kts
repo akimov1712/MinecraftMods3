@@ -44,10 +44,12 @@ dependencies {
     ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)
 
     implementation(project(":domain"))
+    implementation(project(":core:common"))
     implementation(project(":core:ui"))
 }
