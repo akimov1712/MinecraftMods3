@@ -6,6 +6,9 @@ plugins {
     alias(libs.plugins.cas)
 }
 
+val applicationArtifactId: String =
+    property("applicationName")?.toString() ?: "minecraftmods3"
+
 android {
     namespace = "dev.akmvxx.app"
     compileSdk {
@@ -13,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "dev.akmvxx.minecraftmods3"
+        applicationId = "dev.akmvxx.$applicationArtifactId"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
