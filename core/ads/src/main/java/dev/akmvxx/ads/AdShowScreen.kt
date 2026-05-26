@@ -27,7 +27,7 @@ fun AdShowScreen(onClose: () -> Unit) {
             .background(AppColors.BackgroundPrimary)
             .systemBarsPadding()
     ) {
-        NativeCoordinator.Show(type = NativeCoordinator.ViewAdType.Fullscreen)
+        NativeAds.Show(slot = NativeAds.Slot.Fullscreen)
 
         Icon(
             modifier = Modifier

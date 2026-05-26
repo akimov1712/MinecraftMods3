@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import dev.akmvxx.ads.open.OpenCoordinator
+import dev.akmvxx.ads.open.AppOpenAds
 import dev.akmvxx.android.SnackbarManager
 import dev.akmvxx.navigation.RootNavKey
 import dev.akmvxx.navigation.rootNavigator
@@ -43,7 +43,7 @@ fun RootContent(
                 val current = navigator.current
                 val onAdShow = current is RootNavKey.AdShow
                 val onSplash = current is RootNavKey.Splash
-                if (!onAdShow && !onSplash) OpenCoordinator.show(activity)
+                if (!onAdShow && !onSplash) AppOpenAds.show(activity)
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)

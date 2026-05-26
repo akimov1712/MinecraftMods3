@@ -12,9 +12,9 @@ import androidx.core.view.doOnAttach
 import dev.akmvxx.ui.AppColors
 
 @Composable
-internal fun NativeCasView(modifier: Modifier = Modifier) {
+internal fun NativeAdView(modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    val nativeAd = remember { NativeCasController.pop() } ?: return
+    val nativeAd = remember { NativeAdPool.pop() } ?: return
     val views = remember { buildInlineNativeAdView(context) }
 
     AndroidView(

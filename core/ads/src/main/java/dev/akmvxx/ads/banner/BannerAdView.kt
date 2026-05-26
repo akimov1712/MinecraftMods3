@@ -31,11 +31,11 @@ import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.R as UiR
 
 @Composable
-internal fun BannerCasView(modifier: Modifier = Modifier) {
+internal fun BannerAdView(modifier: Modifier = Modifier) {
     var bannerView by remember { mutableStateOf<CASBannerView?>(null) }
 
     LaunchedEffect(Unit) {
-        bannerView = BannerCasPreloader.pop()
+        bannerView = BannerAdPool.pop()
     }
 
     val heightModifier =

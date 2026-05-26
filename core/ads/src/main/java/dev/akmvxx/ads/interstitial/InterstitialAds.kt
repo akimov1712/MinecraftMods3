@@ -5,40 +5,38 @@ import android.content.Context
 import dev.akmvxx.ads.util.isShowNextAd
 import dev.akmvxx.domain.entity.settings.SettingsEntity
 
-object InterstitialCoordinator {
+object InterstitialAds {
 
     private var initialized = false
-    private var percentShow: Int = 100
+    private var showChance: Int = 100
 
     fun initialize(context: Context, casId: String, settings: SettingsEntity) {
         if (initialized) return
         if (!settings.adEnabled.inter) return
 
         initialized = true
-        percentShow = settings.adChangePercent.inter
+        showChance = settings.adChangePercent.inter
 
-        InterstitialCasController.init(context.applicationContext, casId, settings.cooldownAdSecond)
+        InterstitialLoader.init(context.applicationContext, casId, settings.cooldownAdSecond)
     }
 
     fun tryShow(activity: Activity) {
         if (!initialized) return
-        if (!isShowNextAd(percentShow)) return
-        InterstitialCasController.show(activity)
+        if (!isShowNextAd(showChance)) return
+        InterstitialLoader.show(activity)
     }
 
     fun start() {
-        if (!initialized) return
-        InterstitialCasController.start()
+        if (initialized) InterstitialLoader.start()
     }
 
     fun stop() {
-        if (!initialized) return
-        InterstitialCasController.stop()
+        if (initialized) InterstitialLoader.stop()
     }
 
     fun destroy() {
         if (!initialized) return
-        InterstitialCasController.destroy()
+        InterstitialLoader.destroy()
         initialized = false
     }
 }

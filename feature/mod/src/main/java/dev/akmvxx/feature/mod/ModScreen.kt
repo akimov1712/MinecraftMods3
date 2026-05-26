@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.sp
 import androidx.activity.compose.LocalActivity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.akmvxx.ads.interstitial.InterstitialCoordinator
+import dev.akmvxx.ads.interstitial.InterstitialAds
 import dev.akmvxx.domain.entity.mod.ModCategory
 import dev.akmvxx.domain.entity.mod.ModEntity
 import dev.akmvxx.feature.mod.ui.ActionsRow
@@ -77,7 +77,7 @@ fun ModScreen(
     }
 
     LaunchedEffect(Unit) {
-        activity?.let { InterstitialCoordinator.tryShow(it) }
+        activity?.let { InterstitialAds.tryShow(it) }
     }
 
     ModContent(

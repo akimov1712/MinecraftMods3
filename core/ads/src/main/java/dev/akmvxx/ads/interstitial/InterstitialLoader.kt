@@ -18,9 +18,9 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.pow
 
-internal object InterstitialCasController {
+internal object InterstitialLoader {
 
-    private const val TAG = "CAS_INTERSTITIAL"
+    private const val TAG = "InterstitialLoader"
     private const val MAX_BACKOFF_EXP = 5
 
     private var interstitial: CASInterstitial? = null
@@ -39,10 +39,10 @@ internal object InterstitialCasController {
     private var cooldownSeconds = 60
     private var lastShowTime = 0L
 
-    fun init(context: Context, casId: String, delay: Int) {
+    fun init(context: Context, casId: String, cooldown: Int) {
         if (initialized) return
 
-        cooldownSeconds = delay
+        cooldownSeconds = cooldown
         appContext = context.applicationContext
         initialized = true
 

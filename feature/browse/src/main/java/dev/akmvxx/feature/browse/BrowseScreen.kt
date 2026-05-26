@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.akmvxx.ads.NativeCoordinator
+import dev.akmvxx.ads.NativeAds
 import dev.akmvxx.navigation.RootNavKey
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
@@ -90,8 +90,8 @@ fun BrowseScreen(
                 onItemClick = { mod -> navigator.push(RootNavKey.ModDetail(mod.id)) },
                 adInterval = NATIVE_AD_INTERVAL,
                 adContent = {
-                    NativeCoordinator.Show(
-                        type = NativeCoordinator.ViewAdType.Native,
+                    NativeAds.Show(
+                        slot = NativeAds.Slot.Inline,
                         modifier = Modifier.fillMaxWidth(),
                     )
                 },

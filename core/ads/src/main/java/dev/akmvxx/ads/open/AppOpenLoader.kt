@@ -18,12 +18,12 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.pow
 
-internal object OpenCasController {
+internal object AppOpenLoader {
 
-    private const val TAG = "CAS_OPEN_AD"
+    private const val TAG = "AppOpenLoader"
     private const val MAX_BACKOFF_EXP = 6
 
-    private var appOpenAd: CASAppOpen? = null
+    private var appOpen: CASAppOpen? = null
 
     private var initialized = false
     private var appContext: Context? = null
@@ -39,17 +39,17 @@ internal object OpenCasController {
 
     private enum class AdState { IDLE, LOADING, READY, SHOWING }
 
-    fun init(context: Context, casId: String, delay: Int) {
+    fun init(context: Context, casId: String, cooldown: Int) {
         if (initialized) return
 
         initialized = true
         appContext = context.applicationContext
         retryAttempt = 0
-        cooldownSeconds = delay
+        cooldownSeconds = cooldown
         state = AdState.IDLE
 
-        appOpenAd = CASAppOpen(casId).apply {
-            contentCallback = this@OpenCasController.contentCallback
+        appOpen = CASAppOpen(casId).apply {
+            contentCallback = this@AppOpenLoader.contentCallback
             isAutoloadEnabled = false
             isAutoshowEnabled = false
         }
@@ -59,7 +59,7 @@ internal object OpenCasController {
 
     private fun load() {
         if (!initialized) return
-        val ad = appOpenAd ?: return
+        val ad = appOpen ?: return
         val context = appContext ?: return
 
         if (state == AdState.LOADING) return
@@ -74,7 +74,7 @@ internal object OpenCasController {
 
     fun show(activity: Activity) {
         if (!initialized) return
-        val ad = appOpenAd ?: return
+        val ad = appOpen ?: return
         if (!canShow()) return
 
         if (state == AdState.READY && ad.isLoaded) {
@@ -88,9 +88,7 @@ internal object OpenCasController {
         reloadJob?.cancel()
     }
 
-    fun resume() {
-        // No-op: lifecycle awareness without interfering scheduled loads
-    }
+    fun resume() = Unit
 
     fun destroy() {
         retryJob?.cancel()
@@ -99,8 +97,8 @@ internal object OpenCasController {
         scope.cancel()
         scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-        appOpenAd?.destroy()
-        appOpenAd = null
+        appOpen?.destroy()
+        appOpen = null
 
         initialized = false
         retryAttempt = 0

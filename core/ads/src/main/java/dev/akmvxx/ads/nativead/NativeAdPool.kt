@@ -19,9 +19,9 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.pow
 
-internal object NativeCasController {
+internal object NativeAdPool {
 
-    private const val TAG = "CAS_NATIVE_AD"
+    private const val TAG = "NativeAdPool"
     private const val REFILL_THRESHOLD = 2
     private const val LOAD_TIMEOUT_MS = 12_000L
     private const val MAX_PARALLEL_LOADS = 2
@@ -33,7 +33,7 @@ internal object NativeCasController {
     private var poolSize = 5
 
     private var loader: CASNativeLoader? = null
-    private val loadedAds = ArrayDeque<NativeAdContent>()
+    private val loaded = ArrayDeque<NativeAdContent>()
 
     private var initialized = false
     private var isDestroyed = false
@@ -51,16 +51,16 @@ internal object NativeCasController {
         onPreloadComplete = callback
     }
 
-    fun deleteCallback() {
+    fun clearCallback() {
         onPreloadComplete = null
     }
 
-    fun init(context: Context, casId: String, nativePoolSize: Int) {
+    fun init(context: Context, casId: String, poolSize: Int) {
         if (initialized) return
 
         this.appContext = context.applicationContext
         this.casId = casId
-        this.poolSize = nativePoolSize
+        this.poolSize = poolSize
 
         initialized = true
         isDestroyed = false
@@ -76,10 +76,10 @@ internal object NativeCasController {
         loadNext()
     }
 
-    fun hasAd(): Boolean = loadedAds.isNotEmpty()
+    fun hasAd(): Boolean = loaded.isNotEmpty()
 
     fun pop(): NativeAdContent? {
-        val ad = loadedAds.removeFirstOrNull()
+        val ad = loaded.removeFirstOrNull()
         if (ad == null) {
             maybeRefill()
             return null
@@ -90,13 +90,13 @@ internal object NativeCasController {
 
     private fun maybeRefill() {
         if (!initialized || isDestroyed) return
-        if (loadedAds.size > REFILL_THRESHOLD) return
+        if (loaded.size > REFILL_THRESHOLD) return
         loadNext()
     }
 
     private fun loadNext() {
         if (!initialized || isDestroyed) return
-        if (loadedAds.size >= poolSize) return
+        if (loaded.size >= poolSize) return
         if (loadingCount >= MAX_PARALLEL_LOADS) return
 
         val now = System.currentTimeMillis()
@@ -133,7 +133,7 @@ internal object NativeCasController {
     }
 
     private fun preloadStatus(): PreloadStatus =
-        if (loadedAds.size >= poolSize) PreloadStatus.PRELOADED
+        if (loaded.size >= poolSize) PreloadStatus.PRELOADED
         else PreloadStatus.NOT_PRELOADED
 
     private val nativeCallback = object : NativeAdContentCallback() {
@@ -149,8 +149,8 @@ internal object NativeCasController {
                 return
             }
 
-            if (loadedAds.size < poolSize) {
-                loadedAds.add(nativeAd)
+            if (loaded.size < poolSize) {
+                loaded.add(nativeAd)
             } else {
                 nativeAd.destroy()
             }
@@ -191,8 +191,8 @@ internal object NativeCasController {
         scope.cancel()
         scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-        loadedAds.forEach { it.destroy() }
-        loadedAds.clear()
+        loaded.forEach { it.destroy() }
+        loaded.clear()
 
         loader = null
         onPreloadComplete = null

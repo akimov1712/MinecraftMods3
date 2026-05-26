@@ -9,9 +9,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.doOnLayout
 
 @Composable
-internal fun FullscreenNativeCasView() {
+internal fun FullscreenNativeAdView() {
     val context = LocalContext.current
-    val ad = remember { NativeCasController.pop() } ?: return
+    val ad = remember { NativeAdPool.pop() } ?: return
     val views = remember { buildFullscreenNativeAdView(context) }
 
     AndroidView(

@@ -5,40 +5,38 @@ import android.content.Context
 import dev.akmvxx.ads.util.isShowNextAd
 import dev.akmvxx.domain.entity.settings.SettingsEntity
 
-object OpenCoordinator {
+object AppOpenAds {
 
     private var initialized = false
-    private var percentShow: Int = 100
+    private var showChance: Int = 100
 
     fun initialize(context: Context, casId: String, settings: SettingsEntity) {
         if (initialized) return
         if (!settings.adEnabled.open) return
 
         initialized = true
-        percentShow = settings.adChangePercent.open
+        showChance = settings.adChangePercent.open
 
-        OpenCasController.init(context.applicationContext, casId, settings.cooldownAdSecond)
+        AppOpenLoader.init(context.applicationContext, casId, settings.cooldownAdSecond)
     }
 
     fun pause() {
-        if (!initialized) return
-        OpenCasController.pause()
+        if (initialized) AppOpenLoader.pause()
     }
 
     fun resume() {
-        if (!initialized) return
-        OpenCasController.resume()
+        if (initialized) AppOpenLoader.resume()
     }
 
     fun show(activity: Activity) {
         if (!initialized) return
-        if (!isShowNextAd(percentShow)) return
-        OpenCasController.show(activity)
+        if (!isShowNextAd(showChance)) return
+        AppOpenLoader.show(activity)
     }
 
     fun destroy() {
         if (!initialized) return
-        OpenCasController.destroy()
+        AppOpenLoader.destroy()
         initialized = false
     }
 }

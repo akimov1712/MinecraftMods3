@@ -17,15 +17,15 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.pow
 
-internal object BannerCasPreloader {
+internal object BannerAdPool {
 
-    private const val TAG = "CAS_BANNER_POOL"
+    private const val TAG = "BannerAdPool"
     private const val TIMEOUT_MS = 20_000L
     private const val MAX_BACKOFF_EXP = 5
 
     private var poolSize = 5
-    private val loadedViews = ArrayDeque<CASBannerView>()
-    private val loadingViews = mutableSetOf<CASBannerView>()
+    private val loaded = ArrayDeque<CASBannerView>()
+    private val loading = mutableSetOf<CASBannerView>()
 
     private var placementId: String? = null
     private var appContext: Context? = null
@@ -51,7 +51,7 @@ internal object BannerCasPreloader {
         notifyStatus()
     }
 
-    fun deleteListener() {
+    fun clearListener() {
         preloadListener = null
     }
 
@@ -60,10 +60,10 @@ internal object BannerCasPreloader {
         fillPool()
     }
 
-    fun hasAd(): Boolean = loadedViews.isNotEmpty()
+    fun hasAd(): Boolean = loaded.isNotEmpty()
 
     fun pop(): CASBannerView? {
-        val view = loadedViews.removeFirstOrNull()
+        val view = loaded.removeFirstOrNull()
         if (view == null) {
             fillPool()
             notifyStatus()
@@ -78,7 +78,7 @@ internal object BannerCasPreloader {
     private fun fillPool() {
         if (!initialized) return
 
-        val totalActive = loadedViews.size + loadingViews.size
+        val totalActive = loaded.size + loading.size
         val needToLoad = poolSize - totalActive
 
         repeat(needToLoad.coerceAtLeast(0)) { loadOne() }
@@ -91,7 +91,7 @@ internal object BannerCasPreloader {
         val width = context.resources.configuration.screenWidthDp
         val banner = CASBannerView(context, id)
 
-        loadingViews.add(banner)
+        loading.add(banner)
         var completed = false
 
         val timeoutJob = scope.launch {
@@ -99,7 +99,7 @@ internal object BannerCasPreloader {
             if (!completed) {
                 completed = true
                 Log.d(TAG, "load timeout")
-                loadingViews.remove(banner)
+                loading.remove(banner)
                 banner.destroy()
                 scheduleRetry()
             }
@@ -112,11 +112,11 @@ internal object BannerCasPreloader {
                 completed = true
                 timeoutJob.cancel()
 
-                loadingViews.remove(banner)
-                loadedViews.add(view)
+                loading.remove(banner)
+                loaded.add(view)
                 retryAttempt = 0
 
-                Log.d(TAG, "loaded (${loadedViews.size}/$poolSize)")
+                Log.d(TAG, "loaded (${loaded.size}/$poolSize)")
                 notifyStatus()
                 fillPool()
             }
@@ -126,7 +126,7 @@ internal object BannerCasPreloader {
                 completed = true
                 timeoutJob.cancel()
 
-                loadingViews.remove(banner)
+                loading.remove(banner)
                 banner.destroy()
 
                 Log.d(TAG, "failed to load: ${error.message}")
@@ -158,7 +158,7 @@ internal object BannerCasPreloader {
 
     private fun notifyStatus() {
         val status =
-            if (loadedViews.size >= poolSize) PreloadStatus.PRELOADED
+            if (loaded.size >= poolSize) PreloadStatus.PRELOADED
             else PreloadStatus.NOT_PRELOADED
 
         preloadListener?.invoke(status)
@@ -169,11 +169,11 @@ internal object BannerCasPreloader {
         scope.cancel()
         scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-        loadedViews.forEach { it.destroy() }
-        loadingViews.forEach { it.destroy() }
+        loaded.forEach { it.destroy() }
+        loading.forEach { it.destroy() }
 
-        loadedViews.clear()
-        loadingViews.clear()
+        loaded.clear()
+        loading.clear()
 
         initialized = false
         retryAttempt = 0
