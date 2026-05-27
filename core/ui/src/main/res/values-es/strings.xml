@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">Anuncio</string>
+    <string name="get_started">Empezar</string>
+    <string name="search_mods">Buscar mods</string>
+    <string name="screen_browse">Catálogo</string>
+    <string name="screen_favorite">Favoritos</string>
+    <string name="screen_propose">Proponer</string>
+    <string name="screen_help">Ayuda</string>
+
+    <string name="mod_category_all">Todos</string>
+    <string name="mod_category_addon">Mods</string>
+    <string name="mod_category_maps">Mapas</string>
+    <string name="mod_category_texture">Texturas</string>
+    <string name="mod_category_skins">Skins</string>
+
+    <string name="mod_sorted_relevance">Por relevancia</string>
+    <string name="mod_sorted_most_popular">Más populares</string>
+    <string name="mod_sorted_rating">Mejor valorados</string>
+
+    <plurals name="files">
+        <item quantity="one">%d archivo</item>
+        <item quantity="other">%d archivos</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="one">%d versión</item>
+        <item quantity="other">%d versiones</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+    <string name="mod_favorite_suffix">· Favorito</string>
+
+    <string name="error_request_timeout">Tiempo de espera agotado. Inténtalo de nuevo</string>
+    <string name="error_serialization">No se pudieron procesar los datos. Inténtalo de nuevo</string>
+    <string name="error_server_error">Error del servidor. Inténtalo más tarde</string>
+    <string name="error_no_internet">Sin conexión a internet. Comprueba tu red</string>
+    <string name="error_unknown">Error desconocido. Inténtalo de nuevo</string>
+    <string name="error_invalid_data">Datos no válidos. Inténtalo de nuevo</string>
+    <string name="error_bad_request">Solicitud no válida. Inténtalo de nuevo</string>
+    <string name="error_not_found">No encontrado</string>
+    <string name="error_title_pagination">Error al cargar</string>
+    <string name="the_list_is_empty">La lista está vacía</string>
+    <string name="retry">Reintentar</string>
+
+    <string name="propose_title">Proponer un mod</string>
+    <string name="propose_subtitle">Cuéntanos qué quieres ver a continuación.</string>
+    <string name="propose_tab_propose">Proponer</string>
+    <string name="propose_tab_feedback">Comentarios</string>
+    <string name="propose_field_email_label">Tu email</string>
+    <string name="propose_field_email_hint">Para poder contactarte</string>
+    <string name="propose_field_mod_label">Nombre del mod o enlace</string>
+    <string name="propose_field_mod_hint">Un nombre, un enlace o una breve descripción…</string>
+    <string name="propose_field_feedback_label">¿Qué tienes en mente?</string>
+    <string name="propose_field_feedback_hint">Errores, ideas, lo que sea.</string>
+    <string name="propose_send">Enviar</string>
+    <string name="propose_success">Enviado con éxito. ¡Gracias!</string>
+
+    <string name="files_title">Archivos</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">Obtener</string>
+    <string name="files_install">Instalar</string>
+    <string name="files_downloading">Descargando</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">Cancelar</string>
+    <string name="files_open_failed">No se pudo abrir el archivo. Inténtalo de nuevo o ábrelo manualmente desde Descargas</string>
+    <string name="files_download_failed">Descarga fallida. Inténtalo de nuevo</string>
+    <string name="files_back">Atrás</string>
+    <string name="files_vpn_hint_title">¿Descarga atascada?</string>
+    <string name="files_vpn_hint_body">Probablemente tu proveedor está bloqueando el servidor donde alojamos los mods. Activa una VPN e inténtalo de nuevo — una vez que el archivo esté en tu teléfono puedes apagarla.</string>
+
+    <string name="mod_section_about">Sobre este mod</string>
+    <string name="mod_section_supported_versions">Versiones compatibles</string>
+    <string name="mod_section_files">Archivos</string>
+    <string name="mod_file_default_name">Archivo %1$d</string>
+    <string name="mod_show_more">Mostrar más</string>
+    <string name="mod_show_less">Mostrar menos</string>
+    <string name="mod_how_to_install">Cómo instalar</string>
+    <string name="mod_not_working">¿No funciona?</string>
+    <string name="mod_download">Descargar</string>
+    <string name="mod_download_with_size">Descargar · %1$s</string>
+    <string name="mod_back">Atrás</string>
+    <string name="mod_close">Cerrar</string>
+    <string name="mod_favorite_toggle">Alternar favorito</string>
+
+    <string name="mod_report_title">Reportar un problema</string>
+    <string name="mod_report_subtitle">Cuéntanos qué pasa con %1$s y lo revisaremos.</string>
+    <string name="mod_report_subtitle_generic">Cuéntanos qué pasa y lo revisaremos.</string>
+    <string name="mod_report_message_label">¿Cuál es el problema?</string>
+    <string name="mod_report_message_hint">Fallo al instalar, faltan bloques, …</string>
+    <string name="mod_report_send">Enviar reporte</string>
+    <string name="mod_report_cancel">Cancelar</string>
+    <string name="mod_report_success">¡Gracias! Lo revisaremos</string>
+    <string name="mod_report_error_message_short">El mensaje es muy corto (mín. 32 caracteres)</string>
+    <string name="mod_image_indicator">Imagen %1$d de %2$d</string>
+
+    <string name="favorite_title">Mods guardados</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">Aún no hay mods en tu biblioteca</item>
+        <item quantity="one">%d mod en tu biblioteca</item>
+        <item quantity="other">%d mods en tu biblioteca</item>
+    </plurals>
+
+    <string name="propose_error_email_required">Introduce tu email</string>
+    <string name="propose_error_email_invalid">Introduce una dirección de email válida</string>
+    <string name="propose_error_message_required">Completa el mensaje</string>
+    <string name="propose_error_message_short">El mensaje es muy corto (mín. 20 caracteres)</string>
+
+</resources>
