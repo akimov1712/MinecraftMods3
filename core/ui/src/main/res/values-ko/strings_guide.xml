@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="guide_title">모드 설치 방법</string>
+    <string name="guide_subtitle">아래 단계만 따라 하세요 — 약 1분이면 끝납니다.</string>
+    <string name="guide_back">뒤로</string>
+    <string name="guide_screenshot_content_description">단계 %1$d 의 스크린샷</string>
+    <string name="guide_footer">완료 — 즐겁게 즐기세요!</string>
+
+    <string name="guide_step_1_title">마음에 드는 모드 고르기</string>
+    <string name="guide_step_1_text">카탈로그를 열고 설치하고 싶은 모드를 탭해서 페이지를 여세요.</string>
+
+    <string name="guide_step_2_title">\"다운로드\" 탭하기</string>
+    <string name="guide_step_2_text">모드 페이지에서 화면 하단의 주황색 다운로드 버튼을 탭하세요.</string>
+
+    <string name="guide_step_3_title">다운로드가 끝날 때까지 기다리기</string>
+    <string name="guide_step_3_text">파일이 기기에 저장됩니다. 보통 몇 초만 걸립니다.</string>
+
+    <string name="guide_step_4_title">초록색 \"설치\" 버튼 탭하기</string>
+    <string name="guide_step_4_text">파일이 다운로드되면 옆에 있는 초록색 설치 버튼을 탭하세요.</string>
+
+    <string name="guide_step_5_title">앱 선택기에서 Minecraft 고르기</string>
+    <string name="guide_step_5_text">Android가 어떤 앱으로 파일을 열지 묻습니다 — 목록에서 Minecraft를 선택하세요.</string>
+
+    <string name="guide_step_6_title">Minecraft가 자동으로 열립니다</string>
+    <string name="guide_step_6_text">모드를 가져옵니다. 게임이 콘텐츠 로딩을 끝낼 때까지 기다리세요.</string>
+
+    <string name="guide_step_7_title">월드 설정에서 실험 기능과 모드 켜기</string>
+    <string name="guide_step_7_text">새 월드를 만들 때 월드 설정에서 아래로 스크롤하여 \"실험적 게임플레이\"를 켜세요 — 대부분의 모드에 필요합니다. \"비헤이비어 팩\" 또는 \"리소스 팩\"에서 방금 설치한 모드를 찾아 \"활성화\"를 탭하세요.</string>
+
+    <string name="guide_step_8_title">월드에 들어가기</string>
+    <string name="guide_step_8_text">월드를 만들고 플레이를 시작하세요 — 모드가 활성화되어 사용할 준비가 끝났습니다.</string>
+
+</resources>
