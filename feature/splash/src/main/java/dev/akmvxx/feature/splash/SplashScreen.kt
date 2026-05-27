@@ -35,13 +35,6 @@ private fun SplashContent(state: SplashState) {
             .background(AppColors.BackgroundPrimary)
             .systemBarsPadding(),
     ) {
-        InfoSection(
-            isLoading = state.isLoading,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .padding(24.dp)
-        )
         LogoWithTitleSection(state.isLoading)
         Loader(
             modifier = Modifier
@@ -49,6 +42,13 @@ private fun SplashContent(state: SplashState) {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 80.dp),
             isLoading = state.isLoading
+        )
+        InfoSection(
+            isLoading = state.isLoading,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(24.dp)
         )
     }
 }
