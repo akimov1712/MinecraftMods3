@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">Реклама</string>
+    <string name="get_started">Начать</string>
+    <string name="search_mods">Поиск модов</string>
+    <string name="screen_browse">Каталог</string>
+    <string name="screen_favorite">Избранное</string>
+    <string name="screen_propose">Предложить</string>
+    <string name="screen_help">Помощь</string>
+
+    <string name="mod_category_all">Все</string>
+    <string name="mod_category_addon">Моды</string>
+    <string name="mod_category_maps">Карты</string>
+    <string name="mod_category_texture">Текстуры</string>
+    <string name="mod_category_skins">Скины</string>
+
+    <string name="mod_sorted_relevance">По релевантности</string>
+    <string name="mod_sorted_most_popular">Популярные</string>
+    <string name="mod_sorted_rating">По рейтингу</string>
+
+    <plurals name="files">
+        <item quantity="one">%d файл</item>
+        <item quantity="few">%d файла</item>
+        <item quantity="many">%d файлов</item>
+        <item quantity="other">%d файла</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="one">%d версия</item>
+        <item quantity="few">%d версии</item>
+        <item quantity="many">%d версий</item>
+        <item quantity="other">%d версии</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+
+    <string name="mod_favorite_suffix">· Избранное</string>
+
+    <string name="error_request_timeout">Время ожидания истекло. Попробуйте ещё раз</string>
+    <string name="error_serialization">Не удалось обработать данные. Попробуйте ещё раз</string>
+    <string name="error_server_error">Ошибка сервера. Попробуйте позже</string>
+    <string name="error_no_internet">Нет интернета. Проверьте подключение</string>
+    <string name="error_unknown">Неизвестная ошибка. Попробуйте ещё раз</string>
+    <string name="error_invalid_data">Получены некорректные данные. Попробуйте ещё раз</string>
+    <string name="error_bad_request">Неверный запрос. Попробуйте ещё раз</string>
+    <string name="error_not_found">Не найдено</string>
+    <string name="error_title_pagination">Не удалось загрузить</string>
+    <string name="the_list_is_empty">Список пуст</string>
+    <string name="retry">Повторить</string>
+
+    <string name="propose_title">Предложить мод</string>
+    <string name="propose_subtitle">Расскажите, что хотите увидеть.</string>
+    <string name="propose_tab_propose">Предложить</string>
+    <string name="propose_tab_feedback">Отзыв</string>
+    <string name="propose_field_email_label">Ваш email</string>
+    <string name="propose_field_email_hint">Чтобы мы могли с вами связаться</string>
+    <string name="propose_field_mod_label">Название мода или ссылка</string>
+    <string name="propose_field_mod_hint">Название, ссылка или короткое описание…</string>
+    <string name="propose_field_feedback_label">О чём подумали?</string>
+    <string name="propose_field_feedback_hint">Баги, идеи, что угодно.</string>
+    <string name="propose_send">Отправить</string>
+    <string name="propose_success">Отправлено. Спасибо!</string>
+
+    <string name="files_title">Файлы</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">Скачать</string>
+    <string name="files_install">Установить</string>
+    <string name="files_downloading">Загрузка</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">Отмена</string>
+    <string name="files_open_failed">Не удалось открыть файл. Попробуйте ещё раз или откройте его из Загрузок вручную</string>
+    <string name="files_download_failed">Не удалось скачать. Попробуйте ещё раз</string>
+    <string name="files_back">Назад</string>
+    <string name="files_vpn_hint_title">Загрузка зависла?</string>
+    <string name="files_vpn_hint_body">Скорее всего ваш провайдер блокирует сервер, на котором лежат моды. Включите VPN и повторите загрузку — когда файл уже на телефоне, VPN можно выключить.</string>
+
+    <string name="mod_section_about">Об этом моде</string>
+    <string name="mod_section_supported_versions">Поддерживаемые версии</string>
+    <string name="mod_section_files">Файлы</string>
+    <string name="mod_file_default_name">Файл %1$d</string>
+    <string name="mod_show_more">Показать ещё</string>
+    <string name="mod_show_less">Свернуть</string>
+    <string name="mod_how_to_install">Как установить</string>
+    <string name="mod_not_working">Не работает?</string>
+    <string name="mod_download">Скачать</string>
+    <string name="mod_download_with_size">Скачать · %1$s</string>
+    <string name="mod_back">Назад</string>
+    <string name="mod_close">Закрыть</string>
+    <string name="mod_favorite_toggle">В избранное</string>
+
+    <string name="mod_report_title">Сообщить о проблеме</string>
+    <string name="mod_report_subtitle">Расскажите, что не так с %1$s — разберёмся.</string>
+    <string name="mod_report_subtitle_generic">Расскажите, что не так — разберёмся.</string>
+    <string name="mod_report_message_label">В чём проблема?</string>
+    <string name="mod_report_message_hint">Краш при установке, нет блоков, …</string>
+    <string name="mod_report_send">Отправить</string>
+    <string name="mod_report_cancel">Отмена</string>
+    <string name="mod_report_success">Спасибо! Разберёмся</string>
+    <string name="mod_report_error_message_short">Сообщение слишком короткое (минимум 32 символа)</string>
+    <string name="mod_image_indicator">Изображение %1$d из %2$d</string>
+
+    <string name="favorite_title">Сохранённые моды</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">В библиотеке пока пусто</item>
+        <item quantity="one">%d мод в библиотеке</item>
+        <item quantity="few">%d мода в библиотеке</item>
+        <item quantity="many">%d модов в библиотеке</item>
+        <item quantity="other">%d мода в библиотеке</item>
+    </plurals>
+
+    <string name="propose_error_email_required">Введите email</string>
+    <string name="propose_error_email_invalid">Введите корректный email</string>
+    <string name="propose_error_message_required">Заполните сообщение</string>
+    <string name="propose_error_message_short">Сообщение слишком короткое (минимум 20 символов)</string>
+
+</resources>

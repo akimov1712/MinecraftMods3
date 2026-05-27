@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="guide_title">Как установить мод</string>
+    <string name="guide_subtitle">Просто следуйте шагам ниже — займёт около минуты.</string>
+    <string name="guide_back">Назад</string>
+    <string name="guide_screenshot_content_description">Скриншот для шага %1$d</string>
+    <string name="guide_footer">Готово — приятной игры!</string>
+
+    <string name="guide_step_1_title">Выберите понравившийся мод</string>
+    <string name="guide_step_1_text">Откройте каталог и нажмите на мод, который хотите установить, чтобы открыть его страницу.</string>
+
+    <string name="guide_step_2_title">Нажмите «Скачать»</string>
+    <string name="guide_step_2_text">На странице мода нажмите оранжевую кнопку «Скачать» внизу экрана.</string>
+
+    <string name="guide_step_3_title">Дождитесь окончания загрузки</string>
+    <string name="guide_step_3_text">Файл сохранится на устройство. Обычно занимает несколько секунд.</string>
+
+    <string name="guide_step_4_title">Нажмите зелёную кнопку «Установить»</string>
+    <string name="guide_step_4_text">Когда файл скачается, нажмите рядом с ним зелёную кнопку «Установить».</string>
+
+    <string name="guide_step_5_title">Выберите Minecraft в окне выбора приложения</string>
+    <string name="guide_step_5_text">Android спросит, каким приложением открыть файл — выберите Minecraft из списка.</string>
+
+    <string name="guide_step_6_title">Minecraft откроется автоматически</string>
+    <string name="guide_step_6_text">Мод будет импортирован. Подождите, пока игра загрузит контент.</string>
+
+    <string name="guide_step_7_title">Включите экспериментальные функции и мод в настройках мира</string>
+    <string name="guide_step_7_text">При создании нового мира пролистайте настройки вниз и включите «Экспериментальный геймплей» — он нужен большинству модов. В «Пакетах поведения» или «Пакетах ресурсов» найдите только что установленный мод и нажмите «Активировать».</string>
+
+    <string name="guide_step_8_title">Заходите в мир</string>
+    <string name="guide_step_8_text">Создайте мир и начинайте играть — мод активен и готов к использованию.</string>
+
+</resources>

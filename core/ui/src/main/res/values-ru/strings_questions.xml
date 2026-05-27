@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="help_title">Помощь</string>
+    <string name="help_subtitle">Быстрые ответы на частые вопросы.</string>
+    <string name="help_search_placeholder">Поиск</string>
+    <string name="help_no_results">Ничего не найдено. Попробуйте другое слово.</string>
+
+    <string name="help_section_getting_started">Для начала</string>
+    <string name="help_section_installing">Установка</string>
+    <string name="help_section_in_game">В игре</string>
+    <string name="help_section_content_updates">Контент и обновления</string>
+    <string name="help_section_about_app">О приложении</string>
+    <string name="help_section_saves_cleanup">Сохранения и очистка</string>
+    <string name="help_section_reach_out">Связь</string>
+
+    <string name="faq_account_q">Нужно ли регистрироваться?</string>
+    <string name="faq_account_a">Нет. Никаких логинов, email или паролей — открыл и поехали.</string>
+
+    <string name="faq_need_internet_q">Интернет всегда нужен?</string>
+    <string name="faq_need_internet_a">Только чтобы листать каталог и качать. После того как мод на телефоне, играть можно офлайн (если сам Minecraft работает офлайн).</string>
+
+    <string name="faq_supported_versions_q">Какие версии Minecraft подходят?</string>
+    <string name="faq_supported_versions_a">Android Minecraft Bedrock — последняя версия и несколько предыдущих. У каждого мода указано, для каких конкретно версий он — смотри около файла.</string>
+
+    <string name="faq_how_install_q">Как установить мод?</string>
+    <string name="faq_how_install_a">Открой мод, выбери файл из списка, нажми скачать, потом установить. Minecraft сам откроется и подхватит. Последний шаг — включить пак внутри мира, в котором хочешь играть.</string>
+
+    <string name="faq_install_pack_q">А текстур-паки и скины?</string>
+    <string name="faq_install_pack_a">Так же, как моды. После установки включай их в самом Minecraft — текстуры в «Глобальных ресурсах», скины — в профиле.</string>
+
+    <string name="faq_install_fail_q">Почему мод не устанавливается?</string>
+    <string name="faq_install_fail_a">Быстро проверь:\n• Мод должен подходить к версии твоего Minecraft — смотри строку с версией на странице мода.\n• На телефоне должно быть свободное место.\n• Закрой и открой Minecraft снова (часто помогает на ровном месте).\nВсё ещё ничего? Скачай файл заново и попробуй ещё раз.</string>
+
+    <string name="faq_download_stuck_q">Загрузка висит на 0% и не двигается</string>
+    <string name="faq_download_stuck_a">Если прогресс не идёт — скорее всего твой провайдер блокирует сервер, где лежат моды. Иногда блокируют целые регионы или операторов, мы тут ничем не поможем. Включи VPN, начни загрузку заново, и всё полетит. Когда файл на телефоне — VPN можно выключить, моду он не нужен.</string>
+
+    <string name="faq_corrupted_file_q">Получил ошибку «файл повреждён»</string>
+    <string name="faq_corrupted_file_a">Значит загрузка оборвалась на полпути. Удали то, что есть, и качай заново на стабильном соединении (лучше Wi-Fi).</string>
+
+    <string name="faq_mod_not_visible_q">Установил мод, но в игре ничего не вижу</string>
+    <string name="faq_mod_not_visible_a">Мод уже в Minecraft, его осталось включить. Открой настройки мира и активируй пак. Некоторым модам нужны Экспериментальные функции — это в тех же настройках.</string>
+
+    <string name="faq_experimental_q">Как включить экспериментальные функции?</string>
+    <string name="faq_experimental_a">При создании или редактировании мира пролистай вниз до «Эксперименты» и включи нужный тумблер (мод обычно говорит, какой именно — часто «Holiday Creator Features» или «Beta APIs»). После — перезагрузи мир.</string>
+
+    <string name="faq_lag_q">После установки мода игра тормозит</string>
+    <string name="faq_lag_a">Некоторые моды просто тяжёлые. Что попробовать по порядку:\n• Закрой другие приложения в фоне.\n• Уменьши дальность прорисовки в Minecraft (помогает сильнее всего).\n• Снизь качество графики на одну ступень.\nЕсли всё ещё лагает — мод слишком тяжёлый для устройства, бери полегче.</string>
+
+    <string name="faq_multiplayer_q">Можно ли использовать моды на сервере с друзьями?</string>
+    <string name="faq_multiplayer_a">Зависит от сервера. Обычно у всех игроков должны быть одинаковые паки — если сервер позволяет мод, всё нормально. Если нет — мод просто не будет работать там.</string>
+
+    <string name="faq_new_mods_q">Добавляете новые моды?</string>
+    <string name="faq_new_mods_a">Постоянно. Обнови каталог — увидишь, что появилось с прошлого раза.</string>
+
+    <string name="faq_updates_q">Как узнать, что мод обновили?</string>
+    <string name="faq_updates_a">Когда автор мода выпускает новую версию, мы добавляем её в каталог. Версия указана рядом с файлом на странице мода.</string>
+
+    <string name="faq_safety_q">Моды безопасны?</string>
+    <string name="faq_safety_a">Да. Каждый мод проверяется перед попаданием в каталог — никаких вирусов и скрытых сюрпризов.</string>
+
+    <string name="faq_ads_q">Почему есть реклама?</string>
+    <string name="faq_ads_a">Серверы и обновления стоят денег, и реклама — то, чем мы за них платим. Так само приложение остаётся для тебя бесплатным. Стараемся не лезть в глаза, пока ты пользуешься приложением.</string>
+
+    <string name="faq_no_internet_q">Пишет «нет интернета», но у меня всё работает</string>
+    <string name="faq_no_internet_a">Если соединение норм, а приложение всё равно жалуется — скорее всего наши серверы прилегли отдохнуть. Подожди несколько минут и попробуй ещё раз.</string>
+
+    <string name="faq_uninstall_q">Если я удалю это приложение, моды пропадут?</string>
+    <string name="faq_uninstall_a">Нет. Моды теперь живут внутри Minecraft — они останутся, даже если наше приложение уйдёт.</string>
+
+    <string name="faq_safe_for_saves_q">Моды могут испортить мои миры?</string>
+    <string name="faq_safe_for_saves_a">Сами по себе — нет. Моды добавляются как паки в Minecraft, и ты сам выбираешь, к каким мирам их подключать. Если пробуешь новый мод и не хочешь рисковать важным миром — создай для него отдельный.</string>
+
+    <string name="faq_remove_mod_q">Как удалить мод, который больше не нужен?</string>
+    <string name="faq_remove_mod_a">Внутри Minecraft открой «Паки» (поведения, ресурсов или скинов — смотря какой мод), долго нажми на нужный и выбери «Удалить». Миры останутся целыми — удалится только мод.</string>
+
+    <string name="faq_report_issue_q">Куда сообщить, что что-то сломалось?</string>
+    <string name="faq_report_issue_a">Используй раздел «Отзыв» на экране «Предложить». Опиши, что случилось — чем подробнее, тем быстрее разберёмся.</string>
+
+    <string name="faq_submit_mod_q">Сделал свой мод — можно прислать вам?</string>
+    <string name="faq_submit_mod_a">Конечно. Открой экран «Предложить» и кинь ссылку или файл туда. Мы смотрим присылки и добавляем подходящие.</string>
+
+</resources>
