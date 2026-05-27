@@ -21,7 +21,7 @@ class BugValidator: Validator<BugEntity> {
 
     companion object{
 
-        private const val MIN_MESSAGE_LENGTH = 20
+        private const val MIN_MESSAGE_LENGTH = 32
 
     }
 

@@ -1,11 +1,11 @@
 package dev.akmvxx.ads.banner
 
 import android.content.Context
-import android.util.Log
 import com.cleversolutions.ads.AdError
 import com.cleversolutions.ads.AdSize
 import com.cleversolutions.ads.AdViewListener
 import com.cleversolutions.ads.android.CASBannerView
+import dev.akmvxx.ads.AdEvents
 import dev.akmvxx.ads.PreloadStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import kotlin.math.pow
 
 internal object BannerAdPool {
 
-    private const val TAG = "BannerAdPool"
+    private const val TYPE = "Banner"
     private const val TIMEOUT_MS = 20_000L
     private const val MAX_BACKOFF_EXP = 5
 
@@ -98,7 +98,6 @@ internal object BannerAdPool {
             delay(TIMEOUT_MS)
             if (!completed) {
                 completed = true
-                Log.d(TAG, "load timeout")
                 loading.remove(banner)
                 banner.destroy()
                 scheduleRetry()
@@ -116,7 +115,7 @@ internal object BannerAdPool {
                 loaded.add(view)
                 retryAttempt = 0
 
-                Log.d(TAG, "loaded (${loaded.size}/$poolSize)")
+                view.contentInfo?.let { AdEvents.loaded(TYPE, it) }
                 notifyStatus()
                 fillPool()
             }
@@ -129,12 +128,12 @@ internal object BannerAdPool {
                 loading.remove(banner)
                 banner.destroy()
 
-                Log.d(TAG, "failed to load: ${error.message}")
+                AdEvents.failed("$TYPE load", error)
                 scheduleRetry()
             }
 
             override fun onAdViewClicked(view: CASBannerView) {
-                Log.d(TAG, "clicked")
+                view.contentInfo?.let { AdEvents.clicked(TYPE, it) }
             }
         }
 

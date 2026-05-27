@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "dev.akmvxx.$applicationArtifactId"
+        applicationId = "com.l13devstudio.$applicationArtifactId"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

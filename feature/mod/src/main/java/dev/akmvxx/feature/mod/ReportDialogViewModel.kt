@@ -57,7 +57,7 @@ class ReportDialogViewModel @Inject constructor(
             BugValidatorError.EMAIL_EMPTY -> R.string.propose_error_email_required
             BugValidatorError.EMAIL_NOT_VALID -> R.string.propose_error_email_invalid
             BugValidatorError.MESSAGE_EMPTY -> R.string.propose_error_message_required
-            BugValidatorError.MESSAGE_IS_SHORT -> R.string.propose_error_message_short
+            BugValidatorError.MESSAGE_IS_SHORT -> R.string.mod_report_error_message_short
         }
         is DataError.Network -> when (error) {
             DataError.Network.REQUEST_TIMEOUT -> R.string.error_request_timeout

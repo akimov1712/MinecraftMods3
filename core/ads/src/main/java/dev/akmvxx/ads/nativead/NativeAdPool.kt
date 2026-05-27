@@ -1,13 +1,13 @@
 package dev.akmvxx.ads.nativead
 
 import android.content.Context
-import android.util.Log
 import com.cleveradssolutions.sdk.AdContentInfo
 import com.cleveradssolutions.sdk.nativead.AdChoicesPlacement
 import com.cleveradssolutions.sdk.nativead.CASNativeLoader
 import com.cleveradssolutions.sdk.nativead.NativeAdContent
 import com.cleveradssolutions.sdk.nativead.NativeAdContentCallback
 import com.cleversolutions.ads.AdError
+import dev.akmvxx.ads.AdEvents
 import dev.akmvxx.ads.PreloadStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +21,7 @@ import kotlin.math.pow
 
 internal object NativeAdPool {
 
-    private const val TAG = "NativeAdPool"
+    private const val TYPE = "Native"
     private const val REFILL_THRESHOLD = 2
     private const val LOAD_TIMEOUT_MS = 12_000L
     private const val MAX_PARALLEL_LOADS = 2
@@ -139,7 +139,7 @@ internal object NativeAdPool {
     private val nativeCallback = object : NativeAdContentCallback() {
 
         override fun onNativeAdLoaded(nativeAd: NativeAdContent, ad: AdContentInfo) {
-            Log.d(TAG, "loaded")
+            AdEvents.loaded(TYPE, ad)
             loadingCount = maxOf(0, loadingCount - 1)
             loadStartedAt = 0L
             retryAttempt = 0
@@ -160,7 +160,7 @@ internal object NativeAdPool {
         }
 
         override fun onNativeAdFailedToLoad(error: AdError) {
-            Log.d(TAG, "failed to load: ${error.message}")
+            AdEvents.failed("$TYPE load", error)
             loadingCount = maxOf(0, loadingCount - 1)
             loadStartedAt = 0L
             retryAttempt++
@@ -176,12 +176,12 @@ internal object NativeAdPool {
         }
 
         override fun onNativeAdFailedToShow(nativeAd: NativeAdContent, error: AdError) {
-            Log.d(TAG, "failed to show: ${error.message}")
+            AdEvents.failed("$TYPE show", error)
             nativeAd.destroy()
         }
 
         override fun onNativeAdClicked(nativeAd: NativeAdContent, ad: AdContentInfo) {
-            Log.d(TAG, "clicked")
+            AdEvents.clicked(TYPE, ad)
         }
     }
 

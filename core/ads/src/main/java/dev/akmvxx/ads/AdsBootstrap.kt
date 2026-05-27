@@ -71,11 +71,6 @@ class AdsBootstrap @Inject constructor(
         )
     }
 
-    /**
-     * Mirror of the lifecycle pause/resume the activity used to broadcast;
-     * exposed for the foreground composable observer that calls
-     * [AppOpenAds.show] on each app open.
-     */
     fun pauseAppOpen() = AppOpenAds.pause()
     fun resumeAppOpen() = AppOpenAds.resume()
 }

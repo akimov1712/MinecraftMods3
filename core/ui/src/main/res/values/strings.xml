@@ -98,6 +98,7 @@
     <string name="mod_report_send">Send report</string>
     <string name="mod_report_cancel">Cancel</string>
     <string name="mod_report_success">Thanks! We\'ll look into it</string>
+    <string name="mod_report_error_message_short">The message is too short (min 32 characters)</string>
     <string name="mod_image_indicator">Image %1$d of %2$d</string>
 
     <!-- Saved (favorite) screen -->
