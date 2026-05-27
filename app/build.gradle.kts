@@ -8,6 +8,12 @@ plugins {
 
 val applicationArtifactId: String =
     property("applicationName")?.toString() ?: "minecraftmods3"
+val appVersionCode: Int =
+    property("versionCode")?.toString()?.toInt() ?: 1
+val appVersionName: String =
+    property("versionName")?.toString() ?: "1.0"
+val metricaApiKey: String =
+    property("metricaApiKey")?.toString().orEmpty()
 
 android {
     namespace = "dev.akmvxx.app"
@@ -16,15 +22,16 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.l13devstudio.$applicationArtifactId"
+        applicationId = "dev.akmvxx.$applicationArtifactId"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = appVersionCode
+        versionName = appVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "APPLICATION_ID", "\"$applicationId\"")
+        buildConfigField("String", "METRICA_API_KEY", "\"$metricaApiKey\"")
     }
 
     buildTypes {
@@ -84,6 +91,9 @@ dependencies {
 
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
+
+    implementation(libs.appmetrica.analytics)
+    implementation(libs.play.review.ktx)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
