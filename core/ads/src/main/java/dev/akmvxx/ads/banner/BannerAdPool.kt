@@ -88,7 +88,6 @@ internal object BannerAdPool {
         val id = placementId ?: return
         val context = appContext ?: return
 
-        val width = context.resources.configuration.screenWidthDp
         val banner = CASBannerView(context, id)
 
         loading.add(banner)
@@ -137,7 +136,10 @@ internal object BannerAdPool {
             }
         }
 
-        banner.size = AdSize.getInlineBanner(width, 350)
+        // Standard banner (320x50) is the most widely-filled IAB size and
+        // matches the default CAS dashboard placement. Inline bigger sizes
+        // are sparsely filled and would no-fill on most networks.
+        banner.size = AdSize.BANNER
         banner.isAutoloadEnabled = false
         banner.load()
     }
