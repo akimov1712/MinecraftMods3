@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">إعلان</string>
+    <string name="get_started">ابدأ</string>
+    <string name="search_mods">ابحث عن المودات</string>
+    <string name="screen_browse">الكتالوج</string>
+    <string name="screen_favorite">المفضلة</string>
+    <string name="screen_propose">اقترح</string>
+    <string name="screen_help">المساعدة</string>
+
+    <string name="mod_category_all">الكل</string>
+    <string name="mod_category_addon">مودات</string>
+    <string name="mod_category_maps">خرائط</string>
+    <string name="mod_category_texture">القوام</string>
+    <string name="mod_category_skins">سكنات</string>
+
+    <string name="mod_sorted_relevance">حسب الصلة</string>
+    <string name="mod_sorted_most_popular">الأكثر شعبية</string>
+    <string name="mod_sorted_rating">الأعلى تقييماً</string>
+
+    <plurals name="files">
+        <item quantity="zero">لا توجد ملفات</item>
+        <item quantity="one">ملف واحد</item>
+        <item quantity="two">ملفان</item>
+        <item quantity="few">%d ملفات</item>
+        <item quantity="many">%d ملفاً</item>
+        <item quantity="other">%d ملف</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="zero">لا توجد إصدارات</item>
+        <item quantity="one">إصدار واحد</item>
+        <item quantity="two">إصداران</item>
+        <item quantity="few">%d إصدارات</item>
+        <item quantity="many">%d إصداراً</item>
+        <item quantity="other">%d إصدار</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+    <string name="mod_favorite_suffix">· مفضل</string>
+
+    <string name="error_request_timeout">انتهت مهلة الطلب. حاول مرة أخرى</string>
+    <string name="error_serialization">تعذر معالجة البيانات. حاول مرة أخرى</string>
+    <string name="error_server_error">خطأ في الخادم. حاول لاحقاً</string>
+    <string name="error_no_internet">لا يوجد اتصال بالإنترنت. تحقق من شبكتك</string>
+    <string name="error_unknown">حدث خطأ غير معروف. حاول مرة أخرى</string>
+    <string name="error_invalid_data">تم استلام بيانات غير صالحة. حاول مرة أخرى</string>
+    <string name="error_bad_request">طلب غير صالح. حاول مرة أخرى</string>
+    <string name="error_not_found">غير موجود</string>
+    <string name="error_title_pagination">فشل التحميل</string>
+    <string name="the_list_is_empty">القائمة فارغة</string>
+    <string name="retry">إعادة المحاولة</string>
+
+    <string name="propose_title">اقترح موداً</string>
+    <string name="propose_subtitle">أخبرنا ماذا تريد أن ترى بعد ذلك.</string>
+    <string name="propose_tab_propose">اقترح</string>
+    <string name="propose_tab_feedback">تعليقات</string>
+    <string name="propose_field_email_label">بريدك الإلكتروني</string>
+    <string name="propose_field_email_hint">لكي نتمكن من التواصل معك</string>
+    <string name="propose_field_mod_label">اسم المود أو الرابط</string>
+    <string name="propose_field_mod_hint">اسم، رابط، أو وصف قصير…</string>
+    <string name="propose_field_feedback_label">ماذا يدور في بالك؟</string>
+    <string name="propose_field_feedback_hint">أخطاء، أفكار، أي شيء.</string>
+    <string name="propose_send">إرسال</string>
+    <string name="propose_success">تم الإرسال بنجاح. شكراً!</string>
+
+    <string name="files_title">الملفات</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">احصل</string>
+    <string name="files_install">تثبيت</string>
+    <string name="files_downloading">جاري التحميل</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">إلغاء</string>
+    <string name="files_open_failed">تعذر فتح الملف. حاول مجدداً أو افتحه يدوياً من التنزيلات</string>
+    <string name="files_download_failed">فشل التحميل. حاول مرة أخرى</string>
+    <string name="files_back">رجوع</string>
+    <string name="files_vpn_hint_title">التحميل عالق؟</string>
+    <string name="files_vpn_hint_body">على الأرجح أن مزود خدمتك يحجب الخادم الذي نستضيف عليه المودات. شغّل VPN وحاول مجدداً — بمجرد أن يكون الملف على هاتفك يمكنك إيقافه.</string>
+
+    <string name="mod_section_about">عن هذا المود</string>
+    <string name="mod_section_supported_versions">الإصدارات المدعومة</string>
+    <string name="mod_section_files">الملفات</string>
+    <string name="mod_file_default_name">الملف %1$d</string>
+    <string name="mod_show_more">عرض المزيد</string>
+    <string name="mod_show_less">عرض أقل</string>
+    <string name="mod_how_to_install">كيفية التثبيت</string>
+    <string name="mod_not_working">لا يعمل؟</string>
+    <string name="mod_download">تحميل</string>
+    <string name="mod_download_with_size">تحميل · %1$s</string>
+    <string name="mod_back">رجوع</string>
+    <string name="mod_close">إغلاق</string>
+    <string name="mod_favorite_toggle">تبديل المفضلة</string>
+
+    <string name="mod_report_title">الإبلاغ عن مشكلة</string>
+    <string name="mod_report_subtitle">أخبرنا ما الخطأ في %1$s وسنتحقق منه.</string>
+    <string name="mod_report_subtitle_generic">أخبرنا ما الخطأ وسنتحقق منه.</string>
+    <string name="mod_report_message_label">ما المشكلة؟</string>
+    <string name="mod_report_message_hint">تعطل عند التثبيت، كتل مفقودة، …</string>
+    <string name="mod_report_send">إرسال البلاغ</string>
+    <string name="mod_report_cancel">إلغاء</string>
+    <string name="mod_report_success">شكراً! سنتحقق من ذلك</string>
+    <string name="mod_report_error_message_short">الرسالة قصيرة جداً (32 حرفاً على الأقل)</string>
+    <string name="mod_image_indicator">الصورة %1$d من %2$d</string>
+
+    <string name="favorite_title">المودات المحفوظة</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">لا توجد مودات في مكتبتك بعد</item>
+        <item quantity="one">مود واحد في مكتبتك</item>
+        <item quantity="two">مودان في مكتبتك</item>
+        <item quantity="few">%d مودات في مكتبتك</item>
+        <item quantity="many">%d موداً في مكتبتك</item>
+        <item quantity="other">%d مود في مكتبتك</item>
+    </plurals>
+
+    <string name="propose_error_email_required">أدخل بريدك الإلكتروني</string>
+    <string name="propose_error_email_invalid">أدخل عنوان بريد إلكتروني صالح</string>
+    <string name="propose_error_message_required">املأ الرسالة</string>
+    <string name="propose_error_message_short">الرسالة قصيرة جداً (20 حرفاً على الأقل)</string>
+
+</resources>

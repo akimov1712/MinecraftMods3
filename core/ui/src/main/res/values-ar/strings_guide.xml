@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="guide_title">كيفية تثبيت مود</string>
+    <string name="guide_subtitle">فقط اتبع الخطوات أدناه — تستغرق حوالي دقيقة.</string>
+    <string name="guide_back">رجوع</string>
+    <string name="guide_screenshot_content_description">لقطة شاشة للخطوة %1$d</string>
+    <string name="guide_footer">انتهى — استمتع!</string>
+
+    <string name="guide_step_1_title">اختر موداً يعجبك</string>
+    <string name="guide_step_1_text">افتح الكتالوج واضغط على المود الذي تريد تثبيته لفتح صفحته.</string>
+
+    <string name="guide_step_2_title">اضغط \"تحميل\"</string>
+    <string name="guide_step_2_text">في صفحة المود اضغط زر التحميل البرتقالي في أسفل الشاشة.</string>
+
+    <string name="guide_step_3_title">انتظر اكتمال التحميل</string>
+    <string name="guide_step_3_text">سيتم حفظ الملف على جهازك. عادة ما يستغرق بضع ثوان.</string>
+
+    <string name="guide_step_4_title">اضغط زر \"تثبيت\" الأخضر</string>
+    <string name="guide_step_4_text">بمجرد تحميل الملف اضغط زر التثبيت الأخضر بجانبه.</string>
+
+    <string name="guide_step_5_title">اختر Minecraft في منتقي التطبيقات</string>
+    <string name="guide_step_5_text">سيسألك Android بأي تطبيق تفتح الملف — اختر Minecraft من القائمة.</string>
+
+    <string name="guide_step_6_title">سيفتح Minecraft تلقائياً</string>
+    <string name="guide_step_6_text">سيتم استيراد المود. انتظر حتى تنتهي اللعبة من تحميل المحتوى.</string>
+
+    <string name="guide_step_7_title">فعّل الميزات التجريبية والمود في إعدادات العالم</string>
+    <string name="guide_step_7_text">عند إنشاء عالم جديد، اسحب لأسفل في إعدادات العالم وفعّل \"اللعب التجريبي\" — معظم المودات تحتاجه. في \"حزم السلوك\" أو \"حزم الموارد\" ابحث عن المود الذي ثبتته للتو واضغط \"تفعيل\".</string>
+
+    <string name="guide_step_8_title">انطلق إلى العالم</string>
+    <string name="guide_step_8_text">أنشئ العالم وابدأ اللعب — المود مفعّل وجاهز للاستخدام.</string>
+
+</resources>

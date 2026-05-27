@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="help_title">المساعدة</string>
+    <string name="help_subtitle">إجابات سريعة للأسئلة الشائعة.</string>
+    <string name="help_search_placeholder">بحث</string>
+    <string name="help_no_results">لم يتم العثور على شيء. جرب كلمة أخرى.</string>
+
+    <string name="help_section_getting_started">للبدء</string>
+    <string name="help_section_installing">التثبيت</string>
+    <string name="help_section_in_game">داخل اللعبة</string>
+    <string name="help_section_content_updates">المحتوى والتحديثات</string>
+    <string name="help_section_about_app">عن التطبيق</string>
+    <string name="help_section_saves_cleanup">الحفظ والتنظيف</string>
+    <string name="help_section_reach_out">التواصل</string>
+
+    <string name="faq_account_q">هل عليّ التسجيل؟</string>
+    <string name="faq_account_a">لا. بدون تسجيل دخول، بدون بريد، بدون كلمة مرور لتذكرها. فقط افتح التطبيق وانطلق.</string>
+
+    <string name="faq_need_internet_q">هل أحتاج للإنترنت دائماً؟</string>
+    <string name="faq_need_internet_a">فقط لتصفح الكتالوج وتحميل الأشياء. بمجرد أن يكون المود على هاتفك يمكنك اللعب بدون اتصال (طالما أن Minecraft نفسه يعمل بدون اتصال).</string>
+
+    <string name="faq_supported_versions_q">أي إصدارات من Minecraft تعمل؟</string>
+    <string name="faq_supported_versions_a">Android Minecraft Bedrock — الإصدار الأحدث والقليل قبله. كل مود يخبرك لأي إصدارات بالضبط، انظر بجانب الملف.</string>
+
+    <string name="faq_how_install_q">كيف أثبت موداً؟</string>
+    <string name="faq_how_install_a">افتح المود، اختر ملفاً من القائمة، اضغط تحميل، ثم تثبيت. سيفتح Minecraft من تلقاء نفسه ويأخذه. الخطوة الأخيرة — فعّل الحزمة داخل العالم الذي تريد اللعب فيه.</string>
+
+    <string name="faq_install_pack_q">وماذا عن حزم القوام والسكنات؟</string>
+    <string name="faq_install_pack_a">نفس الخطوات كالمودات. بعد التثبيت فعّلها داخل Minecraft — القوام تحت الموارد العالمية، السكنات تحت ملفك الشخصي.</string>
+
+    <string name="faq_install_fail_q">لماذا لا يتثبت المود؟</string>
+    <string name="faq_install_fail_a">تحقق سريعاً:\n• يجب أن يتطابق المود مع إصدار Minecraft لديك — انظر سطر الإصدار على صفحة المود.\n• يحتاج هاتفك مساحة فارغة.\n• أغلق Minecraft وأعد فتحه (هذا يحل المشكلة بشكل مفاجئ غالباً).\nمازال لا يعمل؟ نزّل الملف مرة أخرى وحاول.</string>
+
+    <string name="faq_download_stuck_q">التحميل يقف عند 0% ولا يتحرك</string>
+    <string name="faq_download_stuck_a">إذا لم يتحرك شريط التقدم، فعلى الأرجح أن مزود الإنترنت لديك يحجب الخادم الذي تتواجد عليه المودات — أحياناً تحجب مناطق كاملة أو شركات اتصال ولا يمكننا فعل شيء من جانبنا. شغّل VPN، ابدأ التحميل مجدداً ويجب أن يعمل. بمجرد أن يكون الملف على هاتفك يمكنك إيقاف VPN — المود نفسه لا يحتاجه.</string>
+
+    <string name="faq_corrupted_file_q">حصلت على خطأ \"ملف تالف\"</string>
+    <string name="faq_corrupted_file_a">يعني أن التحميل انقطع في المنتصف. احذف ما عندك ونزّله مجدداً على اتصال مستقر (Wi-Fi إن أمكن).</string>
+
+    <string name="faq_mod_not_visible_q">ثبّت المود لكني لا أرى شيئاً في اللعبة</string>
+    <string name="faq_mod_not_visible_a">المود في Minecraft، عليك فقط تفعيله. افتح إعدادات عالمك وفعّل الحزمة. بعض المودات تحتاج أيضاً الميزات التجريبية — نفس قائمة الإعدادات.</string>
+
+    <string name="faq_experimental_q">كيف أفعّل الميزات التجريبية؟</string>
+    <string name="faq_experimental_a">عند إنشاء أو تحرير عالم، انزل إلى التجارب وفعّل المفتاح الذي يحتاجه مودك (يخبرك المود عادةً بأيها — غالباً \"Holiday Creator Features\" أو \"Beta APIs\"). أعد تحميل العالم بعدها.</string>
+
+    <string name="faq_lag_q">اللعبة تتلعثم بعد تثبيت المود</string>
+    <string name="faq_lag_a">بعض المودات ثقيلة فعلاً. جرب بالترتيب:\n• أغلق التطبيقات الأخرى في الخلفية.\n• قلل مسافة العرض في Minecraft (هذا يساعد أكثر).\n• اخفض جودة الرسوم درجة واحدة.\nإذا استمر التلعثم، فقد يكون المود ثقيلاً جداً على الجهاز — جرب أخف منه.</string>
+
+    <string name="faq_multiplayer_q">هل يمكنني استخدام المودات على خادم مع الأصدقاء؟</string>
+    <string name="faq_multiplayer_a">يعتمد على الخادم. عادةً يحتاج كل اللاعبون لنفس الحزم — إذا سمح الخادم بالمود فلا بأس. وإن لم يسمح، فلن يفعل المود شيئاً هناك.</string>
+
+    <string name="faq_new_mods_q">هل تضيفون مودات جديدة؟</string>
+    <string name="faq_new_mods_a">طوال الوقت. حدّث الكتالوج وسترى ما ظهر منذ آخر مرة.</string>
+
+    <string name="faq_updates_q">كيف أعرف إذا تم تحديث مود؟</string>
+    <string name="faq_updates_a">عندما يصدر مؤلف المود إصداراً جديداً نضيفه إلى الكتالوج. الإصدار موجود بجانب الملف على صفحة المود.</string>
+
+    <string name="faq_safety_q">هل المودات آمنة؟</string>
+    <string name="faq_safety_a">نعم. كل مود يتم فحصه قبل دخوله الكتالوج — لا فيروسات ولا أشياء غريبة مخفية في الملف.</string>
+
+    <string name="faq_ads_q">لماذا هناك إعلانات؟</string>
+    <string name="faq_ads_a">الخوادم والتحديثات ليست مجانية، والإعلانات هي طريقتنا في دفع التكاليف — هكذا يبقى التطبيق مجانياً لك. نحاول إبقاءها بعيدة عن طريقك أثناء استخدامك للتطبيق.</string>
+
+    <string name="faq_no_internet_q">يقول \"لا يوجد إنترنت\" لكن إنترنتي يعمل</string>
+    <string name="faq_no_internet_a">إذا كان اتصالك جيداً ومع ذلك يشتكي التطبيق، فعلى الأرجح أن خوادمنا تأخذ قسطاً من الراحة. أعطها بضع دقائق وحاول مجدداً.</string>
+
+    <string name="faq_uninstall_q">إذا حذفت هذا التطبيق، هل أفقد المودات؟</string>
+    <string name="faq_uninstall_a">لا. المودات تعيش الآن داخل Minecraft — تبقى هناك حتى لو ذهب تطبيقنا.</string>
+
+    <string name="faq_safe_for_saves_q">هل ستفسد المودات عوالمي؟</string>
+    <string name="faq_safe_for_saves_a">من تلقاء نفسها لا. المودات تضاف كحزم في Minecraft وأنت تختار في أي عالم تذهب. إذا كنت تجرب موداً جديداً ولا تريد المخاطرة بعالم تحبه — أنشئ عالماً جديداً له.</string>
+
+    <string name="faq_remove_mod_q">كيف أحذف موداً لم أعد أريده؟</string>
+    <string name="faq_remove_mod_a">داخل Minecraft، افتح الحزم (سلوك، موارد، أو سكن حسب النوع)، اضغط مطولاً على الذي تريد إزالته واختر حذف. عوالمك تبقى آمنة — فقط المود يُزال.</string>
+
+    <string name="faq_report_issue_q">أين أخبركم أن شيئاً ما معطل؟</string>
+    <string name="faq_report_issue_a">استخدم قسم التعليقات في شاشة الاقتراح. اكتب ماذا حصل — كلما أعطيتنا تفاصيل أكثر، استطعنا حلها أسرع.</string>
+
+    <string name="faq_submit_mod_q">صنعت مودي الخاص — هل يمكنني إرساله لكم؟</string>
+    <string name="faq_submit_mod_a">بالتأكيد. افتح شاشة الاقتراح وأرفق رابطاً أو الملف هناك. نراجع المرفقات ونضيف ما يناسب.</string>
+
+</resources>
