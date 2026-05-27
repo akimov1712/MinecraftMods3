@@ -144,7 +144,7 @@ private fun FooterContentErrorInline(onLoadMore: () -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         AppButton(
-            text = "Загрузить снова",
+            text = stringResource(R.string.retry),
         ) {
             onLoadMore()
         }

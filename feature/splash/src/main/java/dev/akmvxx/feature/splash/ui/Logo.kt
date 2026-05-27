@@ -20,7 +20,7 @@ internal fun Logo(isLoading: Boolean) {
     val animateSizeLogo by animateDpAsState(if (isLoading) 180.dp else 140.dp)
     Image(
         painter = painterResource(dev.akmvxx.ui.R.drawable.logo),
-        contentDescription = "logo",
+        contentDescription = null,
         modifier = Modifier
             .size(animateSizeLogo)
             .clip(RoundedCornerShape(40.dp))

@@ -52,7 +52,7 @@ internal fun StartSection() {
         ) {
             Image(
                 painter = painterResource(dev.akmvxx.ui.R.drawable.logo),
-                contentDescription = "logo",
+                contentDescription = null,
                 modifier = Modifier
                     .size(52.dp)
                     .clip(RoundedCornerShape(12.dp))
@@ -76,7 +76,7 @@ internal fun StartSection() {
                 Icon(
                     modifier = Modifier.fillMaxSize().padding(10.dp),
                     painter = painterResource(dev.akmvxx.ui.R.drawable.ic_check),
-                    contentDescription = "check mark",
+                    contentDescription = null,
                     tint = AppColors.Primary
                 )
             }
@@ -103,7 +103,7 @@ internal fun StartSection() {
                 Icon(
                     modifier = Modifier.size(16.dp),
                     painter = painterResource(dev.akmvxx.ui.R.drawable.ic_play),
-                    contentDescription = "Get started",
+                    contentDescription = null,
                     tint = AppColors.TextWhite
                 )
                 Text(
