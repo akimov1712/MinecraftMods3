@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="help_title">Bantuan</string>
+    <string name="help_subtitle">Jawaban cepat untuk pertanyaan umum.</string>
+    <string name="help_search_placeholder">Cari</string>
+    <string name="help_no_results">Tidak ditemukan. Coba kata lain.</string>
+
+    <string name="help_section_getting_started">Untuk memulai</string>
+    <string name="help_section_installing">Pemasangan</string>
+    <string name="help_section_in_game">Di dalam game</string>
+    <string name="help_section_content_updates">Konten dan pembaruan</string>
+    <string name="help_section_about_app">Tentang aplikasi</string>
+    <string name="help_section_saves_cleanup">Save dan pembersihan</string>
+    <string name="help_section_reach_out">Kontak</string>
+
+    <string name="faq_account_q">Apakah saya harus mendaftar?</string>
+    <string name="faq_account_a">Tidak. Tanpa login, tanpa email, tanpa password yang harus diingat. Buka aplikasi dan langsung pakai.</string>
+
+    <string name="faq_need_internet_q">Apakah saya selalu butuh internet?</string>
+    <string name="faq_need_internet_a">Hanya untuk menelusuri katalog dan mengunduh. Setelah mod ada di HP kamu, bisa main offline (selama Minecraft sendiri jalan offline).</string>
+
+    <string name="faq_supported_versions_q">Versi Minecraft mana yang berfungsi?</string>
+    <string name="faq_supported_versions_a">Android Minecraft Bedrock — versi terbaru dan beberapa sebelumnya. Setiap mod memberitahu untuk versi mana persisnya, lihat di dekat file.</string>
+
+    <string name="faq_how_install_q">Bagaimana cara memasang mod?</string>
+    <string name="faq_how_install_a">Buka mod, pilih file dari daftar, unduh, lalu pasang. Minecraft akan muncul dan mengambilnya sendiri. Langkah terakhir — aktifkan pack di dalam dunia tempat kamu mau main.</string>
+
+    <string name="faq_install_pack_q">Bagaimana dengan texture pack dan skin?</string>
+    <string name="faq_install_pack_a">Alur sama dengan mod. Setelah dipasang, aktifkan di dalam Minecraft — tekstur ada di Global Resources, skin di Profil kamu.</string>
+
+    <string name="faq_install_fail_q">Kenapa modnya tidak terpasang?</string>
+    <string name="faq_install_fail_a">Cek dulu:\n• Mod harus cocok dengan versi Minecraft kamu — lihat baris versi di halaman mod.\n• HP butuh ruang kosong.\n• Tutup Minecraft dan buka lagi (sering kali ini yang berhasil).\nMasih tidak bisa? Unduh ulang filenya dan coba lagi.</string>
+
+    <string name="faq_download_stuck_q">Unduhan berhenti di 0% dan tidak bergerak</string>
+    <string name="faq_download_stuck_a">Kalau bar progres tidak bergerak, kemungkinan provider kamu memblokir server tempat mod berada — kadang seluruh wilayah atau operator terputus dan dari sisi kami tidak bisa berbuat apa-apa. Aktifkan VPN, mulai unduh lagi dan harusnya lancar. Setelah file ada di HP kamu bisa matikan VPN-nya — mod sendiri tidak butuh.</string>
+
+    <string name="faq_corrupted_file_q">Saya dapat error \"file rusak\"</string>
+    <string name="faq_corrupted_file_a">Artinya unduhan terputus di tengah. Hapus yang ada, unduh lagi dengan koneksi stabil (Wi-Fi kalau bisa) dan harusnya beres.</string>
+
+    <string name="faq_mod_not_visible_q">Saya pasang mod tapi tidak ada apa-apa di game</string>
+    <string name="faq_mod_not_visible_a">Mod sudah ada di Minecraft, kamu tinggal aktifkan. Buka pengaturan dunia kamu dan aktifkan pack. Beberapa mod juga butuh Fitur Eksperimental — menu yang sama.</string>
+
+    <string name="faq_experimental_q">Bagaimana mengaktifkan Fitur Eksperimental?</string>
+    <string name="faq_experimental_a">Saat membuat atau mengedit dunia, gulir ke bawah ke Eksperimen dan aktifkan saklar yang dibutuhkan mod kamu (biasanya mod memberitahu — sering \"Holiday Creator Features\" atau \"Beta APIs\"). Muat ulang dunia setelahnya.</string>
+
+    <string name="faq_lag_q">Game lag setelah saya pasang mod</string>
+    <string name="faq_lag_a">Beberapa mod memang berat. Yang bisa dicoba berurutan:\n• Tutup aplikasi lain yang berjalan di latar.\n• Turunkan jarak render di Minecraft (ini paling membantu).\n• Turunkan kualitas grafis satu tingkat.\nKalau masih lag, mod mungkin terlalu berat untuk perangkat — coba yang lebih ringan.</string>
+
+    <string name="faq_multiplayer_q">Bisa pakai mod di server bareng teman?</string>
+    <string name="faq_multiplayer_a">Tergantung server. Biasanya semua pemain butuh pack yang sama — kalau server mengizinkan mod itu, aman. Kalau tidak, mod tidak akan berfungsi di sana.</string>
+
+    <string name="faq_new_mods_q">Apakah kalian menambah mod baru?</string>
+    <string name="faq_new_mods_a">Terus. Segarkan katalog dan kamu akan lihat apa yang muncul sejak terakhir.</string>
+
+    <string name="faq_updates_q">Bagaimana saya tahu kalau mod diperbarui?</string>
+    <string name="faq_updates_a">Saat pembuat mod merilis versi baru, kami menambahkannya ke katalog. Versinya ada tepat di samping file di halaman mod.</string>
+
+    <string name="faq_safety_q">Apakah mod aman?</string>
+    <string name="faq_safety_a">Ya. Setiap mod diperiksa sebelum masuk katalog — tanpa virus, tanpa hal aneh tersembunyi.</string>
+
+    <string name="faq_ads_q">Kenapa ada iklan?</string>
+    <string name="faq_ads_a">Server dan pembaruan tidak gratis, dan iklan adalah cara kami membayarnya — itu yang membuat aplikasi tetap gratis untuk kamu. Kami berusaha menjaga iklan tidak mengganggu saat kamu memakai aplikasi.</string>
+
+    <string name="faq_no_internet_q">Tertulis \"tidak ada internet\" tapi internet saya jalan</string>
+    <string name="faq_no_internet_a">Kalau koneksi kamu baik dan aplikasi tetap protes, kemungkinan server kami sedang tidur sebentar. Beri beberapa menit dan coba lagi.</string>
+
+    <string name="faq_uninstall_q">Kalau saya hapus aplikasi ini, mod hilang?</string>
+    <string name="faq_uninstall_a">Tidak. Mod sekarang ada di dalam Minecraft — tetap di sana walaupun aplikasi kami hilang.</string>
+
+    <string name="faq_safe_for_saves_q">Apakah mod akan merusak dunia saya?</string>
+    <string name="faq_safe_for_saves_a">Sendirinya tidak. Mod ditambahkan sebagai pack di Minecraft dan kamu memilih di dunia mana mereka dipakai. Kalau mencoba mod baru dan tidak mau mengambil risiko dunia penting — buat dunia baru untuk itu.</string>
+
+    <string name="faq_remove_mod_q">Bagaimana menghapus mod yang tidak mau lagi?</string>
+    <string name="faq_remove_mod_a">Di Minecraft, buka Pack (Behavior, Resource, atau Skin tergantung jenisnya), tekan lama yang ingin dihapus dan pilih Hapus. Dunia kamu aman — hanya mod yang dihapus.</string>
+
+    <string name="faq_report_issue_q">Di mana lapor kalau ada yang rusak?</string>
+    <string name="faq_report_issue_a">Pakai bagian Masukan di layar Usulkan. Tulis apa yang terjadi — semakin banyak detail, semakin cepat kami bisa cari solusi.</string>
+
+    <string name="faq_submit_mod_q">Saya bikin mod sendiri — bisa kirim ke kalian?</string>
+    <string name="faq_submit_mod_a">Tentu. Buka layar Usulkan dan masukkan link atau lampirkan filenya. Kami melihat pengajuan dan menambahkan yang cocok.</string>
+
+</resources>

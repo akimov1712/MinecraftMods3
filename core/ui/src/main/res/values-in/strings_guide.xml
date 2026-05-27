@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="guide_title">Cara memasang mod</string>
+    <string name="guide_subtitle">Ikuti langkah di bawah — sekitar satu menit saja.</string>
+    <string name="guide_back">Kembali</string>
+    <string name="guide_screenshot_content_description">Tangkapan layar untuk langkah %1$d</string>
+    <string name="guide_footer">Selesai — selamat bermain!</string>
+
+    <string name="guide_step_1_title">Pilih mod yang kamu suka</string>
+    <string name="guide_step_1_text">Buka katalog dan ketuk mod yang ingin kamu pasang untuk membuka halamannya.</string>
+
+    <string name="guide_step_2_title">Ketuk \"Unduh\"</string>
+    <string name="guide_step_2_text">Di halaman mod, ketuk tombol oranye Unduh di bagian bawah layar.</string>
+
+    <string name="guide_step_3_title">Tunggu unduhan selesai</string>
+    <string name="guide_step_3_text">File akan tersimpan di perangkat. Biasanya hanya beberapa detik.</string>
+
+    <string name="guide_step_4_title">Ketuk tombol hijau \"Pasang\"</string>
+    <string name="guide_step_4_text">Setelah file selesai diunduh, ketuk tombol hijau Pasang di sebelahnya.</string>
+
+    <string name="guide_step_5_title">Pilih Minecraft di pemilih aplikasi</string>
+    <string name="guide_step_5_text">Android akan menanyakan aplikasi mana untuk membuka file — pilih Minecraft dari daftar.</string>
+
+    <string name="guide_step_6_title">Minecraft akan terbuka otomatis</string>
+    <string name="guide_step_6_text">Mod akan diimpor. Tunggu sampai game selesai memuat konten.</string>
+
+    <string name="guide_step_7_title">Aktifkan fitur eksperimental dan mod di pengaturan dunia</string>
+    <string name="guide_step_7_text">Saat membuat dunia baru, gulir ke bawah di pengaturan dan aktifkan \"Gameplay Eksperimental\" — kebanyakan mod butuh ini. Di \"Behavior Packs\" atau \"Resource Packs\" cari mod yang baru kamu pasang dan ketuk \"Aktifkan\".</string>
+
+    <string name="guide_step_8_title">Masuk ke dunia</string>
+    <string name="guide_step_8_text">Buat dunia dan mulai main — mod sudah aktif dan siap digunakan.</string>
+
+</resources>

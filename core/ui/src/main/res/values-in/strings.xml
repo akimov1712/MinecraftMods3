@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">Iklan</string>
+    <string name="get_started">Mulai</string>
+    <string name="search_mods">Cari mod</string>
+    <string name="screen_browse">Katalog</string>
+    <string name="screen_favorite">Favorit</string>
+    <string name="screen_propose">Usulkan</string>
+    <string name="screen_help">Bantuan</string>
+
+    <string name="mod_category_all">Semua</string>
+    <string name="mod_category_addon">Mods</string>
+    <string name="mod_category_maps">Peta</string>
+    <string name="mod_category_texture">Tekstur</string>
+    <string name="mod_category_skins">Skin</string>
+
+    <string name="mod_sorted_relevance">Berdasarkan relevansi</string>
+    <string name="mod_sorted_most_popular">Paling populer</string>
+    <string name="mod_sorted_rating">Teratas</string>
+
+    <plurals name="files">
+        <item quantity="other">%d file</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="other">%d versi</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+    <string name="mod_favorite_suffix">· Favorit</string>
+
+    <string name="error_request_timeout">Waktu habis. Silakan coba lagi</string>
+    <string name="error_serialization">Gagal memproses data. Silakan coba lagi</string>
+    <string name="error_server_error">Kesalahan server. Coba lagi nanti</string>
+    <string name="error_no_internet">Tidak ada koneksi internet. Periksa jaringan</string>
+    <string name="error_unknown">Terjadi kesalahan tidak diketahui. Coba lagi</string>
+    <string name="error_invalid_data">Data tidak valid diterima. Coba lagi</string>
+    <string name="error_bad_request">Permintaan tidak valid. Coba lagi</string>
+    <string name="error_not_found">Tidak ditemukan</string>
+    <string name="error_title_pagination">Gagal memuat</string>
+    <string name="the_list_is_empty">Daftar kosong</string>
+    <string name="retry">Coba lagi</string>
+
+    <string name="propose_title">Usulkan mod</string>
+    <string name="propose_subtitle">Beritahu kami apa yang ingin kamu lihat berikutnya.</string>
+    <string name="propose_tab_propose">Usulkan</string>
+    <string name="propose_tab_feedback">Masukan</string>
+    <string name="propose_field_email_label">Email kamu</string>
+    <string name="propose_field_email_hint">Supaya kami bisa menghubungi</string>
+    <string name="propose_field_mod_label">Nama mod atau link</string>
+    <string name="propose_field_mod_hint">Nama, link, atau deskripsi singkat…</string>
+    <string name="propose_field_feedback_label">Apa yang ingin kamu sampaikan?</string>
+    <string name="propose_field_feedback_hint">Bug, ide, apa saja.</string>
+    <string name="propose_send">Kirim</string>
+    <string name="propose_success">Terkirim. Terima kasih!</string>
+
+    <string name="files_title">File</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">Ambil</string>
+    <string name="files_install">Pasang</string>
+    <string name="files_downloading">Mengunduh</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">Batal</string>
+    <string name="files_open_failed">Tidak bisa membuka file. Coba lagi atau buka manual dari Unduhan</string>
+    <string name="files_download_failed">Unduhan gagal. Coba lagi</string>
+    <string name="files_back">Kembali</string>
+    <string name="files_vpn_hint_title">Unduhan macet?</string>
+    <string name="files_vpn_hint_body">Provider kamu kemungkinan memblokir server tempat mod disimpan. Aktifkan VPN dan coba lagi — begitu file sudah ada di HP kamu bisa matikan lagi.</string>
+
+    <string name="mod_section_about">Tentang mod ini</string>
+    <string name="mod_section_supported_versions">Versi yang didukung</string>
+    <string name="mod_section_files">File</string>
+    <string name="mod_file_default_name">File %1$d</string>
+    <string name="mod_show_more">Tampilkan lebih</string>
+    <string name="mod_show_less">Tampilkan sedikit</string>
+    <string name="mod_how_to_install">Cara pasang</string>
+    <string name="mod_not_working">Tidak berfungsi?</string>
+    <string name="mod_download">Unduh</string>
+    <string name="mod_download_with_size">Unduh · %1$s</string>
+    <string name="mod_back">Kembali</string>
+    <string name="mod_close">Tutup</string>
+    <string name="mod_favorite_toggle">Tambah/hapus favorit</string>
+
+    <string name="mod_report_title">Laporkan masalah</string>
+    <string name="mod_report_subtitle">Beritahu kami apa yang salah dengan %1$s dan akan kami periksa.</string>
+    <string name="mod_report_subtitle_generic">Beritahu kami apa yang salah dan akan kami periksa.</string>
+    <string name="mod_report_message_label">Apa masalahnya?</string>
+    <string name="mod_report_message_hint">Crash saat pasang, blok hilang, …</string>
+    <string name="mod_report_send">Kirim laporan</string>
+    <string name="mod_report_cancel">Batal</string>
+    <string name="mod_report_success">Terima kasih! Akan kami periksa</string>
+    <string name="mod_report_error_message_short">Pesan terlalu pendek (min. 32 karakter)</string>
+    <string name="mod_image_indicator">Gambar %1$d dari %2$d</string>
+
+    <string name="favorite_title">Mod tersimpan</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">Belum ada mod di pustaka kamu</item>
+        <item quantity="other">%d mod di pustaka kamu</item>
+    </plurals>
+
+    <string name="propose_error_email_required">Masukkan email kamu</string>
+    <string name="propose_error_email_invalid">Masukkan alamat email yang valid</string>
+    <string name="propose_error_message_required">Isi pesannya</string>
+    <string name="propose_error_message_short">Pesan terlalu pendek (min. 20 karakter)</string>
+
+</resources>
