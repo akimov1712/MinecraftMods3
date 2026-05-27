@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">Werbung</string>
+    <string name="get_started">Loslegen</string>
+    <string name="search_mods">Mods suchen</string>
+    <string name="screen_browse">Katalog</string>
+    <string name="screen_favorite">Favoriten</string>
+    <string name="screen_propose">Vorschlagen</string>
+    <string name="screen_help">Hilfe</string>
+
+    <string name="mod_category_all">Alle</string>
+    <string name="mod_category_addon">Mods</string>
+    <string name="mod_category_maps">Karten</string>
+    <string name="mod_category_texture">Texturen</string>
+    <string name="mod_category_skins">Skins</string>
+
+    <string name="mod_sorted_relevance">Nach Relevanz</string>
+    <string name="mod_sorted_most_popular">Beliebteste</string>
+    <string name="mod_sorted_rating">Top bewertet</string>
+
+    <plurals name="files">
+        <item quantity="one">%d Datei</item>
+        <item quantity="other">%d Dateien</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="one">%d Version</item>
+        <item quantity="other">%d Versionen</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+    <string name="mod_favorite_suffix">· Favorit</string>
+
+    <string name="error_request_timeout">Zeitüberschreitung. Bitte erneut versuchen</string>
+    <string name="error_serialization">Daten konnten nicht verarbeitet werden. Bitte erneut versuchen</string>
+    <string name="error_server_error">Serverfehler. Bitte später erneut versuchen</string>
+    <string name="error_no_internet">Keine Internetverbindung. Bitte Netzwerk prüfen</string>
+    <string name="error_unknown">Unbekannter Fehler. Bitte erneut versuchen</string>
+    <string name="error_invalid_data">Ungültige Daten erhalten. Bitte erneut versuchen</string>
+    <string name="error_bad_request">Ungültige Anfrage. Bitte erneut versuchen</string>
+    <string name="error_not_found">Nicht gefunden</string>
+    <string name="error_title_pagination">Laden fehlgeschlagen</string>
+    <string name="the_list_is_empty">Die Liste ist leer</string>
+    <string name="retry">Erneut versuchen</string>
+
+    <string name="propose_title">Mod vorschlagen</string>
+    <string name="propose_subtitle">Sag uns, was du als Nächstes sehen willst.</string>
+    <string name="propose_tab_propose">Vorschlagen</string>
+    <string name="propose_tab_feedback">Feedback</string>
+    <string name="propose_field_email_label">Deine E-Mail</string>
+    <string name="propose_field_email_hint">Damit wir dich erreichen können</string>
+    <string name="propose_field_mod_label">Modname oder Link</string>
+    <string name="propose_field_mod_hint">Name, Link oder kurzer Pitch …</string>
+    <string name="propose_field_feedback_label">Was beschäftigt dich?</string>
+    <string name="propose_field_feedback_hint">Bugs, Ideen, alles.</string>
+    <string name="propose_send">Senden</string>
+    <string name="propose_success">Erfolgreich gesendet. Danke!</string>
+
+    <string name="files_title">Dateien</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">Holen</string>
+    <string name="files_install">Installieren</string>
+    <string name="files_downloading">Lädt</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">Abbrechen</string>
+    <string name="files_open_failed">Datei konnte nicht geöffnet werden. Versuche es erneut oder öffne sie manuell aus Downloads</string>
+    <string name="files_download_failed">Download fehlgeschlagen. Bitte erneut versuchen</string>
+    <string name="files_back">Zurück</string>
+    <string name="files_vpn_hint_title">Download hängt?</string>
+    <string name="files_vpn_hint_body">Wahrscheinlich blockiert dein Provider den Server, auf dem die Mods liegen. Schalte ein VPN ein und versuche es erneut — sobald die Datei auf dem Telefon ist, kannst du das VPN wieder ausschalten.</string>
+
+    <string name="mod_section_about">Über diesen Mod</string>
+    <string name="mod_section_supported_versions">Unterstützte Versionen</string>
+    <string name="mod_section_files">Dateien</string>
+    <string name="mod_file_default_name">Datei %1$d</string>
+    <string name="mod_show_more">Mehr anzeigen</string>
+    <string name="mod_show_less">Weniger anzeigen</string>
+    <string name="mod_how_to_install">Installation</string>
+    <string name="mod_not_working">Funktioniert nicht?</string>
+    <string name="mod_download">Herunterladen</string>
+    <string name="mod_download_with_size">Herunterladen · %1$s</string>
+    <string name="mod_back">Zurück</string>
+    <string name="mod_close">Schließen</string>
+    <string name="mod_favorite_toggle">Favorit umschalten</string>
+
+    <string name="mod_report_title">Problem melden</string>
+    <string name="mod_report_subtitle">Sag uns, was mit %1$s nicht stimmt, und wir kümmern uns darum.</string>
+    <string name="mod_report_subtitle_generic">Sag uns, was nicht stimmt, und wir kümmern uns darum.</string>
+    <string name="mod_report_message_label">Worum geht es?</string>
+    <string name="mod_report_message_hint">Absturz bei der Installation, fehlende Blöcke, …</string>
+    <string name="mod_report_send">Bericht senden</string>
+    <string name="mod_report_cancel">Abbrechen</string>
+    <string name="mod_report_success">Danke! Wir schauen uns das an</string>
+    <string name="mod_report_error_message_short">Die Nachricht ist zu kurz (mind. 32 Zeichen)</string>
+    <string name="mod_image_indicator">Bild %1$d von %2$d</string>
+
+    <string name="favorite_title">Gespeicherte Mods</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">Noch keine Mods in deiner Bibliothek</item>
+        <item quantity="one">%d Mod in deiner Bibliothek</item>
+        <item quantity="other">%d Mods in deiner Bibliothek</item>
+    </plurals>
+
+    <string name="propose_error_email_required">Bitte gib deine E-Mail ein</string>
+    <string name="propose_error_email_invalid">Bitte gib eine gültige E-Mail-Adresse ein</string>
+    <string name="propose_error_message_required">Bitte fülle die Nachricht aus</string>
+    <string name="propose_error_message_short">Die Nachricht ist zu kurz (mind. 20 Zeichen)</string>
+
+</resources>
