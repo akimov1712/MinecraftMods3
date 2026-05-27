@@ -9,6 +9,7 @@ import com.cleveradssolutions.sdk.screen.CASInterstitial
 import com.cleveradssolutions.sdk.screen.ScreenAdContentCallback
 import com.cleversolutions.ads.AdError
 import dev.akmvxx.ads.AdEvents
+import dev.akmvxx.ads.FullscreenAdsGate
 
 internal object InterstitialLoader {
 
@@ -45,8 +46,12 @@ internal object InterstitialLoader {
     fun show(activity: Activity) {
         if (!initialized) return
         if (!canShow()) return
+        if (!FullscreenAdsGate.canShow()) return
         val ad = interstitial ?: return
-        if (ad.isLoaded) ad.show(activity)
+        if (ad.isLoaded) {
+            FullscreenAdsGate.markShown()
+            ad.show(activity)
+        }
     }
 
     private fun canShow(): Boolean =

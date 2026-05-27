@@ -9,6 +9,7 @@ import com.cleveradssolutions.sdk.screen.CASAppOpen
 import com.cleveradssolutions.sdk.screen.ScreenAdContentCallback
 import com.cleversolutions.ads.AdError
 import dev.akmvxx.ads.AdEvents
+import dev.akmvxx.ads.FullscreenAdsGate
 
 internal object AppOpenLoader {
 
@@ -40,7 +41,11 @@ internal object AppOpenLoader {
         if (!initialized) return
         val ad = appOpen ?: return
         if (!canShow()) return
-        if (ad.isLoaded) ad.show(activity)
+        if (!FullscreenAdsGate.canShow()) return
+        if (ad.isLoaded) {
+            FullscreenAdsGate.markShown()
+            ad.show(activity)
+        }
     }
 
     fun pause() = Unit
