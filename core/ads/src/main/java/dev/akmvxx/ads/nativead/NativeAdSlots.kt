@@ -4,16 +4,7 @@ import android.content.Context
 import com.cleveradssolutions.sdk.nativead.CASNativeView
 import com.cleveradssolutions.sdk.nativead.NativeAdContent
 
-/**
- * Caches an [NativeAdContent] + its bound [CASNativeView] per slot key so that
- * the same ad instance, view hierarchy and media player are reused across
- * recompositions and across LazyColumn item recycling.
- *
- * Without this cache every time a LazyColumn ad item leaves and re-enters the
- * viewport the composable would [NativeAdPool.pop] a fresh ad, inflate a new
- * View tree and restart the autoplay video — that was the root cause of the
- * scroll jank and the "video keeps replaying" symptom.
- */
+
 internal object NativeAdSlots {
 
     internal class Holder(

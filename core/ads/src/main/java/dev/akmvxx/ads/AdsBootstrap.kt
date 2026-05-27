@@ -18,14 +18,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Owns the lifetime of every ad coordinator: fetches the server-driven
- * settings once, initializes the coordinators with the resolved config,
- * and wires the process-wide foreground/background signal to interstitial
- * load gating.
- *
- * Should be invoked exactly once from [android.app.Application.onCreate].
- */
+
 @Singleton
 class AdsBootstrap @Inject constructor(
     @ApplicationContext private val context: Context,

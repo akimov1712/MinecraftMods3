@@ -27,8 +27,6 @@ internal object AppOpenLoader {
 
         appOpen = CASAppOpen(casId).apply {
             contentCallback = callback
-            // SDK auto-loads on init, retries on failure and reloads after
-            // dismiss — best for fill rate. No manual retry loop needed.
             isAutoloadEnabled = true
             isAutoshowEnabled = false
             onImpressionListener = OnAdImpressionListener { ad ->

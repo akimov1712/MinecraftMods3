@@ -4,19 +4,9 @@ import android.util.Log
 import com.cleveradssolutions.sdk.AdContentInfo
 import com.cleversolutions.ads.AdError
 
-/**
- * Single logging channel for ad telemetry. Each event prints the network
- * source, eCPM (USD) and revenue precision so the logcat is enough to spot
- * which networks are filling, which are silent and what they pay per
- * impression — useful both for tuning the CAS waterfall and for sanity
- * checking against the CAS analytics dashboard.
- *
- * Tag is always "Ads" — easy to filter:
- *   adb logcat -s Ads
- */
 internal object AdEvents {
 
-    private const val TAG = "Ads"
+    private const val TAG = "CAS_AD_APP"
 
     fun loaded(type: String, ad: AdContentInfo) {
         Log.d(TAG, "$type loaded · ${ad.describe()}")
