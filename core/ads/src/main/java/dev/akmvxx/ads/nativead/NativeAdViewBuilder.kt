@@ -35,7 +35,7 @@ internal data class NativeAdViews(
 private val AdAccent = AppColors.CategoryAmber
 private val CardSurface = AppColors.BackgroundSecondary
 private val CardBorder = AppColors.Outlined
-private val SecondaryText = AppColors.Shimmer
+private val BodyTextColor = AppColors.TextWhite.copy(alpha = 0.72f)
 
 internal fun buildInlineNativeAdView(context: Context): NativeAdViews {
     val root = CASNativeView(context).apply {
@@ -137,7 +137,7 @@ internal fun buildInlineNativeAdView(context: Context): NativeAdViews {
         }
         maxLines = 3
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
-        setTextColor(SecondaryText.toArgb())
+        setTextColor(BodyTextColor.toArgb())
     }
 
     val cta = Button(context).apply {
@@ -208,12 +208,14 @@ internal fun buildFullscreenNativeAdView(context: Context): NativeAdViews {
     }
 
     val adChoices = CASChoicesView(context).apply {
-        layoutParams = LinearLayout.LayoutParams(32.dp(), 32.dp())
+        layoutParams = LinearLayout.LayoutParams(32.dp(), 32.dp()).apply {
+            marginStart = 8.dp()
+        }
     }
 
     header.addView(adLabel)
-    header.addView(headerSpacer)
     header.addView(adChoices)
+    header.addView(headerSpacer)
 
     val mediaCard = FrameLayout(context).apply {
         layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, 0).apply {
@@ -277,7 +279,7 @@ internal fun buildFullscreenNativeAdView(context: Context): NativeAdViews {
         }
         maxLines = 4
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
-        setTextColor(SecondaryText.toArgb())
+        setTextColor(BodyTextColor.toArgb())
         setLineSpacing(2.dp().toFloat(), 1f)
     }
 
