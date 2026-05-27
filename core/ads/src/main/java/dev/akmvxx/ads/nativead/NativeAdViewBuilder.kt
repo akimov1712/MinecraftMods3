@@ -66,10 +66,10 @@ internal fun buildInlineNativeAdView(context: Context): NativeAdViews {
         setTextColor(AppColors.Black.toArgb())
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
         setTypeface(typeface, Typeface.BOLD)
-        setPadding(10.dp(), 3.dp(), 10.dp(), 3.dp())
-        background = roundedDrawable(AdAccent.toArgb(), 4.dp().toFloat())
+        setPadding(8.dp(), 2.dp(), 8.dp(), 2.dp())
+        background = roundedDrawable(AppColors.TextWhite.toArgb(), 4.dp().toFloat())
         layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        letterSpacing = 0.15f
+        letterSpacing = 0f
     }
 
     val headerSpacer = View(context).apply {
@@ -195,12 +195,12 @@ internal fun buildFullscreenNativeAdView(context: Context): NativeAdViews {
     val adLabel = TextView(context).apply {
         text = context.getString(UiR.string.ad)
         setTextColor(AppColors.Black.toArgb())
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         setTypeface(typeface, Typeface.BOLD)
-        setPadding(14.dp(), 4.dp(), 14.dp(), 4.dp())
-        background = roundedDrawable(AdAccent.toArgb(), 4.dp().toFloat())
+        setPadding(10.dp(), 3.dp(), 10.dp(), 3.dp())
+        background = roundedDrawable(AppColors.TextWhite.toArgb(), 4.dp().toFloat())
         layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        letterSpacing = 0.18f
+        letterSpacing = 0f
     }
 
     val headerSpacer = View(context).apply {
