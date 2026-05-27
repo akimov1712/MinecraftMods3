@@ -88,7 +88,7 @@ fun BrowseScreen(
                 onRefresh = { viewModel.sendIntent(BrowseIntent.RefreshModsList) },
                 onLoadMore = { viewModel.sendIntent(BrowseIntent.FetchMods) },
                 onItemClick = { mod -> navigator.push(RootNavKey.ModDetail(mod.id)) },
-                adInterval = NATIVE_AD_INTERVAL,
+                adInterval = state.nativeAdInterval,
                 adContent = { slotKey ->
                     NativeAds.Show(
                         slot = NativeAds.Slot.Inline,
@@ -112,8 +112,6 @@ fun BrowseScreen(
 }
 
 
-
-private const val NATIVE_AD_INTERVAL = 3
 
 @Preview
 @Composable
