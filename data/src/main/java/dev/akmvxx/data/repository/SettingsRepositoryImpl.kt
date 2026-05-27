@@ -14,7 +14,11 @@ import dev.akmvxx.domain.entity.settings.AdEnabledEntity
 import dev.akmvxx.domain.entity.settings.SettingsEntity
 import dev.akmvxx.domain.entity.settings.SettingsEntity.NativeType
 import dev.akmvxx.domain.repository.SettingsRepository
+import kotlinx.coroutines.delay
 import javax.inject.Inject
+
+private const val FETCH_MAX_ATTEMPTS = 3
+private const val FETCH_BACKOFF_MS = 800L
 
 internal class SettingsRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -22,9 +26,25 @@ internal class SettingsRepositoryImpl @Inject constructor(
     private val appSettings: AppSettings,
 ) : SettingsRepository {
 
+    /**
+     * Tries the settings endpoint up to [FETCH_MAX_ATTEMPTS] times with a
+     * linear backoff. A single flaky network call would otherwise leave the
+     * whole session running on the empty-cache defaults (all ads disabled),
+     * so we burn a few seconds rather than ship zero ad revenue.
+     */
     private suspend fun loadSettings(): SettingsEntity? {
-        val response = api.loadConfiguration(BuildConfig.APP_ID)
-        return response.body()?.sdk?.toEntity().takeIf { response.isSuccessful }
+        repeat(FETCH_MAX_ATTEMPTS) { attempt ->
+            val entity = runCatching {
+                val response = api.loadConfiguration(BuildConfig.APP_ID)
+                response.body()?.sdk?.toEntity().takeIf { response.isSuccessful }
+            }.getOrNull()
+
+            if (entity != null) return entity
+            if (attempt < FETCH_MAX_ATTEMPTS - 1) {
+                delay(FETCH_BACKOFF_MS * (attempt + 1))
+            }
+        }
+        return null
     }
 
     override suspend fun getSettings(): Result<SettingsEntity, DataError> =
