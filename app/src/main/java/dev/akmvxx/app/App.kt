@@ -12,6 +12,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        setupMetrics()
         // AdsBootstrap drives the rest: fetches server settings first, then
         // calls setupCas (off main thread) with the ad types the server
         // actually enabled, and finally initializes the public ad facades.
