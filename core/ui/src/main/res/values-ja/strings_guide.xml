@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="guide_title">MODのインストール方法</string>
+    <string name="guide_subtitle">下の手順に従うだけ — 1分くらいで終わります。</string>
+    <string name="guide_back">戻る</string>
+    <string name="guide_screenshot_content_description">ステップ %1$d のスクリーンショット</string>
+    <string name="guide_footer">完了! お楽しみください。</string>
+
+    <string name="guide_step_1_title">好きなMODを選ぶ</string>
+    <string name="guide_step_1_text">カタログを開いて、インストールしたいMODをタップしてページを開いてください。</string>
+
+    <string name="guide_step_2_title">「ダウンロード」をタップ</string>
+    <string name="guide_step_2_text">MODのページで、画面下のオレンジのダウンロードボタンをタップします。</string>
+
+    <string name="guide_step_3_title">ダウンロード完了を待つ</string>
+    <string name="guide_step_3_text">ファイルが端末に保存されます。通常は数秒で終わります。</string>
+
+    <string name="guide_step_4_title">緑の「インストール」をタップ</string>
+    <string name="guide_step_4_text">ファイルがダウンロードされたら、隣の緑のインストールボタンをタップします。</string>
+
+    <string name="guide_step_5_title">アプリ選択画面でMinecraftを選ぶ</string>
+    <string name="guide_step_5_text">Androidが「どのアプリで開く?」と聞いてきます — リストからMinecraftを選んでください。</string>
+
+    <string name="guide_step_6_title">Minecraftが自動で開きます</string>
+    <string name="guide_step_6_text">MODがインポートされます。ゲームがコンテンツの読み込みを終えるまで待ってください。</string>
+
+    <string name="guide_step_7_title">ワールド設定でエクスペリメンタル機能とMODを有効化</string>
+    <string name="guide_step_7_text">新しいワールドを作るとき、ワールド設定を下にスクロールして「実験的なゲームプレイ」をオンにしてください — ほとんどのMODに必要です。「ビヘイビアパック」または「リソースパック」で先ほどインストールしたMODを見つけて「有効化」をタップします。</string>
+
+    <string name="guide_step_8_title">ワールドに入る</string>
+    <string name="guide_step_8_text">ワールドを作って遊び始めてください — MODは有効になり、使える状態です。</string>
+
+</resources>

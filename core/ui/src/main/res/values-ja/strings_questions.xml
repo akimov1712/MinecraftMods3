@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="help_title">ヘルプ</string>
+    <string name="help_subtitle">よくある質問への手早い答え。</string>
+    <string name="help_search_placeholder">検索</string>
+    <string name="help_no_results">見つかりませんでした。別の言葉で試してください。</string>
+
+    <string name="help_section_getting_started">はじめに</string>
+    <string name="help_section_installing">インストール</string>
+    <string name="help_section_in_game">ゲーム内</string>
+    <string name="help_section_content_updates">コンテンツとアップデート</string>
+    <string name="help_section_about_app">アプリについて</string>
+    <string name="help_section_saves_cleanup">セーブとクリーンアップ</string>
+    <string name="help_section_reach_out">問い合わせ</string>
+
+    <string name="faq_account_q">登録は必要ですか?</string>
+    <string name="faq_account_a">いいえ。ログイン不要、メール不要、パスワード不要。アプリを開けばすぐ使えます。</string>
+
+    <string name="faq_need_internet_q">いつもインターネットが必要?</string>
+    <string name="faq_need_internet_a">カタログを見たり、ダウンロードするときだけ必要です。MODが端末に入ったあとはオフラインでも遊べます (Minecraft自体がオフラインで動く場合)。</string>
+
+    <string name="faq_supported_versions_q">どのMinecraftバージョンが使えますか?</string>
+    <string name="faq_supported_versions_a">Android Minecraft Bedrock — 最新版とその少し前のいくつか。各MODは具体的にどのバージョン向けか書かれています、ファイルの近くを見てください。</string>
+
+    <string name="faq_how_install_q">MODはどうやってインストールしますか?</string>
+    <string name="faq_how_install_a">MODを開き、リストからファイルを選び、ダウンロード、そしてインストール。Minecraftが自動で立ち上がって取り込んでくれます。最後の手順 — 遊びたいワールド内でパックをオンにしてください。</string>
+
+    <string name="faq_install_pack_q">テクスチャパックやスキンは?</string>
+    <string name="faq_install_pack_a">MODと同じ流れです。インストール後、Minecraft内で有効化します — テクスチャはグローバルリソース、スキンはプロフィールから。</string>
+
+    <string name="faq_install_fail_q">MODがインストールされないのはなぜ?</string>
+    <string name="faq_install_fail_a">まず確認:\n• MODはあなたのMinecraftバージョンに合っている必要があります — MODページのバージョン行を見てください。\n• 端末に空き容量が必要です。\n• Minecraftを閉じて開き直す (これで意外と直ります)。\nそれでもダメ? ファイルをダウンロードし直して再試行してください。</string>
+
+    <string name="faq_download_stuck_q">ダウンロードが0%のまま動かない</string>
+    <string name="faq_download_stuck_a">プログレスバーが動かない場合、プロバイダーがMODのサーバーをブロックしている可能性があります — 地域や通信事業者ごとブロックされることもあり、こちら側ではどうにもできません。VPNをオンにしてダウンロードを再開すれば動くはずです。ファイルが端末に入ったらVPNはオフにしてOKです — MOD自体には不要です。</string>
+
+    <string name="faq_corrupted_file_q">「ファイルが壊れている」エラーが出ます</string>
+    <string name="faq_corrupted_file_a">ダウンロードが途中で切れたという意味です。あるものを削除して、安定した回線 (できればWi-Fi) でもう一度ダウンロードしてください。</string>
+
+    <string name="faq_mod_not_visible_q">MODを入れたのにゲーム内で何も見えない</string>
+    <string name="faq_mod_not_visible_a">MODはMinecraft内にあります、有効化するだけです。ワールド設定を開いてパックを有効化してください。MODによっては実験的機能が必要です — 同じ設定メニューにあります。</string>
+
+    <string name="faq_experimental_q">実験的機能はどうやってオンにしますか?</string>
+    <string name="faq_experimental_a">ワールドを作るか編集するとき、実験 (Experiments) まで下にスクロールして、MODが必要とするスイッチをオンにしてください (MODが普通どれか教えてくれます — よく「Holiday Creator Features」や「Beta APIs」)。あとはワールドを読み込み直してください。</string>
+
+    <string name="faq_lag_q">MODを入れたらゲームがカクつく</string>
+    <string name="faq_lag_a">重いMODもあります。順番に試してください:\n• バックグラウンドの他のアプリを閉じる。\n• Minecraftの描画距離を下げる (これが一番効きます)。\n• グラフィック品質を1段階下げる。\nそれでもカクつくなら、MODが端末には重すぎるかもしれません — より軽いMODを試してください。</string>
+
+    <string name="faq_multiplayer_q">友達とのサーバーでMODは使えますか?</string>
+    <string name="faq_multiplayer_a">サーバー次第です。通常、全プレイヤーが同じパックを入れる必要があります — サーバーがMODを許可していれば大丈夫。許可されていなければ、そこではMODは何もしません。</string>
+
+    <string name="faq_new_mods_q">新しいMODは追加されますか?</string>
+    <string name="faq_new_mods_a">常に。カタログを更新すると前回からの新着が見えます。</string>
+
+    <string name="faq_updates_q">MODが更新されたかはどう分かりますか?</string>
+    <string name="faq_updates_a">MODの作者が新バージョンを出すとカタログに追加します。バージョンはMODページのファイルのすぐ横にあります。</string>
+
+    <string name="faq_safety_q">MODは安全ですか?</string>
+    <string name="faq_safety_a">はい。すべてのMODはカタログに入る前にチェックされます — ウイルスや変なものは入っていません。</string>
+
+    <string name="faq_ads_q">なぜ広告があるのですか?</string>
+    <string name="faq_ads_a">サーバーや更新にはお金がかかります。広告はそれを支払う方法です — おかげでアプリ自体は無料で使えます。使用中はできるだけ邪魔にならないようにしています。</string>
+
+    <string name="faq_no_internet_q">「インターネットなし」と表示されるけど私のは動いています</string>
+    <string name="faq_no_internet_a">接続は問題なく、それでもアプリが文句を言う場合は、こちらのサーバーが少し休んでいる可能性があります。数分待ってもう一度試してください。</string>
+
+    <string name="faq_uninstall_q">このアプリを消したらMODはなくなりますか?</string>
+    <string name="faq_uninstall_a">いいえ。MODは今やMinecraftの中にあります — 私たちのアプリが消えても残ります。</string>
+
+    <string name="faq_safe_for_saves_q">MODでワールドが壊れますか?</string>
+    <string name="faq_safe_for_saves_a">単体では壊れません。MODはMinecraftにパックとして追加され、どのワールドで使うかはあなたが選びます。新しいMODを試したいけど大切なワールドを傷つけたくない場合 — 専用に新しいワールドを作ってください。</string>
+
+    <string name="faq_remove_mod_q">いらなくなったMODはどう削除しますか?</string>
+    <string name="faq_remove_mod_a">Minecraft内でパック (種類によりビヘイビア、リソース、スキン) を開き、消したいものを長押しして削除を選んでください。ワールドは無事です — MODだけが消えます。</string>
+
+    <string name="faq_report_issue_q">壊れているところはどこに伝えれば?</string>
+    <string name="faq_report_issue_a">「提案」画面のフィードバック欄を使ってください。何が起きたかを書いて — 詳しく書いてもらえるほど早く解決できます。</string>
+
+    <string name="faq_submit_mod_q">自分でMODを作りました — 送ってもいいですか?</string>
+    <string name="faq_submit_mod_a">もちろんです。「提案」画面でリンクを貼るかファイルを添付してください。投稿を確認して、合うものは追加します。</string>
+
+</resources>

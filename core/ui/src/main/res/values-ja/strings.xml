@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">広告</string>
+    <string name="get_started">はじめる</string>
+    <string name="search_mods">MODを検索</string>
+    <string name="screen_browse">カタログ</string>
+    <string name="screen_favorite">お気に入り</string>
+    <string name="screen_propose">提案</string>
+    <string name="screen_help">ヘルプ</string>
+
+    <string name="mod_category_all">すべて</string>
+    <string name="mod_category_addon">MOD</string>
+    <string name="mod_category_maps">マップ</string>
+    <string name="mod_category_texture">テクスチャ</string>
+    <string name="mod_category_skins">スキン</string>
+
+    <string name="mod_sorted_relevance">関連順</string>
+    <string name="mod_sorted_most_popular">人気順</string>
+    <string name="mod_sorted_rating">評価順</string>
+
+    <plurals name="files">
+        <item quantity="other">%d 個のファイル</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="other">%d 個のバージョン</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+    <string name="mod_favorite_suffix">· お気に入り</string>
+
+    <string name="error_request_timeout">タイムアウトしました。もう一度お試しください</string>
+    <string name="error_serialization">データを処理できませんでした。もう一度お試しください</string>
+    <string name="error_server_error">サーバーエラーです。あとでもう一度お試しください</string>
+    <string name="error_no_internet">インターネットに接続されていません。ネットワークを確認してください</string>
+    <string name="error_unknown">不明なエラーが発生しました。もう一度お試しください</string>
+    <string name="error_invalid_data">無効なデータを受信しました。もう一度お試しください</string>
+    <string name="error_bad_request">無効なリクエストです。もう一度お試しください</string>
+    <string name="error_not_found">見つかりませんでした</string>
+    <string name="error_title_pagination">読み込みに失敗しました</string>
+    <string name="the_list_is_empty">リストは空です</string>
+    <string name="retry">再試行</string>
+
+    <string name="propose_title">MODを提案</string>
+    <string name="propose_subtitle">次に見たいものを教えてください。</string>
+    <string name="propose_tab_propose">提案</string>
+    <string name="propose_tab_feedback">フィードバック</string>
+    <string name="propose_field_email_label">あなたのメール</string>
+    <string name="propose_field_email_hint">こちらから連絡できるように</string>
+    <string name="propose_field_mod_label">MOD名またはリンク</string>
+    <string name="propose_field_mod_hint">名前、リンク、または短い説明…</string>
+    <string name="propose_field_feedback_label">どうしましたか?</string>
+    <string name="propose_field_feedback_hint">バグ、アイデア、なんでも。</string>
+    <string name="propose_send">送信</string>
+    <string name="propose_success">送信しました。ありがとう!</string>
+
+    <string name="files_title">ファイル</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">取得</string>
+    <string name="files_install">インストール</string>
+    <string name="files_downloading">ダウンロード中</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">キャンセル</string>
+    <string name="files_open_failed">ファイルを開けませんでした。もう一度試すか、ダウンロードから手動で開いてください</string>
+    <string name="files_download_failed">ダウンロードに失敗しました。もう一度お試しください</string>
+    <string name="files_back">戻る</string>
+    <string name="files_vpn_hint_title">ダウンロードが止まってる?</string>
+    <string name="files_vpn_hint_body">プロバイダーがMODをホストしているサーバーをブロックしている可能性があります。VPNをオンにしてもう一度試してください — ファイルが端末に入ったらVPNを切ってもOKです。</string>
+
+    <string name="mod_section_about">このMODについて</string>
+    <string name="mod_section_supported_versions">対応バージョン</string>
+    <string name="mod_section_files">ファイル</string>
+    <string name="mod_file_default_name">ファイル %1$d</string>
+    <string name="mod_show_more">もっと見る</string>
+    <string name="mod_show_less">折りたたむ</string>
+    <string name="mod_how_to_install">インストール方法</string>
+    <string name="mod_not_working">動かない?</string>
+    <string name="mod_download">ダウンロード</string>
+    <string name="mod_download_with_size">ダウンロード · %1$s</string>
+    <string name="mod_back">戻る</string>
+    <string name="mod_close">閉じる</string>
+    <string name="mod_favorite_toggle">お気に入り切替</string>
+
+    <string name="mod_report_title">問題を報告</string>
+    <string name="mod_report_subtitle">%1$s の何が問題か教えてください。確認します。</string>
+    <string name="mod_report_subtitle_generic">何が問題か教えてください。確認します。</string>
+    <string name="mod_report_message_label">問題は何ですか?</string>
+    <string name="mod_report_message_hint">インストール時のクラッシュ、ブロックが見当たらない、など</string>
+    <string name="mod_report_send">レポートを送信</string>
+    <string name="mod_report_cancel">キャンセル</string>
+    <string name="mod_report_success">ありがとう! 確認します</string>
+    <string name="mod_report_error_message_short">メッセージが短すぎます (最低32文字)</string>
+    <string name="mod_image_indicator">画像 %1$d / %2$d</string>
+
+    <string name="favorite_title">保存したMOD</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">ライブラリにMODがありません</item>
+        <item quantity="other">ライブラリに %d 個のMOD</item>
+    </plurals>
+
+    <string name="propose_error_email_required">メールを入力してください</string>
+    <string name="propose_error_email_invalid">有効なメールアドレスを入力してください</string>
+    <string name="propose_error_message_required">メッセージを入力してください</string>
+    <string name="propose_error_message_short">メッセージが短すぎます (最低20文字)</string>
+
+</resources>
