@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.cleversolutions.ads.android.CAS
+import com.ironsource.adqualitysdk.sdk.i.it
 import dagger.hilt.android.AndroidEntryPoint
 import dev.akmvxx.android.SnackbarManager
 import dev.akmvxx.ui.utils.StatusBarColor
