@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One block mod Minecraft PE</string>
+    <string name="ad">Annuncio</string>
+    <string name="get_started">Inizia</string>
+    <string name="search_mods">Cerca mod</string>
+    <string name="screen_browse">Catalogo</string>
+    <string name="screen_favorite">Preferiti</string>
+    <string name="screen_propose">Proponi</string>
+    <string name="screen_help">Aiuto</string>
+
+    <string name="mod_category_all">Tutti</string>
+    <string name="mod_category_addon">Mod</string>
+    <string name="mod_category_maps">Mappe</string>
+    <string name="mod_category_texture">Texture</string>
+    <string name="mod_category_skins">Skin</string>
+
+    <string name="mod_sorted_relevance">Per rilevanza</string>
+    <string name="mod_sorted_most_popular">Più popolari</string>
+    <string name="mod_sorted_rating">Più votati</string>
+
+    <plurals name="files">
+        <item quantity="one">%d file</item>
+        <item quantity="other">%d file</item>
+    </plurals>
+
+    <plurals name="mod_versions_count">
+        <item quantity="one">%d versione</item>
+        <item quantity="other">%d versioni</item>
+    </plurals>
+
+    <string name="mod_meta_separator"> · </string>
+    <string name="mod_favorite_suffix">· Preferito</string>
+
+    <string name="error_request_timeout">Tempo scaduto. Riprova</string>
+    <string name="error_serialization">Impossibile elaborare i dati. Riprova</string>
+    <string name="error_server_error">Errore del server. Riprova più tardi</string>
+    <string name="error_no_internet">Nessuna connessione internet. Controlla la rete</string>
+    <string name="error_unknown">Si è verificato un errore sconosciuto. Riprova</string>
+    <string name="error_invalid_data">Dati non validi ricevuti. Riprova</string>
+    <string name="error_bad_request">Richiesta non valida. Riprova</string>
+    <string name="error_not_found">Non trovato</string>
+    <string name="error_title_pagination">Caricamento fallito</string>
+    <string name="the_list_is_empty">La lista è vuota</string>
+    <string name="retry">Riprova</string>
+
+    <string name="propose_title">Proponi un mod</string>
+    <string name="propose_subtitle">Dicci cosa vuoi vedere dopo.</string>
+    <string name="propose_tab_propose">Proponi</string>
+    <string name="propose_tab_feedback">Feedback</string>
+    <string name="propose_field_email_label">La tua email</string>
+    <string name="propose_field_email_hint">Per poterti contattare</string>
+    <string name="propose_field_mod_label">Nome del mod o link</string>
+    <string name="propose_field_mod_hint">Un nome, un link o una breve descrizione…</string>
+    <string name="propose_field_feedback_label">Cosa ti passa per la testa?</string>
+    <string name="propose_field_feedback_hint">Bug, idee, qualsiasi cosa.</string>
+    <string name="propose_send">Invia</string>
+    <string name="propose_success">Inviato con successo. Grazie!</string>
+
+    <string name="files_title">File</string>
+    <string name="files_subtitle_format">%1$s · %2$s</string>
+    <string name="files_get">Ottieni</string>
+    <string name="files_install">Installa</string>
+    <string name="files_downloading">Download</string>
+    <string name="files_progress_percent_format">%1$d%%</string>
+    <string name="files_cancel">Annulla</string>
+    <string name="files_open_failed">Impossibile aprire il file. Riprova o aprilo manualmente da Download</string>
+    <string name="files_download_failed">Download fallito. Riprova</string>
+    <string name="files_back">Indietro</string>
+    <string name="files_vpn_hint_title">Download bloccato?</string>
+    <string name="files_vpn_hint_body">Probabilmente il tuo operatore sta bloccando il server dove ospitiamo i mod. Attiva una VPN e riprova — una volta che il file è sul telefono puoi disattivarla.</string>
+
+    <string name="mod_section_about">Su questo mod</string>
+    <string name="mod_section_supported_versions">Versioni supportate</string>
+    <string name="mod_section_files">File</string>
+    <string name="mod_file_default_name">File %1$d</string>
+    <string name="mod_show_more">Mostra di più</string>
+    <string name="mod_show_less">Mostra di meno</string>
+    <string name="mod_how_to_install">Come installare</string>
+    <string name="mod_not_working">Non funziona?</string>
+    <string name="mod_download">Scarica</string>
+    <string name="mod_download_with_size">Scarica · %1$s</string>
+    <string name="mod_back">Indietro</string>
+    <string name="mod_close">Chiudi</string>
+    <string name="mod_favorite_toggle">Attiva/disattiva preferito</string>
+
+    <string name="mod_report_title">Segnala un problema</string>
+    <string name="mod_report_subtitle">Dicci cosa c\'è di sbagliato con %1$s e ce ne occuperemo.</string>
+    <string name="mod_report_subtitle_generic">Dicci cosa c\'è di sbagliato e ce ne occuperemo.</string>
+    <string name="mod_report_message_label">Qual è il problema?</string>
+    <string name="mod_report_message_hint">Crash durante l\'installazione, blocchi mancanti, …</string>
+    <string name="mod_report_send">Invia segnalazione</string>
+    <string name="mod_report_cancel">Annulla</string>
+    <string name="mod_report_success">Grazie! Ci daremo un\'occhiata</string>
+    <string name="mod_report_error_message_short">Il messaggio è troppo corto (min. 32 caratteri)</string>
+    <string name="mod_image_indicator">Immagine %1$d di %2$d</string>
+
+    <string name="favorite_title">Mod salvati</string>
+    <plurals name="favorite_count">
+        <item quantity="zero">Nessun mod nella tua libreria</item>
+        <item quantity="one">%d mod nella tua libreria</item>
+        <item quantity="other">%d mod nella tua libreria</item>
+    </plurals>
+
+    <string name="propose_error_email_required">Inserisci la tua email</string>
+    <string name="propose_error_email_invalid">Inserisci un indirizzo email valido</string>
+    <string name="propose_error_message_required">Compila il messaggio</string>
+    <string name="propose_error_message_short">Il messaggio è troppo corto (min. 20 caratteri)</string>
+
+</resources>
