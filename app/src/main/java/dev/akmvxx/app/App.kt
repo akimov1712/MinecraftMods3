@@ -12,7 +12,11 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        setupCas(BuildConfig.APPLICATION_ID)
-        adsBootstrap.start(BuildConfig.APPLICATION_ID)
+        // AdsBootstrap drives the rest: fetches server settings first, then
+        // calls setupCas (off main thread) with the ad types the server
+        // actually enabled, and finally initializes the public ad facades.
+        adsBootstrap.start(BuildConfig.APPLICATION_ID) { casId, enabled ->
+            setupCas(casId, enabled)
+        }
     }
 }
