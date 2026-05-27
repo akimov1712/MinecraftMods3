@@ -20,7 +20,12 @@ internal fun FullscreenNativeAdView(slotKey: String) {
         modifier = Modifier.fillMaxSize(),
         factory = {
             (holder.views.root.parent as? ViewGroup)?.removeView(holder.views.root)
-            holder.views.root.doOnLayout { holder.views.root.bindAdContent(holder.ad) }
+            holder.views.root.doOnLayout {
+                if (!holder.bound) {
+                    holder.bound = true
+                    holder.views.root.bindAdContent(holder.ad)
+                }
+            }
             holder.views.root
         }
     )

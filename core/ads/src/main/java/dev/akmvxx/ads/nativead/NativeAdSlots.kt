@@ -1,16 +1,22 @@
 package dev.akmvxx.ads.nativead
 
 import android.content.Context
-import com.cleveradssolutions.sdk.nativead.CASNativeView
 import com.cleveradssolutions.sdk.nativead.NativeAdContent
-
 
 internal object NativeAdSlots {
 
+    /**
+     * Holds the CAS native ad and its bound view tree for a single slot. The
+     * [bound] flag guards against double-binding the same NativeAdContent
+     * during fast scroll, when a LazyColumn slot can detach and reattach
+     * before the previous `doOnAttach` callback fires.
+     */
     internal class Holder(
         val ad: NativeAdContent,
         val views: NativeAdViews,
-    )
+    ) {
+        var bound: Boolean = false
+    }
 
     private val cache = mutableMapOf<String, Holder>()
 
