@@ -1,6 +1,7 @@
 package dev.akmvxx.ads
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,12 +30,19 @@ object NativeAds {
     enum class Slot { Inline, Fullscreen }
 
     private var initialized = false
+    private var disabled = false
+    private var pendingPreloadCallback: ((PreloadStatus) -> Unit)? = null
     private var showChance: Int = 100
     private var active by mutableStateOf<ActiveType>(ActiveType.None)
 
     fun initialize(context: Context, casId: String, settings: SettingsEntity) {
-        if (initialized) return
-        if (!settings.adEnabled.native) return
+        if (initialized || disabled) return
+
+        if (!settings.adEnabled.native) {
+            disabled = true
+            consumePending()?.invoke(PreloadStatus.NONE)
+            return
+        }
 
         initialized = true
         showChance = settings.adChangePercent.native
@@ -52,21 +60,24 @@ object NativeAds {
                 ActiveType.Native
             }
         }
+
+        consumePending()?.let { wirePreloadCallback(it) }
     }
 
     fun setOnPreload(onPreloaded: (PreloadStatus) -> Unit) {
-        if (!initialized) {
+        if (disabled) {
             onPreloaded(PreloadStatus.NONE)
             return
         }
-        when (active) {
-            ActiveType.Banner -> BannerAdPool.setListener(onPreloaded)
-            ActiveType.Native -> NativeAdPool.setCallback(onPreloaded)
-            ActiveType.None -> onPreloaded(PreloadStatus.NONE)
+        if (!initialized) {
+            pendingPreloadCallback = onPreloaded
+            return
         }
+        wirePreloadCallback(onPreloaded)
     }
 
     fun clearOnPreload() {
+        pendingPreloadCallback = null
         if (!initialized) return
         when (active) {
             ActiveType.Banner -> BannerAdPool.clearListener()
@@ -86,13 +97,9 @@ object NativeAds {
 
     fun isBanner(): Boolean = active is ActiveType.Banner
 
-    /**
-     * Renders an ad for the given slot. [slotKey] must be unique and stable
-     * across recompositions for a given screen position — e.g. the row index
-     * inside a LazyColumn. The same key always resolves to the same ad
-     * instance and the same View hierarchy, so scrolling never restarts
-     * autoplay video and never re-pops the preloaded pool.
-     */
+    fun isDisabled(): Boolean = disabled
+
+
     @Composable
     fun Show(slot: Slot, slotKey: String, modifier: Modifier = Modifier) {
         if (!initialized) return
@@ -110,19 +117,36 @@ object NativeAds {
     }
 
     fun destroy() {
-        if (!initialized) return
-        when (active) {
-            ActiveType.Banner -> {
-                BannerAdSlots.releaseAll()
-                BannerAdPool.destroy()
+        if (initialized) {
+            when (active) {
+                ActiveType.Banner -> {
+                    BannerAdSlots.releaseAll()
+                    BannerAdPool.destroy()
+                }
+                ActiveType.Native -> {
+                    NativeAdSlots.releaseAll()
+                    NativeAdPool.destroy()
+                }
+                ActiveType.None -> Unit
             }
-            ActiveType.Native -> {
-                NativeAdSlots.releaseAll()
-                NativeAdPool.destroy()
-            }
-            ActiveType.None -> Unit
         }
         active = ActiveType.None
         initialized = false
+        disabled = false
+        pendingPreloadCallback = null
+    }
+
+    private fun consumePending(): ((PreloadStatus) -> Unit)? {
+        val callback = pendingPreloadCallback
+        pendingPreloadCallback = null
+        return callback
+    }
+
+    private fun wirePreloadCallback(callback: (PreloadStatus) -> Unit) {
+        when (active) {
+            ActiveType.Banner -> BannerAdPool.setListener(callback)
+            ActiveType.Native -> NativeAdPool.setCallback(callback)
+            ActiveType.None -> callback(PreloadStatus.NONE)
+        }
     }
 }
