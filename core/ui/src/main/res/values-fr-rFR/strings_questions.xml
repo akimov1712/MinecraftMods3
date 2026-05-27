@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="help_title">Aide</string>
+    <string name="help_subtitle">Réponses rapides aux questions courantes.</string>
+    <string name="help_search_placeholder">Rechercher</string>
+    <string name="help_no_results">Rien trouvé. Essaie un autre mot.</string>
+
+    <string name="help_section_getting_started">Pour commencer</string>
+    <string name="help_section_installing">Installation</string>
+    <string name="help_section_in_game">Dans le jeu</string>
+    <string name="help_section_content_updates">Contenu et mises à jour</string>
+    <string name="help_section_about_app">À propos de l\'app</string>
+    <string name="help_section_saves_cleanup">Sauvegardes et nettoyage</string>
+    <string name="help_section_reach_out">Contact</string>
+
+    <string name="faq_account_q">Dois-je m\'inscrire ?</string>
+    <string name="faq_account_a">Non. Pas de connexion, pas d\'email, pas de mot de passe à retenir. Ouvre l\'app et c\'est parti.</string>
+
+    <string name="faq_need_internet_q">J\'ai toujours besoin d\'internet ?</string>
+    <string name="faq_need_internet_a">Seulement pour parcourir le catalogue et télécharger. Une fois qu\'un mod est sur ton téléphone, tu peux jouer hors ligne (tant que Minecraft lui-même fonctionne hors ligne).</string>
+
+    <string name="faq_supported_versions_q">Quelles versions de Minecraft fonctionnent ?</string>
+    <string name="faq_supported_versions_a">Android Minecraft Bedrock — la dernière version et quelques précédentes. Chaque mod te dit pour quelles versions exactes il est, regarde près du fichier.</string>
+
+    <string name="faq_how_install_q">Comment j\'installe un mod ?</string>
+    <string name="faq_how_install_a">Ouvre le mod, choisis un fichier dans la liste, télécharge, puis installe. Minecraft s\'ouvrira et le prendra tout seul. Dernière étape — active le pack dans le monde où tu veux jouer.</string>
+
+    <string name="faq_install_pack_q">Et les packs de textures et les skins ?</string>
+    <string name="faq_install_pack_a">Même processus que les mods. Après installation, active-les dans Minecraft — les textures sont dans Ressources Globales, les skins dans ton Profil.</string>
+
+    <string name="faq_install_fail_q">Pourquoi le mod ne s\'installe pas ?</string>
+    <string name="faq_install_fail_a">Vérifie rapidement :\n• Le mod doit correspondre à ta version de Minecraft — regarde la ligne de version sur la page du mod.\n• Ton téléphone a besoin d\'espace libre.\n• Ferme Minecraft et rouvre-le (ça résout étonnamment souvent le problème).\nToujours rien ? Télécharge le fichier à nouveau et réessaie.</string>
+
+    <string name="faq_download_stuck_q">Le téléchargement reste à 0 % et ne bouge pas</string>
+    <string name="faq_download_stuck_a">Si la barre de progression ne bouge pas, ton opérateur bloque probablement le serveur où sont les mods — parfois des régions ou opérateurs entiers sont coupés et on ne peut rien faire de notre côté. Active un VPN, relance le téléchargement et ça devrait filer. Une fois le fichier sur ton téléphone tu peux désactiver le VPN — le mod n\'en a pas besoin.</string>
+
+    <string name="faq_corrupted_file_q">J\'ai une erreur \"fichier corrompu\"</string>
+    <string name="faq_corrupted_file_a">Ça veut dire que le téléchargement s\'est coupé en plein milieu. Supprime ce que tu as, télécharge-le à nouveau sur une connexion stable (Wi-Fi si possible) et ça devrait aller.</string>
+
+    <string name="faq_mod_not_visible_q">J\'ai installé le mod mais je ne vois rien dans le jeu</string>
+    <string name="faq_mod_not_visible_a">Le mod est dans Minecraft, il faut juste l\'activer. Ouvre les paramètres de ton monde et active le pack. Certains mods ont aussi besoin des Fonctions Expérimentales — même menu.</string>
+
+    <string name="faq_experimental_q">Comment activer les Fonctions Expérimentales ?</string>
+    <string name="faq_experimental_a">Quand tu crées ou édites un monde, descends jusqu\'à Expériences et active l\'interrupteur dont ton mod a besoin (le mod te dit généralement lequel — souvent \"Holiday Creator Features\" ou \"Beta APIs\"). Recharge le monde après.</string>
+
+    <string name="faq_lag_q">Le jeu lag après l\'installation d\'un mod</string>
+    <string name="faq_lag_a">Certains mods sont simplement lourds. À essayer dans l\'ordre :\n• Ferme les autres apps en arrière-plan.\n• Diminue la distance de rendu dans Minecraft (c\'est ce qui aide le plus).\n• Baisse la qualité graphique d\'un cran.\nSi ça lag toujours, le mod est peut-être trop gros pour l\'appareil — prends-en un plus léger.</string>
+
+    <string name="faq_multiplayer_q">Je peux utiliser des mods sur un serveur avec des amis ?</string>
+    <string name="faq_multiplayer_a">Ça dépend du serveur. Normalement tous les joueurs ont besoin des mêmes packs — si le serveur autorise le mod, c\'est bon. Sinon, le mod ne fait juste rien là-bas.</string>
+
+    <string name="faq_new_mods_q">Vous ajoutez de nouveaux mods ?</string>
+    <string name="faq_new_mods_a">Tout le temps. Rafraîchis le catalogue et tu verras ce qui est apparu depuis la dernière fois.</string>
+
+    <string name="faq_updates_q">Comment savoir si un mod a été mis à jour ?</string>
+    <string name="faq_updates_a">Quand l\'auteur du mod sort une nouvelle version, on l\'ajoute au catalogue. La version est juste à côté du fichier sur la page du mod.</string>
+
+    <string name="faq_safety_q">Les mods sont sûrs ?</string>
+    <string name="faq_safety_a">Oui. Chaque mod est vérifié avant d\'entrer dans le catalogue — pas de virus, rien de bizarre caché dans le fichier.</string>
+
+    <string name="faq_ads_q">Pourquoi y a-t-il des pubs ?</string>
+    <string name="faq_ads_a">Les serveurs et les mises à jour ne sont pas gratuits, et les pubs c\'est comme ça qu\'on les paie — c\'est ce qui permet à l\'app de rester gratuite pour toi. On essaie de les garder à l\'écart pendant que tu utilises l\'app.</string>
+
+    <string name="faq_no_internet_q">Ça dit \"pas d\'internet\" mais le mien fonctionne</string>
+    <string name="faq_no_internet_a">Si ta connexion va bien et que l\'app se plaint quand même, nos serveurs font probablement une petite sieste. Laisse-leur quelques minutes et réessaie.</string>
+
+    <string name="faq_uninstall_q">Si je supprime cette app, je perds mes mods ?</string>
+    <string name="faq_uninstall_a">Non. Les mods vivent maintenant dans Minecraft — ils restent même si notre app disparaît.</string>
+
+    <string name="faq_safe_for_saves_q">Les mods vont casser mes mondes ?</string>
+    <string name="faq_safe_for_saves_a">Pas tout seuls. Les mods sont ajoutés comme des packs dans Minecraft et tu choisis dans quel monde ils vont. Si tu essaies un nouveau mod et que tu ne veux pas risquer un monde auquel tu tiens — crée un nouveau monde pour lui.</string>
+
+    <string name="faq_remove_mod_q">Comment supprimer un mod dont je ne veux plus ?</string>
+    <string name="faq_remove_mod_a">Dans Minecraft, ouvre Packs (Comportement, Ressources ou Skin selon le type), maintiens appuyé celui que tu veux supprimer et choisis Supprimer. Tes mondes restent intacts — seul le mod est retiré.</string>
+
+    <string name="faq_report_issue_q">Où vous dire que quelque chose est cassé ?</string>
+    <string name="faq_report_issue_a">Utilise la section Commentaires sur l\'écran Proposer. Écris ce qui s\'est passé — plus tu donnes de détails, plus on peut résoudre vite.</string>
+
+    <string name="faq_submit_mod_q">J\'ai fait mon propre mod — je peux vous l\'envoyer ?</string>
+    <string name="faq_submit_mod_a">Bien sûr. Ouvre l\'écran Proposer et mets un lien ou attache le fichier. On regarde les propositions et on ajoute celles qui collent.</string>
+
+</resources>

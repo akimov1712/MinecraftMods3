@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="guide_title">Comment installer un mod</string>
+    <string name="guide_subtitle">Suis les étapes ci-dessous — ça prend environ une minute.</string>
+    <string name="guide_back">Retour</string>
+    <string name="guide_screenshot_content_description">Capture pour l\'étape %1$d</string>
+    <string name="guide_footer">C\'est bon — amuse-toi bien !</string>
+
+    <string name="guide_step_1_title">Choisis un mod qui te plaît</string>
+    <string name="guide_step_1_text">Ouvre le catalogue et appuie sur le mod que tu veux installer pour ouvrir sa page.</string>
+
+    <string name="guide_step_2_title">Appuie sur \"Télécharger\"</string>
+    <string name="guide_step_2_text">Sur la page du mod, appuie sur le bouton orange Télécharger en bas de l\'écran.</string>
+
+    <string name="guide_step_3_title">Attends que le téléchargement se termine</string>
+    <string name="guide_step_3_text">Le fichier sera sauvegardé sur ton appareil. Ça prend généralement quelques secondes.</string>
+
+    <string name="guide_step_4_title">Appuie sur le bouton vert \"Installer\"</string>
+    <string name="guide_step_4_text">Une fois le fichier téléchargé, appuie sur le bouton vert Installer à côté.</string>
+
+    <string name="guide_step_5_title">Choisis Minecraft dans le sélecteur d\'applications</string>
+    <string name="guide_step_5_text">Android demandera avec quelle application ouvrir le fichier — choisis Minecraft dans la liste.</string>
+
+    <string name="guide_step_6_title">Minecraft s\'ouvrira automatiquement</string>
+    <string name="guide_step_6_text">Le mod sera importé. Attends que le jeu finisse de charger le contenu.</string>
+
+    <string name="guide_step_7_title">Active les fonctions expérimentales et le mod dans les paramètres du monde</string>
+    <string name="guide_step_7_text">Quand tu crées un nouveau monde, fais défiler les paramètres et active \"Gameplay expérimental\" — la plupart des mods en ont besoin. Dans \"Packs de comportement\" ou \"Packs de ressources\" trouve le mod que tu viens d\'installer et appuie sur \"Activer\".</string>
+
+    <string name="guide_step_8_title">Lance-toi dans le monde</string>
+    <string name="guide_step_8_text">Crée le monde et commence à jouer — le mod est maintenant actif et prêt à l\'emploi.</string>
+
+</resources>
