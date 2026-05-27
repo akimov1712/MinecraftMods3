@@ -16,8 +16,12 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var snackbarManager: SnackbarManager
 
+    @Inject
+    lateinit var appReview: AppReview
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appReview.maybeRequest(this)
         enableEdgeToEdge()
         setContent {
             changeStatusBarColor(StatusBarColor.Light)
