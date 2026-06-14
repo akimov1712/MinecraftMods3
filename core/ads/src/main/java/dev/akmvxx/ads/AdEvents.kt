@@ -1,38 +1,42 @@
 package dev.akmvxx.ads
 
 import android.util.Log
-import com.cleveradssolutions.sdk.AdContentInfo
-import com.cleversolutions.ads.AdError
+import com.yodo1.mas.error.Yodo1MasError
+import com.yodo1.mas.ad.Yodo1MasAdValue
 
+/**
+ * Single logging channel for ad telemetry. Each impression line prints the
+ * mediation network ([Yodo1MasAdValue] doesn't expose `sourceName` directly,
+ * but we get currency + eCPM + revenue precision), so logcat is enough to
+ * eyeball which networks are filling and what they pay.
+ *
+ *     adb logcat -s Ads
+ */
 internal object AdEvents {
 
-    private const val TAG = "CAS_AD_APP"
+    private const val TAG = "Ads"
 
-    fun loaded(type: String, ad: AdContentInfo) {
-        Log.d(TAG, "$type loaded · ${ad.describe()}")
+    fun loaded(type: String) {
+        Log.d(TAG, "$type loaded")
     }
 
-    fun impression(type: String, ad: AdContentInfo) {
+    fun impression(type: String, value: Yodo1MasAdValue) {
         Log.d(
             TAG,
-            "$type IMPRESSION · ${ad.describe()} · totalRevenue=${formatRevenue(ad.revenueTotal)}",
+            "$type IMPRESSION · eCPM=${formatRevenue(value.getRevenue())}" +
+                " · currency=${value.getCurrency()}" +
+                " · precision=${value.getRevenuePrecision()}" +
+                " · network=${value.getNetworkName()}",
         )
-    }
-
-    fun clicked(type: String, ad: AdContentInfo) {
-        Log.d(TAG, "$type clicked · src=${ad.sourceName}")
     }
 
     fun dismissed(type: String) {
         Log.d(TAG, "$type dismissed")
     }
 
-    fun failed(stage: String, error: AdError) {
+    fun failed(stage: String, error: Yodo1MasError) {
         Log.d(TAG, "$stage FAILED · code=${error.code} · ${error.message}")
     }
-
-    private fun AdContentInfo.describe(): String =
-        "src=$sourceName · eCPM=${formatRevenue(revenue)} · precision=$revenuePrecision · depth=$impressionDepth"
 
     private fun formatRevenue(value: Double): String = "%.4f".format(value)
 }
