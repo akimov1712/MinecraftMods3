@@ -11,79 +11,105 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.cleversolutions.ads.android.CASBannerView
+import com.yodo1.mas.banner.Yodo1MasBannerAdSize
+import com.yodo1.mas.banner.Yodo1MasBannerAdView
+import com.yodo1.mas.banner.Yodo1MasBannerAdListener
+import com.yodo1.mas.banner.Yodo1MasBannerAdRevenueListener
+import com.yodo1.mas.error.Yodo1MasError
+import dev.akmvxx.ads.AdEvents
 import dev.akmvxx.ui.AppColors
-import kotlinx.coroutines.delay
 import dev.akmvxx.ui.R as UiR
 
-private const val ACQUIRE_MAX_ATTEMPTS = 10
-private const val ACQUIRE_RETRY_MS = 500L
+private const val TYPE = "Banner"
 
+/**
+ * Composable wrapper around a single [Yodo1MasBannerAdView] instance. The view
+ * is created once per [slotKey] (cached via `remember`) so that scrolling in a
+ * LazyColumn doesn't churn through new banner instances on every recompose.
+ *
+ * The view's own auto-refresh loop keeps it fresh while it stays on screen, so
+ * we don't manage refresh intervals in code.
+ */
 @Composable
 internal fun BannerAdView(slotKey: String, modifier: Modifier = Modifier) {
-    var bannerView by remember(slotKey) {
-        mutableStateOf<CASBannerView?>(BannerAdSlots.acquire(slotKey))
-    }
+    val context = LocalContext.current
+    val bannerView = remember(slotKey) {
+        Yodo1MasBannerAdView(context).apply {
+            setAdSize(Yodo1MasBannerAdSize.Banner)
+            setAdListener(object : Yodo1MasBannerAdListener {
+                override fun onBannerAdLoaded(view: Yodo1MasBannerAdView) =
+                    AdEvents.loaded(TYPE)
 
-    // Retry while the pool is still filling — otherwise a slot that first
-    // composed before any banner finished loading would stay empty for the
-    // entire session because remember(slotKey) would cache the null.
-    LaunchedEffect(slotKey) {
-        var attempt = 0
-        while (bannerView == null && attempt < ACQUIRE_MAX_ATTEMPTS) {
-            delay(ACQUIRE_RETRY_MS)
-            bannerView = BannerAdSlots.acquire(slotKey)
-            attempt++
+                override fun onBannerAdFailedToLoad(
+                    view: Yodo1MasBannerAdView,
+                    error: Yodo1MasError,
+                ) = AdEvents.failed("$TYPE load", error)
+
+                override fun onBannerAdOpened(view: Yodo1MasBannerAdView) = Unit
+
+                override fun onBannerAdFailedToOpen(
+                    view: Yodo1MasBannerAdView,
+                    error: Yodo1MasError,
+                ) = AdEvents.failed("$TYPE show", error)
+
+                override fun onBannerAdClosed(view: Yodo1MasBannerAdView) =
+                    AdEvents.dismissed(TYPE)
+            })
+            setAdRevenueListener(
+                Yodo1MasBannerAdRevenueListener { _, value ->
+                    AdEvents.impression(TYPE, value)
+                }
+            )
+            loadAd()
         }
     }
-
-    val view = bannerView
-
-    val heightModifier =
-        if (view != null) Modifier.wrapContentHeight()
-        else Modifier.height(0.dp)
 
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .then(heightModifier)
+            .wrapContentHeight()
             .clip(RoundedCornerShape(24.dp))
             .border(2.dp, AppColors.Primary, RoundedCornerShape(24.dp)),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
-        view?.let { v ->
-            AndroidView(
-                factory = {
-                    (v.parent as? ViewGroup)?.removeView(v)
-                    v
-                }
-            )
+        AndroidView(
+            factory = {
+                (bannerView.parent as? ViewGroup)?.removeView(bannerView)
+                bannerView
+            },
+            modifier = Modifier.fillMaxWidth().height(50.dp),
+        )
 
-            Text(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .align(Alignment.TopStart)
-                    .background(Color.Black.copy(0.4f), RoundedCornerShape(16.dp))
-                    .padding(horizontal = 8.dp, vertical = 2.dp),
-                text = stringResource(UiR.string.ad),
-                color = Color.White,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold
-            )
+        Text(
+            modifier = Modifier
+                .padding(8.dp)
+                .align(Alignment.TopStart)
+                .background(Color.Black.copy(0.4f), RoundedCornerShape(16.dp))
+                .padding(horizontal = 8.dp, vertical = 2.dp),
+            text = stringResource(UiR.string.ad),
+            color = Color.White,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+        )
+    }
+
+    DisposableEffect(slotKey) {
+        onDispose {
+            // Release SDK resources held by the view (auto-refresh timer,
+            // bidder callbacks). MAS will free the underlying ad slot.
+            bannerView.destroy()
         }
     }
 }
