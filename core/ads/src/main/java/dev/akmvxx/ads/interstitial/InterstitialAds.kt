@@ -1,7 +1,6 @@
 package dev.akmvxx.ads.interstitial
 
 import android.app.Activity
-import android.content.Context
 import dev.akmvxx.ads.util.isShowNextAd
 import dev.akmvxx.domain.entity.settings.SettingsEntity
 
@@ -10,14 +9,14 @@ object InterstitialAds {
     private var initialized = false
     private var showChance: Int = 100
 
-    fun initialize(context: Context, casId: String, settings: SettingsEntity) {
+    fun initialize(activity: Activity, settings: SettingsEntity) {
         if (initialized) return
         if (!settings.adEnabled.inter) return
 
         initialized = true
         showChance = settings.adChangePercent.inter
 
-        InterstitialLoader.init(context.applicationContext, casId, settings.cooldownAdSecond)
+        InterstitialLoader.init(activity, settings.cooldownAdSecond)
     }
 
     fun tryShow(activity: Activity) {
