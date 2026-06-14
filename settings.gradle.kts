@@ -17,15 +17,47 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven("https://jitpack.io")
+
+        // ─── Yodo1 MAS mediation adapter repositories ────────────────────
+        // Listed under "Required Maven Repositories" in
+        // https://developers.yodo1.com/docs/sdk/guides/android/integration
+        maven {
+            name = "IronSourceAdsRepo"
+            url = uri("https://android-sdk.is.com")
+            content { includeGroupByRegex("com\\.ironsource.*") }
+        }
+        maven {
+            name = "PangleAdsRepo"
+            url = uri("https://artifact.bytedance.com/repository/pangle")
+            content {
+                includeGroup("com.pangle.global")
+                includeGroup("com.bytedance.sdk")
+            }
+        }
         maven {
             name = "MintegralAdsRepo"
             url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
             content { includeGroup("com.mbridge.msdk.oversea") }
         }
         maven {
-            name = "PangleAdsRepo"
-            url = uri("https://artifact.bytedance.com/repository/pangle")
-            content { includeGroup("com.pangle.global") }
+            name = "BidMachineAdsRepo"
+            url = uri("https://artifactory.bidmachine.io/bidmachine")
+            content {
+                includeGroup("io.bidmachine")
+                includeGroupByRegex("io\\.bidmachine\\..*")
+                includeGroup("com.explorestack")
+                includeGroupByRegex("com\\.explorestack\\..*")
+            }
+        }
+        maven {
+            name = "YSONetworkRepo"
+            url = uri("https://ysonetwork.s3.eu-west-3.amazonaws.com/sdk/android")
+            content { includeGroup("com.ysocorp") }
+        }
+        maven {
+            name = "PubMaticAdsRepo"
+            url = uri("https://repo.pubmatic.com/artifactory/public-repos")
+            content { includeGroup("com.pubmatic.sdk") }
         }
         maven {
             name = "ChartboostAdsRepo"
@@ -36,32 +68,13 @@ dependencyResolutionManagement {
             }
         }
         maven {
-            name = "YSONetworkRepo"
-            url = uri("https://ysonetwork.s3.eu-west-3.amazonaws.com/sdk/android")
-            content { includeGroup("com.ysocorp") }
-        }
-        maven {
-            name = "OguryAdsRepo"
-            url = uri("https://maven.ogury.co")
+            name = "AnythinkAdsRepo"
+            url = uri("https://jfrog.anythinktech.com/artifactory/overseas_sdk")
             content {
-                includeGroup("co.ogury")
-                includeGroup("co.ogury.module")
+                includeGroup("com.anythink.android")
+                includeGroupByRegex("com\\.anythink\\..*")
             }
         }
-        maven {
-            name = "SmaatoAdsRepo"
-            url = uri("https://s3.amazonaws.com/smaato-sdk-releases/")
-            content {
-                includeGroup("com.smaato.android.sdk")
-                includeGroup("com.verve")
-            }
-        }
-        maven {
-            name = "SuperAwesomeRepo"
-            url = uri("https://aa-sdk.s3-eu-west-1.amazonaws.com/android_repo/")
-            content { includeGroup("tv.superawesome.sdk.publisher") }
-        }
-        maven("https://artifactory-external.vkpartner.ru/artifactory/maven")
     }
 }
 

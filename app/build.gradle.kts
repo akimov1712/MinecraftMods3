@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
-    alias(libs.plugins.cas)
 }
 
 val applicationArtifactId: String =
@@ -14,6 +13,10 @@ val appVersionName: String =
     property("versionName")?.toString() ?: "1.0"
 val metricaApiKey: String =
     property("metricaApiKey")?.toString().orEmpty()
+val masAppKey: String =
+    property("masAppKey")?.toString().orEmpty()
+val admobAppId: String =
+    property("admobAppId")?.toString().orEmpty()
 
 android {
     namespace = "dev.akmvxx.app"
@@ -28,10 +31,19 @@ android {
         versionCode = appVersionCode
         versionName = appVersionName
 
+        // Yodo1 MAS pulls in a long mediation chain; without multidex the
+        // 65k method limit blows up on minSdk < 21 builds and on debug.
+        multiDexEnabled = true
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "APPLICATION_ID", "\"$applicationId\"")
         buildConfigField("String", "METRICA_API_KEY", "\"$metricaApiKey\"")
+        buildConfigField("String", "MAS_APP_KEY", "\"$masAppKey\"")
+        buildConfigField("String", "ADMOB_APP_ID", "\"$admobAppId\"")
+
+        // Substituted into AndroidManifest meta-data for AdMob.
+        manifestPlaceholders["admobAppId"] = admobAppId
     }
 
     buildTypes {
@@ -50,35 +62,6 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-}
-
-cas {
-    includeOptimalAds = true
-    adapters {
-        ironSource = true
-        googleAds = true
-        unityAds = true
-        kidoz = true
-        liftoffMonetize = true
-        inMobi = true
-        chartboost = true
-        dtExchange = true
-        mintegral = true
-        appLovin = true
-        audienceNetwork = true
-        pangle = true
-        yangoAds = true
-        bigoAds = true
-        casExchange = true
-        startIO = true
-        hyprMX = true
-        ysoNetwork = true
-        ogury = true
-        prado = true
-        superAwesome = true
-        smaato = true
-        maticoo = true
     }
 }
 

@@ -38,7 +38,7 @@ android {
 
 dependencies {
 
-    api(libs.cas.sdk)
+    api(libs.yodo1.mas.full)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
