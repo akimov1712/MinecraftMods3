@@ -1,50 +1,43 @@
 package dev.akmvxx.ads.open
 
 import android.app.Activity
-import android.content.Context
-import com.cleveradssolutions.sdk.AdContentInfo
-import com.cleveradssolutions.sdk.AdFormat
-import com.cleveradssolutions.sdk.OnAdImpressionListener
-import com.cleveradssolutions.sdk.screen.CASAppOpen
-import com.cleveradssolutions.sdk.screen.ScreenAdContentCallback
-import com.cleversolutions.ads.AdError
+import com.yodo1.mas.appopenad.Yodo1MasAppOpenAd
+import com.yodo1.mas.appopenad.Yodo1MasAppOpenAdListener
+import com.yodo1.mas.appopenad.Yodo1MasAppOpenAdRevenueListener
+import com.yodo1.mas.error.Yodo1MasError
 import dev.akmvxx.ads.AdEvents
 import dev.akmvxx.ads.FullscreenAdsGate
+import java.lang.ref.WeakReference
 
 internal object AppOpenLoader {
 
     private const val TYPE = "AppOpen"
 
-    private var appOpen: CASAppOpen? = null
     private var initialized = false
+    private var activityRef: WeakReference<Activity>? = null
 
     private var cooldownSeconds = 60
     private var lastShowTime = 0L
 
-    fun init(context: Context, casId: String, cooldown: Int) {
+    fun init(activity: Activity, cooldown: Int) {
         if (initialized) return
         initialized = true
+        activityRef = WeakReference(activity)
         cooldownSeconds = cooldown
 
-        appOpen = CASAppOpen(casId).apply {
-            contentCallback = callback
-            isAutoloadEnabled = true
-            isAutoshowEnabled = false
-            onImpressionListener = OnAdImpressionListener { ad ->
-                AdEvents.impression(TYPE, ad)
-            }
-        }
-        appOpen?.load(context.applicationContext)
+        Yodo1MasAppOpenAd.getInstance().setAdListener(listener)
+        Yodo1MasAppOpenAd.getInstance().setAdRevenueListener(revenueListener)
+        Yodo1MasAppOpenAd.getInstance().loadAd(activity)
     }
 
     fun show(activity: Activity) {
         if (!initialized) return
-        val ad = appOpen ?: return
+        activityRef = WeakReference(activity)
         if (!canShow()) return
         if (!FullscreenAdsGate.canShow()) return
-        if (ad.isLoaded) {
+        if (Yodo1MasAppOpenAd.getInstance().isLoaded) {
             FullscreenAdsGate.markShown()
-            ad.show(activity)
+            Yodo1MasAppOpenAd.getInstance().showAd(activity)
         }
     }
 
@@ -52,35 +45,52 @@ internal object AppOpenLoader {
     fun resume() = Unit
 
     fun destroy() {
-        appOpen?.destroy()
-        appOpen = null
+        Yodo1MasAppOpenAd.getInstance().setAdListener(null)
+        Yodo1MasAppOpenAd.getInstance().setAdRevenueListener(null)
         initialized = false
         cooldownSeconds = 60
         lastShowTime = 0L
+        activityRef = null
     }
 
-    private val callback = object : ScreenAdContentCallback() {
+    private fun reload() {
+        activityRef?.get()?.let { Yodo1MasAppOpenAd.getInstance().loadAd(it) }
+    }
 
-        override fun onAdLoaded(ad: AdContentInfo) = AdEvents.loaded(TYPE, ad)
-
-        override fun onAdShowed(ad: AdContentInfo) {
-            // Impression logged via OnAdImpressionListener.
+    private val listener = object : Yodo1MasAppOpenAdListener {
+        override fun onAppOpenAdLoaded(ad: Yodo1MasAppOpenAd) {
+            AdEvents.loaded(TYPE)
         }
 
-        override fun onAdDismissed(ad: AdContentInfo) {
+        override fun onAppOpenAdFailedToLoad(
+            ad: Yodo1MasAppOpenAd,
+            error: Yodo1MasError,
+        ) {
+            AdEvents.failed("$TYPE load", error)
+            reload()
+        }
+
+        override fun onAppOpenAdOpened(ad: Yodo1MasAppOpenAd) {
+            // Impression event — revenue arrives via the revenue listener.
+        }
+
+        override fun onAppOpenAdFailedToOpen(
+            ad: Yodo1MasAppOpenAd,
+            error: Yodo1MasError,
+        ) {
+            AdEvents.failed("$TYPE show", error)
+            reload()
+        }
+
+        override fun onAppOpenAdClosed(ad: Yodo1MasAppOpenAd) {
             AdEvents.dismissed(TYPE)
             lastShowTime = System.currentTimeMillis()
+            reload()
         }
+    }
 
-        override fun onAdFailedToLoad(format: AdFormat, error: AdError) {
-            AdEvents.failed("$TYPE load", error)
-        }
-
-        override fun onAdFailedToShow(format: AdFormat, error: AdError) {
-            AdEvents.failed("$TYPE show", error)
-        }
-
-        override fun onAdClicked(ad: AdContentInfo) = AdEvents.clicked(TYPE, ad)
+    private val revenueListener = Yodo1MasAppOpenAdRevenueListener { _, value ->
+        AdEvents.impression(TYPE, value)
     }
 
     private fun canShow(): Boolean =
