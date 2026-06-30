@@ -30,5 +30,3 @@ fun TabsScreen(
         BottomNavigationBar()
     }
 }
-
-

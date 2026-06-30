@@ -12,7 +12,6 @@ enum class ModCategoryUi(@StringRes val titleRes: Int) {
     Texture(R.string.mod_category_texture),
     Skin(R.string.mod_category_skins);
 
-
     fun toModCategory() = when(this){
         All -> null
         Addon -> ModCategory.Addon

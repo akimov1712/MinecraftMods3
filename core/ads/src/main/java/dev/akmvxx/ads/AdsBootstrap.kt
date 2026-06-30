@@ -16,19 +16,6 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Owns ad subsystem startup for the entire process.
- *
- *  1. Fetch server-side settings (cooldowns, chances, native type) — the
- *     repository handles its own retries + cache fallback.
- *  2. Hand the Activity off to the [setupMas] lambda (lives in `:app`) so MAS
- *     can run its init flow, including the GDPR/CCPA/COPPA privacy dialog.
- *  3. Once MAS reports ready, initialize Interstitial / AppOpen / Native
- *     coordinators with the resolved [SettingsEntity].
- *
- * MAS' `initMas` (and per-format `loadAd`) need an Activity, so the bootstrap
- * is invoked from MainActivity.onCreate rather than App.onCreate.
- */
 @Singleton
 class AdsBootstrap @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -52,8 +39,7 @@ class AdsBootstrap @Inject constructor(
         started = true
 
         if (appKey.isBlank()) {
-            // No MAS App Key configured — skip ad init entirely so the rest
-            // of the app still runs (useful for forks without monetization).
+
             return
         }
 
@@ -63,8 +49,8 @@ class AdsBootstrap @Inject constructor(
             setupMas(
                 activity,
                 appKey,
-                /* onReady = */ { initializeAds(activity, settings) },
-                /* onFailed = */ { /* MAS keeps retrying internally — nothing to do. */ },
+                 { initializeAds(activity, settings) },
+                 {  },
             )
         }
     }

@@ -77,7 +77,6 @@ internal object UseCasesModule {
     fun provideOpenSavedFileUseCase(repository: SaveRepository): OpenSavedFileUseCase =
         OpenSavedFileUseCase(repository)
 
-
     @Provides
     fun provideFetchSettingsUseCase(repository: SettingsRepository): GetSettingsUseCase =
         GetSettingsUseCase(repository)

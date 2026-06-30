@@ -14,18 +14,6 @@ import dev.akmvxx.domain.entity.settings.SettingsEntity
 import dev.akmvxx.domain.entity.settings.SettingsEntity.NativeType.BANNER
 import dev.akmvxx.domain.entity.settings.SettingsEntity.NativeType.NATIVE
 
-/**
- * Public facade for the "inline / fullscreen" ad slot used in feed views and
- * the AdShow screen. Yodo1 MAS doesn't expose a global preload pool the way
- * CAS did — each [Yodo1MasBannerAd] / [Yodo1MasNativeAd] view kicks off its
- * own waterfall and Yodo1 internally throttles retries via
- * `autoDelayIfLoadFail`. So [NativeAds] just holds the routing logic
- * (BANNER vs NATIVE, percent gate) and the Compose composables hand off to
- * the SDK-owned views.
- *
- * Preload signaling is reduced to a single "MAS is ready" flag — the splash
- * screen treats that as PRELOADED.
- */
 object NativeAds {
 
     private sealed interface ActiveType {
@@ -59,9 +47,6 @@ object NativeAds {
             NATIVE -> ActiveType.Native
         }
 
-        // Yodo1 MAS managers don't need a "pool init" call — preparing the
-        // managers + warm-up loaders happens in the per-slot composables.
-        // Notify the splash that the ad subsystem is ready to render.
         consumePending()?.invoke(PreloadStatus.PRELOADED)
     }
 
@@ -71,8 +56,7 @@ object NativeAds {
             return
         }
         if (!initialized) {
-            // Buffer until initialize() finishes — splash subscribes before
-            // AdsBootstrap finishes its async fetch + MAS init.
+
             pendingPreloadCallback = onPreloaded
             return
         }
@@ -83,11 +67,6 @@ object NativeAds {
         pendingPreloadCallback = null
     }
 
-    /**
-     * MAS managers can't tell us "we have one in the queue" the way CAS' pool
-     * could, so this returns true as soon as init has completed. The
-     * coordinator-level chance gate + the per-view auto-load handle the rest.
-     */
     fun hasAd(): Boolean = initialized
 
     fun isBanner(): Boolean = active is ActiveType.Banner

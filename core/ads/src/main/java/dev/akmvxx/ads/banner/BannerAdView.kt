@@ -34,14 +34,6 @@ import dev.akmvxx.ui.R as UiR
 
 private const val TYPE = "Banner"
 
-/**
- * Composable wrapper around a single [Yodo1MasBannerAdView] instance. The view
- * is created once per [slotKey] (cached via `remember`) so that scrolling in a
- * LazyColumn doesn't churn through new banner instances on every recompose.
- *
- * The view's own auto-refresh loop keeps it fresh while it stays on screen, so
- * we don't manage refresh intervals in code.
- */
 @Composable
 internal fun BannerAdView(slotKey: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
@@ -107,8 +99,7 @@ internal fun BannerAdView(slotKey: String, modifier: Modifier = Modifier) {
 
     DisposableEffect(slotKey) {
         onDispose {
-            // Release SDK resources held by the view (auto-refresh timer,
-            // bidder callbacks). MAS will free the underlying ad slot.
+
             bannerView.destroy()
         }
     }

@@ -32,9 +32,7 @@ internal object InterstitialLoader {
 
     fun show(activity: Activity) {
         if (!initialized) return
-        // Refresh the activity reference — the same singleton survives
-        // configuration changes, so the most recent Activity is the safest
-        // one to use for the next reload.
+
         activityRef = WeakReference(activity)
         if (!canShow()) return
         if (!FullscreenAdsGate.canShow()) return
@@ -61,14 +59,12 @@ internal object InterstitialLoader {
             error: Yodo1MasError,
         ) {
             AdEvents.failed("$TYPE load", error)
-            // MAS throttles internal retries via autoDelayIfLoadFail; a
-            // re-issue here keeps the waterfall warm without busy-spinning.
+
             reload()
         }
 
         override fun onInterstitialAdOpened(ad: Yodo1MasInterstitialAd) {
-            // Impression recorded here. Revenue arrives via the separate
-            // Yodo1MasInterstitialAdRevenueListener below.
+
         }
 
         override fun onInterstitialAdFailedToOpen(

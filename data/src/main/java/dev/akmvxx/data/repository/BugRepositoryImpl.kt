@@ -28,5 +28,4 @@ internal class BugRepositoryImpl @Inject constructor(
             }
         }
 
-
 }

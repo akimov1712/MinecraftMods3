@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface FavoriteRepository {
 
-
     suspend fun getCountFavorites(): Int
     suspend fun fetchFavoriteMods(offset: Int, limit: Int): Result<List<ModEntity>, DataError>
     suspend fun changeStatusFavorite(modId: Int): Boolean

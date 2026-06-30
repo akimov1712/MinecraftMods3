@@ -7,12 +7,6 @@ import io.appmetrica.analytics.AppMetricaConfig
 
 private const val TAG = "AppMetrics"
 
-/**
- * Yandex AppMetrica bootstrap. The API key is injected at build time via
- * the `metricaApiKey` gradle property → `BuildConfig.METRICA_API_KEY`.
- * Empty key skips activation gracefully — useful for forked builds that
- * don't ship analytics.
- */
 fun Application.setupMetrics() {
     val key = BuildConfig.METRICA_API_KEY
     if (key.isBlank()) {

@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 object AppColors {
 
-    val Primary = Color(0xFFE8741D)
+    val Primary = Color(0xFFE53935)
     val Outlined = Color(0xff3A3A3F)
     val TextWhite = Color(0xffECEBE8)
 
@@ -18,7 +18,6 @@ object AppColors {
 
     val Shimmer = Color(0xff5C6480)
 
-    // Category accents
     val CategoryPurple = Color(0xff9B7CFF)
     val CategoryPink = Color(0xffFF7EB6)
     val CategoryBlue = Color(0xff5BAFE0)

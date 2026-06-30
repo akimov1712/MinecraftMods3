@@ -71,7 +71,7 @@ internal object AppOpenLoader {
         }
 
         override fun onAppOpenAdOpened(ad: Yodo1MasAppOpenAd) {
-            // Impression event — revenue arrives via the revenue listener.
+
         }
 
         override fun onAppOpenAdFailedToOpen(

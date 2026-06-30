@@ -5,7 +5,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 
-
 @SuppressLint("MissingPermission")
 fun isInternetAvailable(context: Context): Boolean {
     val connectivityManager =

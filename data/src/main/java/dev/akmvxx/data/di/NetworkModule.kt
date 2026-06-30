@@ -55,7 +55,6 @@ internal object NetworkModule {
     fun provideModApi(retrofit: Retrofit): ModApi =
         retrofit.create(ModApi::class.java)
 
-
     @Provides
     @Singleton
     fun provideSettingsApi(retrofit: Retrofit): SettingsApi =

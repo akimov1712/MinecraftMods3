@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -110,6 +111,7 @@ private fun RowScope.BottomNavigationBarItem(
         modifier = Modifier
             .then(if (isSelected) Modifier.weight(1f) else Modifier)
             .height(48.dp)
+            .defaultMinSize(minWidth = 48.dp)
             .clip(CircleShape)
             .background(backgroundColor)
             .onClick { onClick() }

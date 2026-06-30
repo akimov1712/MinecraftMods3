@@ -97,7 +97,6 @@ internal fun FileRow(
             )
         }
 
-
             if (item.status is FileStatus.Downloading) {
                 ProgressBlock(status = item.status)
             }
@@ -254,4 +253,3 @@ private fun formatSize(bytes: Long?, status: FileStatus): String {
         else -> sizeText
     }
 }
-

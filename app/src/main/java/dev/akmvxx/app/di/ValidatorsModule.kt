@@ -28,5 +28,4 @@ internal object ValidatorsModule {
     @Provides
     fun provideProposeValidator(): ProposeValidator = ProposeValidator()
 
-
 }

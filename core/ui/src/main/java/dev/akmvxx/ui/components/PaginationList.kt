@@ -69,7 +69,6 @@ fun <T> PaginationList(
     }
 }
 
-
 private fun LazyListScope.ListFooter(
     status: ScreenUiState,
     isEndList: Boolean,
@@ -101,7 +100,6 @@ private fun LazyListScope.ListFooter(
 
         else -> Unit
     }
-
 
 }
 
@@ -150,7 +148,6 @@ private fun FooterContentErrorInline(onLoadMore: () -> Unit) {
         }
     }
 }
-
 
 @Composable
 private fun PreloadTrigger(

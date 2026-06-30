@@ -39,4 +39,3 @@ abstract class MVI<I,S,E>(state: S): ViewModel() {
     }
 
 }
-

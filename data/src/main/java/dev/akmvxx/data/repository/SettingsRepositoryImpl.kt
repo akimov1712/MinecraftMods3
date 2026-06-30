@@ -26,12 +26,6 @@ internal class SettingsRepositoryImpl @Inject constructor(
     private val appSettings: AppSettings,
 ) : SettingsRepository {
 
-    /**
-     * Tries the settings endpoint up to [FETCH_MAX_ATTEMPTS] times with a
-     * linear backoff. A single flaky network call would otherwise leave the
-     * whole session running on the empty-cache defaults (all ads disabled),
-     * so we burn a few seconds rather than ship zero ad revenue.
-     */
     private suspend fun loadSettings(): SettingsEntity? {
         repeat(FETCH_MAX_ATTEMPTS) { attempt ->
             val entity = runCatching {

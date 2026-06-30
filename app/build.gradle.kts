@@ -31,8 +31,6 @@ android {
         versionCode = appVersionCode
         versionName = appVersionName
 
-        // Yodo1 MAS pulls in a long mediation chain; without multidex the
-        // 65k method limit blows up on minSdk < 21 builds and on debug.
         multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -42,7 +40,6 @@ android {
         buildConfigField("String", "MAS_APP_KEY", "\"$masAppKey\"")
         buildConfigField("String", "ADMOB_APP_ID", "\"$admobAppId\"")
 
-        // Substituted into AndroidManifest meta-data for AdMob.
         manifestPlaceholders["admobAppId"] = admobAppId
     }
 

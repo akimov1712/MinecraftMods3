@@ -19,10 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinecraftMods3">
 
-        <!-- Yodo1 MAS uses Google AdMob as a primary mediated network — this
-             meta-data is mandatory per Yodo1 docs and the AdMob ID is read
-             from gradle.properties (admobAppId) → buildConfigField → manifest
-             placeholder. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="${admobAppId}"/>

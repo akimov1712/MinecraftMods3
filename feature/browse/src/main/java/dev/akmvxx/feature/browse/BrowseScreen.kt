@@ -111,8 +111,6 @@ fun BrowseScreen(
     }
 }
 
-
-
 @Preview
 @Composable
 private fun BrowsePreview() {

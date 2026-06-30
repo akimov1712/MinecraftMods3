@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Help screen chrome -->
     <string name="help_title">Help</string>
     <string name="help_subtitle">Quick answers to common questions.</string>
     <string name="help_search_placeholder">Search help</string>
     <string name="help_no_results">Nothing found. Try a different word.</string>
 
-    <!-- Help sections -->
     <string name="help_section_getting_started">Getting started</string>
     <string name="help_section_installing">Installing</string>
     <string name="help_section_in_game">In the game</string>
@@ -16,7 +14,6 @@
     <string name="help_section_saves_cleanup">Saves &amp; cleanup</string>
     <string name="help_section_reach_out">Reach out</string>
 
-    <!-- Getting started -->
     <string name="faq_account_q">Do I have to sign up?</string>
     <string name="faq_account_a">Nope. No login, no email, no password to remember. Just open the app and go.</string>
 
@@ -26,7 +23,6 @@
     <string name="faq_supported_versions_q">Which Minecraft versions work?</string>
     <string name="faq_supported_versions_a">Android Minecraft Bedrock — the latest version and the few before it. Every mod tells you which exact versions it\'s for, look near the file.</string>
 
-    <!-- Installing -->
     <string name="faq_how_install_q">How do I install a mod?</string>
     <string name="faq_how_install_a">Open the mod, pick a file from the list, hit download, then install. Minecraft will pop up and grab it on its own. Last step — turn the pack on inside the world you want to play.</string>
 
@@ -42,7 +38,6 @@
     <string name="faq_corrupted_file_q">I got a \"file corrupted\" error</string>
     <string name="faq_corrupted_file_a">Means the download cut off halfway. Delete what you have, grab it again on a stable connection (Wi-Fi if you can) and you should be good.</string>
 
-    <!-- In the game -->
     <string name="faq_mod_not_visible_q">I installed the mod but I don\'t see anything in the game</string>
     <string name="faq_mod_not_visible_a">The mod is in Minecraft, you just have to switch it on. Open your world\'s settings and enable the pack. Some mods also need Experimental Features turned on — same settings menu.</string>
 
@@ -55,7 +50,6 @@
     <string name="faq_multiplayer_q">Can I use mods on a server with friends?</string>
     <string name="faq_multiplayer_a">Depends on the server. Usually every player needs the same packs installed — if the server you\'re joining allows the mod, you\'re fine. If it doesn\'t, the mod just won\'t do anything there.</string>
 
-    <!-- Content & updates -->
     <string name="faq_new_mods_q">Are you adding new mods?</string>
     <string name="faq_new_mods_a">All the time. Refresh the catalog and you\'ll see what showed up since last time.</string>
 
@@ -65,7 +59,6 @@
     <string name="faq_safety_q">Are the mods safe?</string>
     <string name="faq_safety_a">Yeah. Every mod gets checked before it goes into the catalog — no viruses, no weird stuff hiding in the file.</string>
 
-    <!-- About the app -->
     <string name="faq_ads_q">Why are there ads?</string>
     <string name="faq_ads_a">Servers and updates aren\'t free, and ads are how we pay for them — that\'s how the app itself stays free for you. We try to keep them out of your way while you\'re actually using the app.</string>
 
@@ -75,14 +68,12 @@
     <string name="faq_uninstall_q">If I delete this app, do I lose my mods?</string>
     <string name="faq_uninstall_a">No. The mods live inside Minecraft now — they stay there even if our app goes.</string>
 
-    <!-- Saves and cleanup -->
     <string name="faq_safe_for_saves_q">Will mods mess up my worlds?</string>
     <string name="faq_safe_for_saves_a">Not on their own. Mods are added as packs in Minecraft and you choose which world they go into. If you\'re trying a new mod and don\'t want to risk a world you care about — start a new world for it.</string>
 
     <string name="faq_remove_mod_q">How do I delete a mod I don\'t want anymore?</string>
     <string name="faq_remove_mod_a">Inside Minecraft, open Packs (Behavior, Resource, or Skin depending on the type), long-press the one you want gone, and pick Delete. Your worlds stay safe — only the mod is removed.</string>
 
-    <!-- Reach out -->
     <string name="faq_report_issue_q">Where do I tell you something is broken?</string>
     <string name="faq_report_issue_a">Use the Feedback section on the Propose screen. Write what happened — the more detail you give us, the faster we can figure it out.</string>
 

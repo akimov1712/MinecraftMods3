@@ -26,12 +26,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appReview.maybeRequest(this)
-        adsBootstrap.start(
-            activity = this,
-            appKey = BuildConfig.MAS_APP_KEY,
-        ) { activity, key, onReady, onFailed ->
-            setupMas(activity, key, onReady) { onFailed() }
-        }
+
         enableEdgeToEdge()
         setContent {
             changeStatusBarColor(StatusBarColor.Light)

@@ -4,14 +4,6 @@ import android.util.Log
 import com.yodo1.mas.error.Yodo1MasError
 import com.yodo1.mas.ad.Yodo1MasAdValue
 
-/**
- * Single logging channel for ad telemetry. Each impression line prints the
- * mediation network ([Yodo1MasAdValue] doesn't expose `sourceName` directly,
- * but we get currency + eCPM + revenue precision), so logcat is enough to
- * eyeball which networks are filling and what they pay.
- *
- *     adb logcat -s Ads
- */
 internal object AdEvents {
 
     private const val TAG = "Ads"

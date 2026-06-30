@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Install guide screen -->
     <string name="guide_title">How to install a mod</string>
     <string name="guide_subtitle">Just follow the steps below — it takes about a minute.</string>
     <string name="guide_back">Back</string>

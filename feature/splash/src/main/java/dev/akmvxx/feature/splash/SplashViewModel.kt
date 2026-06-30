@@ -15,7 +15,8 @@ class SplashViewModel @Inject constructor() :
     MVI<SplashIntent, SplashState, SplashEvent>(SplashState()) {
 
     init {
-        watchPreload()
+
+        markReady()
         startWatchdog()
     }
 

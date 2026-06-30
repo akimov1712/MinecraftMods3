@@ -6,7 +6,6 @@ enum class ModSorted {
     MostPopular,
     Rating;
 
-
     fun toKeySorted() = when(this){
         Relevance -> "order"
         MostPopular -> "usedCount"

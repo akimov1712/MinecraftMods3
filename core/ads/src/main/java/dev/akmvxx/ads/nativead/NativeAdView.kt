@@ -21,15 +21,6 @@ import dev.akmvxx.ui.AppColors
 
 private const val TYPE = "Native"
 
-/**
- * Compose wrapper around an SDK-rendered [Yodo1MasNativeAdView] for inline
- * slots in a LazyColumn. The Yodo1 view manages its own headline/body/icon/
- * media/CTA layout — there's no Compose-side template like the CAS variant
- * needed.
- *
- * One [Yodo1MasNativeAdView] is created per [slotKey] and cached via
- * `remember`, so scrolling in and out of view doesn't churn through ads.
- */
 @Composable
 internal fun NativeAdView(slotKey: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current

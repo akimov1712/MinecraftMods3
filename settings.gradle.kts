@@ -18,9 +18,6 @@ dependencyResolutionManagement {
         mavenCentral()
         maven("https://jitpack.io")
 
-        // ─── Yodo1 MAS mediation adapter repositories ────────────────────
-        // Listed under "Required Maven Repositories" in
-        // https://developers.yodo1.com/docs/sdk/guides/android/integration
         maven {
             name = "IronSourceAdsRepo"
             url = uri("https://android-sdk.is.com")

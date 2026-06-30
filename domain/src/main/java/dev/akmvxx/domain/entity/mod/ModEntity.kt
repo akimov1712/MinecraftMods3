@@ -11,4 +11,3 @@ data class ModEntity(
     val downloadableFiles: List<String>,
     val supportVersions: List<String>,
 )
-

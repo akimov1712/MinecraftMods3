@@ -215,10 +215,7 @@ class FilesViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        // viewModelScope.cancel() already propagates cancellation to all
-        // child download jobs, which makes SaveRepositoryImpl drop the
-        // partially written file via its CancellationException handler.
-        // Maps are cleared just to keep state tidy.
+
         downloadJobs.clear()
         stallWatchers.clear()
     }

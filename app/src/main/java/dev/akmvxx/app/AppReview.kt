@@ -17,20 +17,8 @@ private const val PREFS_NAME = "app_review"
 private const val KEY_APP_OPEN_COUNT = "app_open_count"
 private const val KEY_REVIEW_SHOWN = "review_shown"
 
-/** App opens at which the in-app review prompt is requested. */
 private val TRIGGER_OPENS = setOf(3, 7, 15)
 
-/**
- * Drives the Google Play in-app review flow.
- *
- * Counts cold app opens in SharedPreferences. When the count hits one of
- * [TRIGGER_OPENS] thresholds and the user has not already been prompted in
- * this lifetime, asks the Play SDK to launch the review form.
- *
- * Google Play caps the actual frequency on its side (no more than a handful
- * of times per year regardless of how often we call), so the local counter
- * is just to avoid burning a request on the very first launch.
- */
 @Singleton
 class AppReview @Inject constructor(
     @ApplicationContext private val context: Context,

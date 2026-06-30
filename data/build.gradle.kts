@@ -17,13 +17,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
-
         val baseUrl = property("BASE_URL")?.toString() ?: error("Not found BASE_URL from gradle.properties")
         buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
 
         val appId = property("APP_ID")?.toString() ?: error("Not found APP_ID from gradle.properties")
         buildConfigField("Integer", "APP_ID", appId)
-
 
     }
 
