@@ -27,8 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.dropShadow
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.pluralStringResource
@@ -43,100 +41,62 @@ import dev.akmvxx.ui.R
 import dev.akmvxx.ui.entity.ModCategoryUi
 import dev.akmvxx.ui.utils.onClick
 
+private val CardShape = RoundedCornerShape(24.dp)
+private val ImageShape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
+
 @Composable
 fun ModItem(mod: ModEntity, onClick: () -> Unit) {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1.1f)
             .dropShadow(
-                shape = RoundedCornerShape(28.dp),
+                shape = CardShape,
                 shadow = Shadow(
-                    radius = 16.dp,
-                    color = AppColors.Black.copy(alpha = 0.4f)
+                    radius = 18.dp,
+                    color = AppColors.Black.copy(alpha = 0.45f)
                 )
             )
-            .clip(RoundedCornerShape(28.dp))
+            .clip(CardShape)
             .background(AppColors.BackgroundSecondary)
+            .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.06f), shape = CardShape)
             .onClick { onClick() }
     ) {
-        AppAsyncImage(
-            modifier = Modifier.fillMaxSize(),
-            url = mod.imageUrl,
-            contentScale = ContentScale.Crop
-        )
-        BottomGradient()
-        FileCountChip(fileCount = mod.downloadableFiles.size)
-        if (mod.isFavorite) FavoriteBadge()
-        InfoBlock(mod = mod, onDownloadClick = onClick)
-        InnerHighlight()
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(16f / 10f)
+                .clip(ImageShape)
+        ) {
+            AppAsyncImage(
+                modifier = Modifier.fillMaxSize(),
+                url = mod.imageUrl,
+                contentScale = ContentScale.Crop
+            )
+            CategoryChip(mod = mod)
+            if (mod.isFavorite) FavoriteBadge()
+        }
+        ModCardBody(mod = mod, onDownloadClick = onClick)
     }
 }
 
 @Composable
-private fun BoxScope.BottomGradient() {
+private fun BoxScope.CategoryChip(mod: ModEntity) {
+    val category = ModCategoryUi.fromModCategory(mod.category)
     Box(
-        modifier = Modifier
-            .align(Alignment.BottomCenter)
-            .fillMaxWidth()
-            .height(180.dp)
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color.Transparent,
-                        AppColors.Black.copy(alpha = 0.45f),
-                        AppColors.Black.copy(alpha = 0.85f),
-                    )
-                )
-            )
-    )
-}
-
-@Composable
-private fun InnerHighlight() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .border(
-                width = 1.dp,
-                color = AppColors.White.copy(alpha = 0.08f),
-                shape = RoundedCornerShape(28.dp)
-            )
-    )
-}
-
-@Composable
-private fun BoxScope.FileCountChip(fileCount: Int) {
-    Row(
         modifier = Modifier
             .align(Alignment.TopStart)
             .padding(12.dp)
             .clip(CircleShape)
             .background(AppColors.Black.copy(alpha = 0.55f))
-            .border(
-                width = 1.dp,
-                color = AppColors.White.copy(alpha = 0.12f),
-                shape = CircleShape
-            )
-            .padding(start = 4.dp, top = 4.dp, bottom = 4.dp, end = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+            .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.14f), shape = CircleShape)
+            .padding(horizontal = 12.dp, vertical = 6.dp)
     ) {
-        Icon(
-            modifier = Modifier
-                .size(22.dp)
-                .clip(CircleShape)
-                .background(AppColors.Primary)
-                .padding(5.dp),
-            imageVector = Icons.Default.Download,
-            contentDescription = null,
-            tint = AppColors.White
-        )
         Text(
-            text = pluralStringResource(R.plurals.files, fileCount, fileCount),
+            text = stringResource(category.titleRes),
             color = AppColors.White,
-            fontSize = 13.sp,
-            fontWeight = FontWeight.SemiBold
+            fontSize = 11.sp,
+            fontWeight = FontWeight.SemiBold,
+            maxLines = 1
         )
     }
 }
@@ -150,11 +110,7 @@ private fun BoxScope.FavoriteBadge() {
             .size(32.dp)
             .clip(CircleShape)
             .background(AppColors.Black.copy(alpha = 0.55f))
-            .border(
-                width = 1.dp,
-                color = AppColors.White.copy(alpha = 0.12f),
-                shape = CircleShape
-            ),
+            .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.14f), shape = CircleShape),
         contentAlignment = Alignment.Center
     ) {
         Icon(
@@ -167,78 +123,62 @@ private fun BoxScope.FavoriteBadge() {
 }
 
 @Composable
-private fun BoxScope.InfoBlock(
-    mod: ModEntity,
-    onDownloadClick: () -> Unit
-) {
-    Row(
+private fun ModCardBody(mod: ModEntity, onDownloadClick: () -> Unit) {
+    Column(
         modifier = Modifier
-            .align(Alignment.BottomCenter)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-            CategoryPill(category = mod.let { ModCategoryUi.fromModCategory(it.category) })
-            Text(
-                text = mod.title,
-                color = AppColors.White,
-                fontSize = 18.sp,
-                lineHeight = 22.sp,
-                fontWeight = FontWeight.Bold,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-        Spacer(Modifier.width(12.dp))
-        DownloadButton(onClick = onDownloadClick)
-    }
-}
-
-@Composable
-private fun CategoryPill(category: ModCategoryUi) {
-    Box(
-        modifier = Modifier
-            .clip(CircleShape)
-            .background(AppColors.White.copy(alpha = 0.15f))
-            .border(
-                width = 1.dp,
-                color = AppColors.White.copy(alpha = 0.18f),
-                shape = CircleShape
-            )
-            .padding(horizontal = 10.dp, vertical = 4.dp)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text(
-            text = stringResource(category.titleRes),
+            text = mod.title,
             color = AppColors.White,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 1
+            fontSize = 17.sp,
+            lineHeight = 22.sp,
+            fontWeight = FontWeight.Bold,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis
         )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = pluralStringResource(
+                    R.plurals.files,
+                    mod.downloadableFiles.size,
+                    mod.downloadableFiles.size
+                ),
+                color = AppColors.TextWhite.copy(alpha = 0.55f),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Spacer(Modifier.weight(1f))
+            DownloadButton(onClick = onDownloadClick)
+        }
     }
 }
 
 @Composable
 private fun DownloadButton(onClick: () -> Unit) {
-    Icon(
+    Row(
         modifier = Modifier
-            .size(48.dp)
-            .dropShadow(
-                shape = CircleShape,
-                shadow = Shadow(
-                    radius = 12.dp,
-                    color = AppColors.Primary.copy(alpha = 0.6f)
-                )
-            )
             .clip(CircleShape)
             .background(AppColors.Primary)
             .onClick { onClick() }
-            .padding(13.dp),
-        imageVector = Icons.Default.Download,
-        contentDescription = null,
-        tint = AppColors.White
-    )
+            .padding(horizontal = 18.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Icon(
+            modifier = Modifier.size(18.dp),
+            imageVector = Icons.Default.Download,
+            contentDescription = null,
+            tint = AppColors.White
+        )
+        Text(
+            text = stringResource(R.string.mod_download),
+            color = AppColors.White,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.SemiBold,
+            maxLines = 1
+        )
+    }
 }

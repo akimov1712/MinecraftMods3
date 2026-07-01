@@ -4,17 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -27,35 +23,40 @@ import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.shimmer
 import dev.akmvxx.ui.AppColors
 
+private val CardShape = RoundedCornerShape(24.dp)
+private val ImageShape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
+
 @Composable
 fun ModItemShimmer() {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1.1f)
-            .clip(RoundedCornerShape(28.dp))
+            .clip(CardShape)
             .background(AppColors.BackgroundSecondary)
+            .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.06f), shape = CardShape)
             .shimmer()
     ) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .aspectRatio(16f / 10f)
+                .clip(ImageShape)
                 .background(AppColors.Shimmer)
         )
-
-        ShimmerFileCountChip()
-
-        ShimmerInfoBlock()
-
-        Box(
+        Column(
             modifier = Modifier
-                .fillMaxSize()
-                .border(
-                    width = 1.dp,
-                    color = AppColors.White.copy(alpha = 0.08f),
-                    shape = RoundedCornerShape(28.dp)
-                )
-        )
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            ShimmerBlock(width = 200.dp, height = 20.dp, shape = RoundedCornerShape(6.dp))
+            ShimmerBlock(width = 130.dp, height = 18.dp, shape = RoundedCornerShape(6.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                ShimmerBlock(width = 70.dp, height = 14.dp)
+                Spacer(Modifier.weight(1f))
+                ShimmerBlock(width = 120.dp, height = 40.dp)
+            }
+        }
     }
 }
 
@@ -69,64 +70,6 @@ private fun ShimmerBlock(
         modifier = Modifier
             .size(width = width, height = height)
             .clip(shape)
-            .background(AppColors.BackgroundSecondary)
+            .background(AppColors.Shimmer.copy(alpha = 0.35f))
     )
-}
-
-@Composable
-private fun BoxScope.ShimmerFileCountChip() {
-    Row(
-        modifier = Modifier
-            .align(Alignment.TopStart)
-            .padding(12.dp)
-            .clip(CircleShape)
-            .background(AppColors.Black.copy(alpha = 0.35f))
-            .padding(start = 4.dp, top = 4.dp, bottom = 4.dp, end = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .size(22.dp)
-                .clip(CircleShape)
-                .background(AppColors.BackgroundSecondary)
-        )
-        ShimmerBlock(width = 52.dp, height = 12.dp)
-    }
-}
-
-@Composable
-private fun BoxScope.ShimmerInfoBlock() {
-    Row(
-        modifier = Modifier
-            .align(Alignment.BottomCenter)
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ShimmerBlock(width = 60.dp, height = 18.dp)
-            ShimmerBlock(
-                width = 180.dp,
-                height = 20.dp,
-                shape = RoundedCornerShape(6.dp)
-            )
-            Spacer(Modifier.height(2.dp))
-            ShimmerBlock(
-                width = 120.dp,
-                height = 16.dp,
-                shape = RoundedCornerShape(6.dp)
-            )
-        }
-        Spacer(Modifier.width(12.dp))
-        Box(
-            modifier = Modifier
-                .size(48.dp)
-                .clip(CircleShape)
-                .background(AppColors.BackgroundSecondary)
-        )
-    }
 }
