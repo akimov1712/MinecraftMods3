@@ -31,7 +31,6 @@ class ProposeViewModel @Inject constructor(
 ) : MVI<ProposeIntent, ProposeState, ProposeEvent>(ProposeState()) {
 
     private fun changeTab(tab: TabType) = _state.update { it.copy(selectedTab = tab) }
-    private fun changeEmail(value: String) = _state.update { if (value.length <= 64) it.copy(email = value) else it }
     private fun changeMessage(value: String) = _state.update { if (value.length <= 2000) it.copy(message = value) else it }
 
     private fun submit() {
@@ -53,7 +52,7 @@ class ProposeViewModel @Inject constructor(
             result.onSuccess {
                 snackbarManager.showMessage(context.getString(R.string.propose_success))
                 _state.update {
-                    it.copy(email = "", message = "", isLoading = false)
+                    it.copy(message = "", isLoading = false)
                 }
             }.onError { error, _ ->
                 snackbarManager.showMessage(context.getString(errorMessageRes(error)))
@@ -97,7 +96,6 @@ class ProposeViewModel @Inject constructor(
     override suspend fun handleIntent(intent: ProposeIntent) {
         when (intent) {
             is ProposeIntent.ChangeTab -> changeTab(intent.tab)
-            is ProposeIntent.ChangeEmail -> changeEmail(intent.value)
             is ProposeIntent.ChangeMessage -> changeMessage(intent.value)
             ProposeIntent.Submit -> submit()
         }

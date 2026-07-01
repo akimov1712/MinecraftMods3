@@ -24,10 +24,6 @@ class ReportDialogViewModel @Inject constructor(
     private val snackbarManager: SnackbarManager,
 ) : MVI<ReportDialogIntent, ReportDialogState, ReportDialogEvent>(ReportDialogState()) {
 
-    private fun changeEmail(value: String) = _state.update {
-        if (value.length <= MAX_EMAIL_LENGTH) it.copy(email = value) else it
-    }
-
     private fun changeMessage(value: String) = _state.update {
         if (value.length <= MAX_MESSAGE_LENGTH) it.copy(message = value) else it
     }
@@ -74,14 +70,12 @@ class ReportDialogViewModel @Inject constructor(
 
     override suspend fun handleIntent(intent: ReportDialogIntent) {
         when (intent) {
-            is ReportDialogIntent.ChangeEmail -> changeEmail(intent.value)
             is ReportDialogIntent.ChangeMessage -> changeMessage(intent.value)
             ReportDialogIntent.Submit -> submit()
         }
     }
 
     private companion object {
-        const val MAX_EMAIL_LENGTH = 64
         const val MAX_MESSAGE_LENGTH = 2000
     }
 }

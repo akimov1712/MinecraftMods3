@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -104,15 +103,6 @@ private fun ReportDialogContent(
                 lineHeight = 19.sp,
             )
         }
-
-        Field(
-            label = stringResource(R.string.propose_field_email_label),
-            value = state.email,
-            onValueChange = { onIntent(ReportDialogIntent.ChangeEmail(it)) },
-            placeholder = stringResource(R.string.propose_field_email_hint),
-            enabled = !state.isLoading,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-        )
 
         Field(
             label = stringResource(R.string.mod_report_message_label),

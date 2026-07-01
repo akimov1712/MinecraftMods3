@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
@@ -19,7 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -84,16 +82,6 @@ private fun ProposeContent(
             onTabSelected = { index ->
                 onIntent(ProposeIntent.ChangeTab(TabType.entries[index]))
             },
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        LabeledField(
-            label = stringResource(R.string.propose_field_email_label),
-            value = state.email,
-            onValueChange = { onIntent(ProposeIntent.ChangeEmail(it)) },
-            placeholder = stringResource(R.string.propose_field_email_hint),
-            enabled = !state.isLoading,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier.fillMaxWidth(),
         )
 
