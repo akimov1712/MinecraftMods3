@@ -24,7 +24,6 @@ zoomable = "2.6.0"
 coilCompose = "3.4.0"
 datastorePreferences = "1.2.1"
 composeShimmer = "1.3.3"
-yodo1Mas = "4.18.0"
 appMetrica = "7.14.0"
 playReview = "2.0.2"
 
@@ -67,7 +66,6 @@ compose-shimmer = { module = "com.valentinilk.shimmer:compose-shimmer", version.
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
-yodo1-mas-full = { module = "com.yodo1.mas:full", version.ref = "yodo1Mas" }
 appmetrica-analytics = { module = "io.appmetrica.analytics:analytics", version.ref = "appMetrica" }
 play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "playReview" }
 

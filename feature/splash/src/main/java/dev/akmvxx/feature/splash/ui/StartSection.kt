@@ -30,7 +30,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.akmvxx.ads.NativeAds
 import dev.akmvxx.navigation.RootNavKey
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
@@ -87,13 +86,7 @@ internal fun StartSection() {
                 .defaultMinSize(minHeight = 58.dp),
             colors = ButtonDefaults.buttonColors(containerColor = AppColors.Primary),
             onClick = {
-                val destination =
-                    if (NativeAds.hasAd() && !NativeAds.isBanner()) {
-                        RootNavKey.AdShow(next = RootNavKey.Tabs)
-                    } else {
-                        RootNavKey.Tabs
-                    }
-                navigator.replaceAll(destination)
+                navigator.replaceAll(RootNavKey.Tabs)
             }
         ) {
             Row(

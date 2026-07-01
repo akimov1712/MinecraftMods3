@@ -16,7 +16,6 @@ data class BrowseState(
     val sorted: List<ModSortedUi> = ModSortedUi.entries,
     val sortedIndexSelected: Int = 0,
     val fetchModsStateUi: ScreenUiState = ScreenUiState.Idle,
-    val nativeAdInterval: Int = 0,
 )
 
 sealed interface BrowseIntent{

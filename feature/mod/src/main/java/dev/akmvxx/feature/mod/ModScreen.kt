@@ -34,10 +34,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.activity.compose.LocalActivity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.akmvxx.ads.interstitial.InterstitialAds
 import dev.akmvxx.domain.entity.mod.ModCategory
 import dev.akmvxx.domain.entity.mod.ModEntity
 import dev.akmvxx.feature.mod.ui.ActionsRow
@@ -70,14 +68,9 @@ fun ModScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val navigator = rootNavigator()
-    val activity = LocalActivity.current
 
     LaunchedEffect(modId) {
         viewModel.sendIntent(ModIntent.LoadMod(modId))
-    }
-
-    LaunchedEffect(Unit) {
-        activity?.let { InterstitialAds.tryShow(it) }
     }
 
     ModContent(

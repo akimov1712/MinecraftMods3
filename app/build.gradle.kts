@@ -6,17 +6,13 @@ plugins {
 }
 
 val applicationArtifactId: String =
-    property("applicationName")?.toString() ?: "minecraftmods3"
+    property("applicationName")?.toString() ?: throw GradleException("Not found properties \"applicationName\"")
 val appVersionCode: Int =
-    property("versionCode")?.toString()?.toInt() ?: 1
+    property("versionCode")?.toString()?.toInt() ?: throw GradleException("Not found properties \"versionCode\"")
 val appVersionName: String =
-    property("versionName")?.toString() ?: "1.0"
+    property("versionName")?.toString() ?: throw GradleException("Not found properties \"versionName\"")
 val metricaApiKey: String =
-    property("metricaApiKey")?.toString().orEmpty()
-val masAppKey: String =
-    property("masAppKey")?.toString().orEmpty()
-val admobAppId: String =
-    property("admobAppId")?.toString().orEmpty()
+    property("metricaApiKey")?.toString() ?: throw GradleException("Not found properties \"metricaApiKey\"")
 
 android {
     namespace = "dev.akmvxx.app"
@@ -37,15 +33,11 @@ android {
 
         buildConfigField("String", "APPLICATION_ID", "\"$applicationId\"")
         buildConfigField("String", "METRICA_API_KEY", "\"$metricaApiKey\"")
-        buildConfigField("String", "MAS_APP_KEY", "\"$masAppKey\"")
-        buildConfigField("String", "ADMOB_APP_ID", "\"$admobAppId\"")
-
-        manifestPlaceholders["admobAppId"] = admobAppId
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -84,7 +76,6 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:android"))
     implementation(project(":core:common"))
-    implementation(project(":core:ads"))
     implementation(project(":feature:tabs"))
     implementation(project(":feature:splash"))
     implementation(project(":feature:browse"))

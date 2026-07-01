@@ -20,6 +20,5 @@ internal fun InfoSection(
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         StartSection()
-        SplashNativeSection()
     }
 }

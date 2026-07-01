@@ -27,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.akmvxx.ads.NativeAds
 import dev.akmvxx.navigation.RootNavKey
 import dev.akmvxx.navigation.rootNavigator
 import dev.akmvxx.ui.AppColors
@@ -88,14 +87,6 @@ fun BrowseScreen(
                 onRefresh = { viewModel.sendIntent(BrowseIntent.RefreshModsList) },
                 onLoadMore = { viewModel.sendIntent(BrowseIntent.FetchMods) },
                 onItemClick = { mod -> navigator.push(RootNavKey.ModDetail(mod.id)) },
-                adInterval = state.nativeAdInterval,
-                adContent = { slotKey ->
-                    NativeAds.Show(
-                        slot = NativeAds.Slot.Inline,
-                        slotKey = slotKey,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                },
             )
             AppDropdown(
                 items = state.sorted.map { stringResource(it.titleRes) },
