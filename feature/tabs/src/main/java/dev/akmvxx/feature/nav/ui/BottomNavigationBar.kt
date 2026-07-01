@@ -97,7 +97,7 @@ private fun RowScope.BottomNavigationBarItem(
         stiffness = Spring.StiffnessMediumLow
     )
     val lift by animateDpAsState(
-        targetValue = if (isSelected) (-26).dp else 0.dp,
+        targetValue = if (isSelected) (-20).dp else 0.dp,
         animationSpec = spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessLow),
         label = "lift"
     )
@@ -124,7 +124,6 @@ private fun RowScope.BottomNavigationBarItem(
     Column(
         modifier = Modifier
             .weight(1f)
-            .clip(RoundedCornerShape(20.dp))
             .onClick { onClick() }
             .padding(vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally
