@@ -11,7 +11,7 @@
     <string name="guide_step_1_text">Öffne den Katalog und tippe auf den Mod, den du installieren willst, um seine Seite zu öffnen.</string>
 
     <string name="guide_step_2_title">Tippe auf \"Herunterladen\"</string>
-    <string name="guide_step_2_text">Tippe auf der Mod-Seite auf den orangen Herunterladen-Knopf am unteren Bildschirmrand.</string>
+    <string name="guide_step_2_text">Tippe auf der Mod-Seite auf den blauen Herunterladen-Knopf am unteren Bildschirmrand.</string>
 
     <string name="guide_step_3_title">Warte, bis der Download fertig ist</string>
     <string name="guide_step_3_text">Die Datei wird auf deinem Gerät gespeichert. Dauert meist nur ein paar Sekunden.</string>

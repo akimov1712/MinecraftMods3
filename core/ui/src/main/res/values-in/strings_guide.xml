@@ -11,7 +11,7 @@
     <string name="guide_step_1_text">Buka katalog dan ketuk mod yang ingin kamu pasang untuk membuka halamannya.</string>
 
     <string name="guide_step_2_title">Ketuk \"Unduh\"</string>
-    <string name="guide_step_2_text">Di halaman mod, ketuk tombol oranye Unduh di bagian bawah layar.</string>
+    <string name="guide_step_2_text">Di halaman mod, ketuk tombol biru Unduh di bagian bawah layar.</string>
 
     <string name="guide_step_3_title">Tunggu unduhan selesai</string>
     <string name="guide_step_3_text">File akan tersimpan di perangkat. Biasanya hanya beberapa detik.</string>

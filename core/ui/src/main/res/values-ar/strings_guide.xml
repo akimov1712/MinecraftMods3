@@ -11,7 +11,7 @@
     <string name="guide_step_1_text">افتح الكتالوج واضغط على المود الذي تريد تثبيته لفتح صفحته.</string>
 
     <string name="guide_step_2_title">اضغط \"تحميل\"</string>
-    <string name="guide_step_2_text">في صفحة المود اضغط زر التحميل البرتقالي في أسفل الشاشة.</string>
+    <string name="guide_step_2_text">في صفحة المود اضغط زر التحميل الأزرق في أسفل الشاشة.</string>
 
     <string name="guide_step_3_title">انتظر اكتمال التحميل</string>
     <string name="guide_step_3_text">سيتم حفظ الملف على جهازك. عادة ما يستغرق بضع ثوان.</string>

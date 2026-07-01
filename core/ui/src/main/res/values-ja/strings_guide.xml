@@ -11,7 +11,7 @@
     <string name="guide_step_1_text">カタログを開いて、インストールしたいMODをタップしてページを開いてください。</string>
 
     <string name="guide_step_2_title">「ダウンロード」をタップ</string>
-    <string name="guide_step_2_text">MODのページで、画面下のオレンジのダウンロードボタンをタップします。</string>
+    <string name="guide_step_2_text">MODのページで、画面下の青いダウンロードボタンをタップします。</string>
 
     <string name="guide_step_3_title">ダウンロード完了を待つ</string>
     <string name="guide_step_3_text">ファイルが端末に保存されます。通常は数秒で終わります。</string>

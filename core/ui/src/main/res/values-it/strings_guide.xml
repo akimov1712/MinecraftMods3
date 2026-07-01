@@ -11,7 +11,7 @@
     <string name="guide_step_1_text">Apri il catalogo e tocca il mod che vuoi installare per aprire la sua pagina.</string>
 
     <string name="guide_step_2_title">Tocca \"Scarica\"</string>
-    <string name="guide_step_2_text">Sulla pagina del mod, tocca il pulsante arancione Scarica in fondo allo schermo.</string>
+    <string name="guide_step_2_text">Sulla pagina del mod, tocca il pulsante blu Scarica in fondo allo schermo.</string>
 
     <string name="guide_step_3_title">Aspetta che il download finisca</string>
     <string name="guide_step_3_text">Il file verrà salvato sul tuo dispositivo. Di solito ci mette pochi secondi.</string>

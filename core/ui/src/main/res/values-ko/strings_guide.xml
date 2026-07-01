@@ -11,7 +11,7 @@
     <string name="guide_step_1_text">카탈로그를 열고 설치하고 싶은 모드를 탭해서 페이지를 여세요.</string>
 
     <string name="guide_step_2_title">\"다운로드\" 탭하기</string>
-    <string name="guide_step_2_text">모드 페이지에서 화면 하단의 주황색 다운로드 버튼을 탭하세요.</string>
+    <string name="guide_step_2_text">모드 페이지에서 화면 하단의 파란색 다운로드 버튼을 탭하세요.</string>
 
     <string name="guide_step_3_title">다운로드가 끝날 때까지 기다리기</string>
     <string name="guide_step_3_text">파일이 기기에 저장됩니다. 보통 몇 초만 걸립니다.</string>
