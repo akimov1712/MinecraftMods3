@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="guide_title">How to install a mod</string>
-    <string name="guide_subtitle">Just follow the steps below — it takes about a minute.</string>
+    <string name="guide_title">Setting up a mod</string>
+    <string name="guide_subtitle">Just walk through the steps below — about a minute, tops.</string>
     <string name="guide_back">Back</string>
     <string name="guide_screenshot_content_description">Screenshot for step %1$d</string>
-    <string name="guide_footer">That\'s it — have fun!</string>
+    <string name="guide_footer">And that\'s it — enjoy!</string>
 
-    <string name="guide_step_1_title">Pick a mod you like</string>
-    <string name="guide_step_1_text">Open the catalog and tap the mod you want to install to open its page.</string>
+    <string name="guide_step_1_title">Choose a mod you like</string>
+    <string name="guide_step_1_text">Open the catalog and tap the mod you want to set up to open its page.</string>
 
     <string name="guide_step_2_title">Tap "Download"</string>
-    <string name="guide_step_2_text">On the mod page tap the orange Download button at the bottom of the screen.</string>
+    <string name="guide_step_2_text">On the mod page tap the blue Download button at the bottom of the screen.</string>
 
-    <string name="guide_step_3_title">Wait for the download to finish</string>
-    <string name="guide_step_3_text">The file will be saved to your device. It usually takes a few seconds.</string>
+    <string name="guide_step_3_title">Let the download finish</string>
+    <string name="guide_step_3_text">The file gets saved to your device. Usually it only takes a few seconds.</string>
 
     <string name="guide_step_4_title">Tap the green "Install" button</string>
-    <string name="guide_step_4_text">Once the file is downloaded, tap the green Install button next to it.</string>
+    <string name="guide_step_4_text">Once the file has downloaded, tap the green Install button next to it.</string>
 
-    <string name="guide_step_5_title">Choose Minecraft in the app picker</string>
-    <string name="guide_step_5_text">Android will ask which app to open the file with — pick Minecraft from the list.</string>
+    <string name="guide_step_5_title">Pick Minecraft in the app picker</string>
+    <string name="guide_step_5_text">Android will ask which app should open the file — choose Minecraft from the list.</string>
 
-    <string name="guide_step_6_title">Minecraft will open automatically</string>
-    <string name="guide_step_6_text">The mod will be imported. Wait until the game finishes loading the content.</string>
+    <string name="guide_step_6_title">Minecraft opens on its own</string>
+    <string name="guide_step_6_text">The mod gets imported. Hang on until the game finishes loading the content.</string>
 
-    <string name="guide_step_7_title">Enable Experimental features and mod in world settings</string>
-    <string name="guide_step_7_text">When creating a new world, scroll down in the world settings and turn on "Experimental gameplay" — most mods need it. In "Behavior packs" or "Resource packs" find the mod you just installed and tap "Activate".</string>
+    <string name="guide_step_7_title">Turn on Experimental features and the mod in world settings</string>
+    <string name="guide_step_7_text">When you create a new world, scroll down in the world settings and switch on "Experimental gameplay" — most mods need it. Under "Behavior packs" or "Resource packs" find the mod you just set up and tap "Activate".</string>
 
-    <string name="guide_step_8_title">Jump into the world</string>
-    <string name="guide_step_8_text">Create the world and start playing — the mod is now active and ready to use.</string>
+    <string name="guide_step_8_title">Hop into the world</string>
+    <string name="guide_step_8_text">Create the world and start playing — the mod is now active and ready to go.</string>
 
 </resources>
