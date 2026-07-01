@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mega TNT Mod for Minecraft PE</string>
+    <string name="app_name">Weapon and Drone Mods for MCPE</string>
     <string name="ad">Ad</string>
-    <string name="get_started">Get started</string>
-    <string name="search_mods">Search mods</string>
-    <string name="screen_browse">Browse</string>
-    <string name="screen_favorite">Favorite</string>
-    <string name="screen_propose">Propose</string>
-    <string name="screen_help">Help</string>
+    <string name="get_started">Let\'s go</string>
+    <string name="search_mods">Find mods</string>
+    <string name="screen_browse">Discover</string>
+    <string name="screen_favorite">Saved</string>
+    <string name="screen_propose">Suggest</string>
+    <string name="screen_help">Info</string>
 
-    <string name="mod_category_all">All</string>
-    <string name="mod_category_addon">Addons</string>
+    <string name="mod_category_all">Everything</string>
+    <string name="mod_category_addon">Add-ons</string>
     <string name="mod_category_maps">Maps</string>
     <string name="mod_category_texture">Textures</string>
     <string name="mod_category_skins">Skins</string>
 
-    <string name="mod_sorted_relevance">By relevance</string>
+    <string name="mod_sorted_relevance">Best match</string>
     <string name="mod_sorted_most_popular">Most popular</string>
-    <string name="mod_sorted_rating">Top rated</string>
+    <string name="mod_sorted_rating">Highest rated</string>
 
     <plurals name="files">
         <item quantity="one">%d file</item>
@@ -31,74 +31,74 @@
 
     <string name="mod_meta_separator"> · </string>
 
-    <string name="mod_favorite_suffix">· Favorite</string>
+    <string name="mod_favorite_suffix">· Saved</string>
 
-    <string name="error_request_timeout">Request timeout. Please try again</string>
-    <string name="error_serialization">Failed to process data. Please try again</string>
-    <string name="error_server_error">Server error. Please try again later</string>
-    <string name="error_no_internet">No internet connection. Please check your network</string>
-    <string name="error_unknown">An unknown error occurred. Please try again</string>
-    <string name="error_invalid_data">Invalid data received. Please try again</string>
-    <string name="error_bad_request">Invalid request. Please try again</string>
-    <string name="error_not_found">Resource not found</string>
-    <string name="error_title_pagination">Failed to load</string>
-    <string name="the_list_is_empty">The list is empty</string>
-    <string name="retry">Retry</string>
+    <string name="error_request_timeout">The request took too long. Please try again</string>
+    <string name="error_serialization">Couldn\'t process the data. Please try again</string>
+    <string name="error_server_error">Something went wrong on the server. Check back later</string>
+    <string name="error_no_internet">You\'re offline. Please check your connection</string>
+    <string name="error_unknown">Something went wrong. Please try again</string>
+    <string name="error_invalid_data">Received bad data. Please try again</string>
+    <string name="error_bad_request">The request wasn\'t valid. Please try again</string>
+    <string name="error_not_found">Nothing found</string>
+    <string name="error_title_pagination">Couldn\'t load</string>
+    <string name="the_list_is_empty">Nothing here yet</string>
+    <string name="retry">Try again</string>
 
-    <string name="propose_title">Propose a mod</string>
-    <string name="propose_subtitle">Tell us what you want to see next.</string>
-    <string name="propose_tab_propose">Propose</string>
+    <string name="propose_title">Suggest a mod</string>
+    <string name="propose_subtitle">Tell us what you\'d like to see next.</string>
+    <string name="propose_tab_propose">Idea</string>
     <string name="propose_tab_feedback">Feedback</string>
     <string name="propose_field_email_label">Your email</string>
-    <string name="propose_field_email_hint">So we can reach out to you</string>
+    <string name="propose_field_email_hint">So we can get back to you</string>
     <string name="propose_field_mod_label">Mod name or link</string>
-    <string name="propose_field_mod_hint">A name, a link, or a short pitch…</string>
+    <string name="propose_field_mod_hint">A name, a link, or a few words…</string>
     <string name="propose_field_feedback_label">What\'s on your mind?</string>
     <string name="propose_field_feedback_hint">Bugs, ideas, anything.</string>
     <string name="propose_send">Send</string>
-    <string name="propose_success">Sent successfully. Thanks!</string>
+    <string name="propose_success">Sent. Thank you!</string>
 
     <string name="files_title">Files</string>
     <string name="files_subtitle_format">%1$s · %2$s</string>
-    <string name="files_get">Get</string>
+    <string name="files_get">Download</string>
     <string name="files_install">Install</string>
     <string name="files_downloading">Downloading</string>
     <string name="files_progress_percent_format">%1$d%%</string>
     <string name="files_cancel">Cancel</string>
     <string name="files_open_failed">Couldn\'t open the file. Try again or open it from Downloads manually</string>
-    <string name="files_download_failed">Download failed. Please try again</string>
+    <string name="files_download_failed">Download didn\'t finish. Please try again</string>
     <string name="files_back">Back</string>
     <string name="files_vpn_hint_title">Download stuck?</string>
-    <string name="files_vpn_hint_body">Your provider is probably blocking the server we host mods on. Turn on a VPN and try again — once the file is on your phone you can switch it off.</string>
+    <string name="files_vpn_hint_body">Your provider is likely blocking the server that hosts the mods. Turn on a VPN and try again — once the file is on your phone you can switch it back off.</string>
 
     <string name="mod_section_about">About this mod</string>
-    <string name="mod_section_supported_versions">Supported versions</string>
+    <string name="mod_section_supported_versions">Compatible versions</string>
     <string name="mod_section_files">Files</string>
     <string name="mod_file_default_name">File %1$d</string>
-    <string name="mod_show_more">Show more</string>
-    <string name="mod_show_less">Show less</string>
+    <string name="mod_show_more">Expand</string>
+    <string name="mod_show_less">Collapse</string>
     <string name="mod_how_to_install">How to install</string>
     <string name="mod_not_working">Not working?</string>
     <string name="mod_download">Download</string>
     <string name="mod_download_with_size">Download · %1$s</string>
     <string name="mod_back">Back</string>
     <string name="mod_close">Close</string>
-    <string name="mod_favorite_toggle">Toggle favorite</string>
+    <string name="mod_favorite_toggle">Save mod</string>
 
     <string name="mod_report_title">Report a problem</string>
-    <string name="mod_report_subtitle">Tell us what\'s wrong with %1$s and we\'ll look into it.</string>
-    <string name="mod_report_subtitle_generic">Tell us what\'s wrong and we\'ll look into it.</string>
-    <string name="mod_report_message_label">What\'s the issue?</string>
+    <string name="mod_report_subtitle">Tell us what\'s wrong with %1$s and we\'ll take a look.</string>
+    <string name="mod_report_subtitle_generic">Tell us what\'s wrong and we\'ll take a look.</string>
+    <string name="mod_report_message_label">What happened?</string>
     <string name="mod_report_message_hint">Crash on install, missing blocks, ...</string>
     <string name="mod_report_send">Send report</string>
     <string name="mod_report_cancel">Cancel</string>
-    <string name="mod_report_success">Thanks! We\'ll look into it</string>
-    <string name="mod_report_error_message_short">The message is too short (min 32 characters)</string>
+    <string name="mod_report_success">Thanks! We\'ll take a look</string>
+    <string name="mod_report_error_message_short">Too short (min 32 characters)</string>
     <string name="mod_image_indicator">Image %1$d of %2$d</string>
 
-    <string name="favorite_title">Saved mods</string>
+    <string name="favorite_title">Your saved mods</string>
     <plurals name="favorite_count">
-        <item quantity="zero">No mods in your library yet</item>
+        <item quantity="zero">Nothing in your library yet</item>
         <item quantity="one">%d mod in your library</item>
         <item quantity="other">%d mods in your library</item>
     </plurals>
@@ -106,6 +106,6 @@
     <string name="propose_error_email_required">Please enter your email</string>
     <string name="propose_error_email_invalid">Please enter a valid email address</string>
     <string name="propose_error_message_required">Please fill in the message</string>
-    <string name="propose_error_message_short">The message is too short (min 20 characters)</string>
+    <string name="propose_error_message_short">Too short (min 20 characters)</string>
 
 </resources>

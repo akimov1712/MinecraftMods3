@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">마인크래프트 PE용 메가 TNT 모드</string>
+    <string name="app_name">MCPE용 무기 및 드론 모드</string>
     <string name="ad">광고</string>
-    <string name="get_started">시작하기</string>
-    <string name="search_mods">모드 검색</string>
-    <string name="screen_browse">카탈로그</string>
-    <string name="screen_favorite">즐겨찾기</string>
-    <string name="screen_propose">제안</string>
-    <string name="screen_help">도움말</string>
+    <string name="get_started">시작해요</string>
+    <string name="search_mods">모드 찾기</string>
+    <string name="screen_browse">둘러보기</string>
+    <string name="screen_favorite">보관함</string>
+    <string name="screen_propose">추천</string>
+    <string name="screen_help">안내</string>
 
-    <string name="mod_category_all">전체</string>
-    <string name="mod_category_addon">모드</string>
+    <string name="mod_category_all">모두</string>
+    <string name="mod_category_addon">애드온</string>
     <string name="mod_category_maps">맵</string>
     <string name="mod_category_texture">텍스처</string>
     <string name="mod_category_skins">스킨</string>
 
-    <string name="mod_sorted_relevance">관련순</string>
-    <string name="mod_sorted_most_popular">인기순</string>
-    <string name="mod_sorted_rating">평점순</string>
+    <string name="mod_sorted_relevance">일치순</string>
+    <string name="mod_sorted_most_popular">가장 인기</string>
+    <string name="mod_sorted_rating">별점 높은순</string>
 
     <plurals name="files">
         <item quantity="other">파일 %d개</item>
@@ -28,51 +28,51 @@
     </plurals>
 
     <string name="mod_meta_separator"> · </string>
-    <string name="mod_favorite_suffix">· 즐겨찾기</string>
+    <string name="mod_favorite_suffix">· 보관함</string>
 
-    <string name="error_request_timeout">시간이 초과되었습니다. 다시 시도해 주세요</string>
-    <string name="error_serialization">데이터를 처리할 수 없습니다. 다시 시도해 주세요</string>
-    <string name="error_server_error">서버 오류가 발생했습니다. 나중에 다시 시도해 주세요</string>
-    <string name="error_no_internet">인터넷에 연결되지 않았습니다. 네트워크를 확인해 주세요</string>
-    <string name="error_unknown">알 수 없는 오류가 발생했습니다. 다시 시도해 주세요</string>
-    <string name="error_invalid_data">유효하지 않은 데이터를 받았습니다. 다시 시도해 주세요</string>
-    <string name="error_bad_request">잘못된 요청입니다. 다시 시도해 주세요</string>
-    <string name="error_not_found">찾을 수 없습니다</string>
-    <string name="error_title_pagination">불러오기 실패</string>
-    <string name="the_list_is_empty">목록이 비어 있습니다</string>
+    <string name="error_request_timeout">요청이 너무 오래 걸렸습니다. 다시 시도해 주세요</string>
+    <string name="error_serialization">데이터를 처리하지 못했습니다. 다시 시도해 주세요</string>
+    <string name="error_server_error">서버에 문제가 있습니다. 잠시 후 다시 와 주세요</string>
+    <string name="error_no_internet">오프라인 상태입니다. 연결을 확인해 주세요</string>
+    <string name="error_unknown">문제가 발생했습니다. 다시 시도해 주세요</string>
+    <string name="error_invalid_data">잘못된 데이터를 받았습니다. 다시 시도해 주세요</string>
+    <string name="error_bad_request">올바르지 않은 요청입니다. 다시 시도해 주세요</string>
+    <string name="error_not_found">아무것도 없습니다</string>
+    <string name="error_title_pagination">불러오지 못했습니다</string>
+    <string name="the_list_is_empty">아직 아무것도 없습니다</string>
     <string name="retry">다시 시도</string>
 
-    <string name="propose_title">모드 제안</string>
+    <string name="propose_title">모드 추천</string>
     <string name="propose_subtitle">다음에 보고 싶은 걸 알려 주세요.</string>
-    <string name="propose_tab_propose">제안</string>
+    <string name="propose_tab_propose">아이디어</string>
     <string name="propose_tab_feedback">피드백</string>
     <string name="propose_field_email_label">이메일</string>
-    <string name="propose_field_email_hint">연락할 수 있도록</string>
+    <string name="propose_field_email_hint">답장을 드릴 수 있도록</string>
     <string name="propose_field_mod_label">모드 이름 또는 링크</string>
-    <string name="propose_field_mod_hint">이름, 링크 또는 짧은 설명…</string>
+    <string name="propose_field_mod_hint">이름, 링크 또는 몇 마디…</string>
     <string name="propose_field_feedback_label">어떤 생각이 있나요?</string>
     <string name="propose_field_feedback_hint">버그, 아이디어, 뭐든.</string>
     <string name="propose_send">보내기</string>
-    <string name="propose_success">보냈습니다. 감사합니다!</string>
+    <string name="propose_success">보냈습니다. 감사해요!</string>
 
     <string name="files_title">파일</string>
     <string name="files_subtitle_format">%1$s · %2$s</string>
-    <string name="files_get">받기</string>
+    <string name="files_get">다운로드</string>
     <string name="files_install">설치</string>
     <string name="files_downloading">다운로드 중</string>
     <string name="files_progress_percent_format">%1$d%%</string>
     <string name="files_cancel">취소</string>
-    <string name="files_open_failed">파일을 열 수 없습니다. 다시 시도하거나 다운로드 폴더에서 직접 여세요</string>
-    <string name="files_download_failed">다운로드 실패. 다시 시도해 주세요</string>
+    <string name="files_open_failed">파일을 열지 못했습니다. 다시 시도하거나 다운로드 폴더에서 직접 여세요</string>
+    <string name="files_download_failed">다운로드가 끝나지 않았습니다. 다시 시도해 주세요</string>
     <string name="files_back">뒤로</string>
     <string name="files_vpn_hint_title">다운로드가 멈췄나요?</string>
-    <string name="files_vpn_hint_body">통신사가 모드 서버를 차단하고 있을 가능성이 큽니다. VPN을 켜고 다시 시도하세요 — 파일이 휴대폰에 들어오면 VPN은 꺼도 됩니다.</string>
+    <string name="files_vpn_hint_body">통신사가 모드 서버를 막고 있을 가능성이 큽니다. VPN을 켜고 다시 시도하세요 — 파일이 휴대폰에 들어오면 VPN은 꺼도 됩니다.</string>
 
-    <string name="mod_section_about">이 모드에 대해</string>
-    <string name="mod_section_supported_versions">지원 버전</string>
+    <string name="mod_section_about">이 모드 소개</string>
+    <string name="mod_section_supported_versions">호환 버전</string>
     <string name="mod_section_files">파일</string>
     <string name="mod_file_default_name">파일 %1$d</string>
-    <string name="mod_show_more">더 보기</string>
+    <string name="mod_show_more">펼치기</string>
     <string name="mod_show_less">접기</string>
     <string name="mod_how_to_install">설치 방법</string>
     <string name="mod_not_working">작동하지 않나요?</string>
@@ -80,28 +80,28 @@
     <string name="mod_download_with_size">다운로드 · %1$s</string>
     <string name="mod_back">뒤로</string>
     <string name="mod_close">닫기</string>
-    <string name="mod_favorite_toggle">즐겨찾기 토글</string>
+    <string name="mod_favorite_toggle">모드 저장</string>
 
     <string name="mod_report_title">문제 신고</string>
-    <string name="mod_report_subtitle">%1$s 의 어떤 점이 잘못되었는지 알려 주세요. 살펴보겠습니다.</string>
-    <string name="mod_report_subtitle_generic">어떤 점이 잘못되었는지 알려 주세요. 살펴보겠습니다.</string>
-    <string name="mod_report_message_label">어떤 문제인가요?</string>
+    <string name="mod_report_subtitle">%1$s 의 무엇이 잘못됐는지 알려 주세요. 확인하겠습니다.</string>
+    <string name="mod_report_subtitle_generic">무엇이 잘못됐는지 알려 주세요. 확인하겠습니다.</string>
+    <string name="mod_report_message_label">무슨 일이 있었나요?</string>
     <string name="mod_report_message_hint">설치 중 크래시, 블록이 없음, …</string>
     <string name="mod_report_send">신고 보내기</string>
     <string name="mod_report_cancel">취소</string>
-    <string name="mod_report_success">감사합니다! 살펴볼게요</string>
-    <string name="mod_report_error_message_short">메시지가 너무 짧습니다 (최소 32자)</string>
+    <string name="mod_report_success">감사합니다! 확인해 볼게요</string>
+    <string name="mod_report_error_message_short">너무 짧습니다 (최소 32자)</string>
     <string name="mod_image_indicator">이미지 %1$d / %2$d</string>
 
     <string name="favorite_title">저장한 모드</string>
     <plurals name="favorite_count">
-        <item quantity="zero">아직 라이브러리에 모드가 없습니다</item>
-        <item quantity="other">라이브러리에 모드 %d개</item>
+        <item quantity="zero">아직 보관함에 모드가 없습니다</item>
+        <item quantity="other">보관함에 모드 %d개</item>
     </plurals>
 
     <string name="propose_error_email_required">이메일을 입력해 주세요</string>
     <string name="propose_error_email_invalid">유효한 이메일 주소를 입력해 주세요</string>
     <string name="propose_error_message_required">메시지를 입력해 주세요</string>
-    <string name="propose_error_message_short">메시지가 너무 짧습니다 (최소 20자)</string>
+    <string name="propose_error_message_short">너무 짧습니다 (최소 20자)</string>
 
 </resources>

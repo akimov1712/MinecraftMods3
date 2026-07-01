@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mod Mega TNT pour Minecraft PE</string>
+    <string name="app_name">Mods armes et drones MCPE</string>
     <string name="ad">Annonce</string>
-    <string name="get_started">Commencer</string>
-    <string name="search_mods">Rechercher des mods</string>
-    <string name="screen_browse">Catalogue</string>
-    <string name="screen_favorite">Favoris</string>
-    <string name="screen_propose">Proposer</string>
-    <string name="screen_help">Aide</string>
+    <string name="get_started">C\'est parti</string>
+    <string name="search_mods">Trouver des mods</string>
+    <string name="screen_browse">Explorer</string>
+    <string name="screen_favorite">Enregistrés</string>
+    <string name="screen_propose">Suggérer</string>
+    <string name="screen_help">Infos</string>
 
-    <string name="mod_category_all">Tous</string>
-    <string name="mod_category_addon">Mods</string>
+    <string name="mod_category_all">Tout</string>
+    <string name="mod_category_addon">Add-ons</string>
     <string name="mod_category_maps">Cartes</string>
     <string name="mod_category_texture">Textures</string>
     <string name="mod_category_skins">Skins</string>
 
-    <string name="mod_sorted_relevance">Par pertinence</string>
+    <string name="mod_sorted_relevance">Meilleure correspondance</string>
     <string name="mod_sorted_most_popular">Les plus populaires</string>
     <string name="mod_sorted_rating">Les mieux notés</string>
 
@@ -30,74 +30,74 @@
     </plurals>
 
     <string name="mod_meta_separator"> · </string>
-    <string name="mod_favorite_suffix">· Favori</string>
+    <string name="mod_favorite_suffix">· Enregistré</string>
 
-    <string name="error_request_timeout">Délai dépassé. Veuillez réessayer</string>
-    <string name="error_serialization">Impossible de traiter les données. Veuillez réessayer</string>
-    <string name="error_server_error">Erreur du serveur. Réessayez plus tard</string>
-    <string name="error_no_internet">Pas de connexion internet. Vérifiez votre réseau</string>
-    <string name="error_unknown">Une erreur inconnue s\'est produite. Réessayez</string>
-    <string name="error_invalid_data">Données invalides reçues. Réessayez</string>
-    <string name="error_bad_request">Requête invalide. Réessayez</string>
-    <string name="error_not_found">Introuvable</string>
-    <string name="error_title_pagination">Échec du chargement</string>
-    <string name="the_list_is_empty">La liste est vide</string>
+    <string name="error_request_timeout">La requête a pris trop de temps. Réessaie</string>
+    <string name="error_serialization">Impossible de traiter les données. Réessaie</string>
+    <string name="error_server_error">Souci côté serveur. Reviens plus tard</string>
+    <string name="error_no_internet">Tu es hors ligne. Vérifie ta connexion</string>
+    <string name="error_unknown">Un souci est survenu. Réessaie</string>
+    <string name="error_invalid_data">Données incorrectes reçues. Réessaie</string>
+    <string name="error_bad_request">Requête non valide. Réessaie</string>
+    <string name="error_not_found">Rien trouvé</string>
+    <string name="error_title_pagination">Chargement impossible</string>
+    <string name="the_list_is_empty">Rien ici pour l\'instant</string>
     <string name="retry">Réessayer</string>
 
-    <string name="propose_title">Proposer un mod</string>
-    <string name="propose_subtitle">Dis-nous ce que tu veux voir ensuite.</string>
-    <string name="propose_tab_propose">Proposer</string>
+    <string name="propose_title">Suggérer un mod</string>
+    <string name="propose_subtitle">Dis-nous ce que tu aimerais voir ensuite.</string>
+    <string name="propose_tab_propose">Idée</string>
     <string name="propose_tab_feedback">Commentaires</string>
     <string name="propose_field_email_label">Ton email</string>
-    <string name="propose_field_email_hint">Pour qu\'on puisse te contacter</string>
+    <string name="propose_field_email_hint">Pour qu\'on puisse te répondre</string>
     <string name="propose_field_mod_label">Nom du mod ou lien</string>
-    <string name="propose_field_mod_hint">Un nom, un lien ou une courte description…</string>
+    <string name="propose_field_mod_hint">Un nom, un lien ou quelques mots…</string>
     <string name="propose_field_feedback_label">Qu\'as-tu en tête ?</string>
     <string name="propose_field_feedback_hint">Bugs, idées, tout.</string>
     <string name="propose_send">Envoyer</string>
-    <string name="propose_success">Envoyé avec succès. Merci !</string>
+    <string name="propose_success">Envoyé. Merci !</string>
 
     <string name="files_title">Fichiers</string>
     <string name="files_subtitle_format">%1$s · %2$s</string>
-    <string name="files_get">Obtenir</string>
+    <string name="files_get">Télécharger</string>
     <string name="files_install">Installer</string>
     <string name="files_downloading">Téléchargement</string>
     <string name="files_progress_percent_format">%1$d%%</string>
     <string name="files_cancel">Annuler</string>
     <string name="files_open_failed">Impossible d\'ouvrir le fichier. Réessaie ou ouvre-le manuellement depuis Téléchargements</string>
-    <string name="files_download_failed">Échec du téléchargement. Réessaie</string>
+    <string name="files_download_failed">Le téléchargement n\'a pas abouti. Réessaie</string>
     <string name="files_back">Retour</string>
     <string name="files_vpn_hint_title">Téléchargement bloqué ?</string>
-    <string name="files_vpn_hint_body">Ton opérateur bloque probablement le serveur où on héberge les mods. Active un VPN et réessaie — une fois que le fichier est sur ton téléphone tu peux le désactiver.</string>
+    <string name="files_vpn_hint_body">Ton opérateur bloque sans doute le serveur qui héberge les mods. Active un VPN et réessaie — une fois le fichier sur ton téléphone, tu peux le couper.</string>
 
     <string name="mod_section_about">À propos de ce mod</string>
     <string name="mod_section_supported_versions">Versions compatibles</string>
     <string name="mod_section_files">Fichiers</string>
     <string name="mod_file_default_name">Fichier %1$d</string>
-    <string name="mod_show_more">Voir plus</string>
-    <string name="mod_show_less">Voir moins</string>
+    <string name="mod_show_more">Afficher plus</string>
+    <string name="mod_show_less">Afficher moins</string>
     <string name="mod_how_to_install">Comment installer</string>
     <string name="mod_not_working">Ça ne marche pas ?</string>
     <string name="mod_download">Télécharger</string>
     <string name="mod_download_with_size">Télécharger · %1$s</string>
     <string name="mod_back">Retour</string>
     <string name="mod_close">Fermer</string>
-    <string name="mod_favorite_toggle">Basculer favori</string>
+    <string name="mod_favorite_toggle">Enregistrer le mod</string>
 
     <string name="mod_report_title">Signaler un problème</string>
-    <string name="mod_report_subtitle">Dis-nous ce qui ne va pas avec %1$s et on s\'en occupe.</string>
-    <string name="mod_report_subtitle_generic">Dis-nous ce qui ne va pas et on s\'en occupe.</string>
-    <string name="mod_report_message_label">Quel est le problème ?</string>
+    <string name="mod_report_subtitle">Dis-nous ce qui cloche avec %1$s et on regarde ça.</string>
+    <string name="mod_report_subtitle_generic">Dis-nous ce qui cloche et on regarde ça.</string>
+    <string name="mod_report_message_label">Que s\'est-il passé ?</string>
     <string name="mod_report_message_hint">Crash à l\'installation, blocs manquants, …</string>
     <string name="mod_report_send">Envoyer le rapport</string>
     <string name="mod_report_cancel">Annuler</string>
     <string name="mod_report_success">Merci ! On regarde ça</string>
-    <string name="mod_report_error_message_short">Le message est trop court (32 caractères min.)</string>
+    <string name="mod_report_error_message_short">Trop court (32 caractères min.)</string>
     <string name="mod_image_indicator">Image %1$d sur %2$d</string>
 
-    <string name="favorite_title">Mods sauvegardés</string>
+    <string name="favorite_title">Tes mods enregistrés</string>
     <plurals name="favorite_count">
-        <item quantity="zero">Aucun mod dans ta bibliothèque pour l\'instant</item>
+        <item quantity="zero">Rien dans ta bibliothèque pour l\'instant</item>
         <item quantity="one">%d mod dans ta bibliothèque</item>
         <item quantity="other">%d mods dans ta bibliothèque</item>
     </plurals>
@@ -105,6 +105,6 @@
     <string name="propose_error_email_required">Entre ton email</string>
     <string name="propose_error_email_invalid">Entre une adresse email valide</string>
     <string name="propose_error_message_required">Remplis le message</string>
-    <string name="propose_error_message_short">Le message est trop court (20 caractères min.)</string>
+    <string name="propose_error_message_short">Trop court (20 caractères min.)</string>
 
 </resources>
