@@ -2,6 +2,8 @@ package dev.akmvxx.feature.nav.ui
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -14,6 +16,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -40,8 +43,7 @@ import dev.akmvxx.navigation.tabsNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.utils.onClick
 
-private val BarShape = RoundedCornerShape(26.dp)
-private val IndicatorShape = RoundedCornerShape(16.dp)
+private val BarShape = RoundedCornerShape(28.dp)
 
 @Composable
 internal fun BoxScope.BottomNavigationBar() {
@@ -50,24 +52,26 @@ internal fun BoxScope.BottomNavigationBar() {
         modifier = Modifier
             .align(Alignment.BottomCenter)
             .systemBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 14.dp)
+            .padding(horizontal = 22.dp, vertical = 14.dp)
             .fillMaxWidth()
-            .dropShadow(
-                shape = BarShape,
-                shadow = Shadow(
-                    radius = 20.dp,
-                    color = AppColors.Black.copy(alpha = 0.5f)
-                )
-            )
-            .clip(BarShape)
-            .background(AppColors.BackgroundSecondary)
-            .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.06f), shape = BarShape)
-            .padding(horizontal = 6.dp, vertical = 8.dp)
     ) {
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .dropShadow(
+                    shape = BarShape,
+                    shadow = Shadow(radius = 22.dp, color = AppColors.Black.copy(alpha = 0.55f))
+                )
+                .clip(BarShape)
+                .background(AppColors.BackgroundSecondary)
+                .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.06f), shape = BarShape)
+        )
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 12.dp),
             horizontalArrangement = Arrangement.spacedBy(2.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.Bottom
         ) {
             Tabs.entries.forEach { tab ->
                 BottomNavigationBarItem(
@@ -88,49 +92,74 @@ private fun RowScope.BottomNavigationBarItem(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    val animationSpec = spring<Color>(
+    val spec = spring<Color>(
         dampingRatio = Spring.DampingRatioNoBouncy,
         stiffness = Spring.StiffnessMediumLow
     )
-    val indicatorColor by animateColorAsState(
-        targetValue = if (isSelected) AppColors.Primary.copy(alpha = 0.16f) else Color.Transparent,
-        animationSpec = animationSpec,
-        label = "indicator"
+    val lift by animateDpAsState(
+        targetValue = if (isSelected) (-26).dp else 0.dp,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessLow),
+        label = "lift"
     )
-    val contentColor by animateColorAsState(
-        targetValue = if (isSelected) AppColors.Primary else AppColors.TextWhite.copy(alpha = 0.5f),
-        animationSpec = animationSpec,
-        label = "content"
+    val glowAlpha by animateFloatAsState(
+        targetValue = if (isSelected) 0.65f else 0f,
+        label = "glow"
+    )
+    val bubbleColor by animateColorAsState(
+        targetValue = if (isSelected) AppColors.Primary else AppColors.BackgroundPrimary,
+        animationSpec = spec,
+        label = "bubble"
+    )
+    val iconColor by animateColorAsState(
+        targetValue = if (isSelected) AppColors.White else AppColors.TextWhite.copy(alpha = 0.45f),
+        animationSpec = spec,
+        label = "icon"
+    )
+    val labelColor by animateColorAsState(
+        targetValue = if (isSelected) AppColors.Primary else Color.Transparent,
+        animationSpec = spec,
+        label = "label"
     )
 
     Column(
         modifier = Modifier
             .weight(1f)
-            .clip(IndicatorShape)
+            .clip(RoundedCornerShape(20.dp))
             .onClick { onClick() }
-            .padding(vertical = 6.dp),
+            .padding(vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(
             modifier = Modifier
-                .size(width = 44.dp, height = 32.dp)
+                .offset(y = lift)
+                .size(52.dp)
+                .dropShadow(
+                    shape = CircleShape,
+                    shadow = Shadow(radius = 20.dp, color = AppColors.Primary.copy(alpha = glowAlpha))
+                )
                 .clip(CircleShape)
-                .background(indicatorColor),
+                .background(bubbleColor)
+                .border(
+                    width = 1.dp,
+                    color = if (isSelected) AppColors.White.copy(alpha = 0.25f) else Color.Transparent,
+                    shape = CircleShape
+                ),
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                modifier = Modifier.size(20.dp),
+                modifier = Modifier.size(22.dp),
                 painter = icon,
                 contentDescription = title,
-                tint = contentColor
+                tint = iconColor
             )
         }
-        Spacer(Modifier.height(5.dp))
+        Spacer(Modifier.height(4.dp).offset(y = lift))
         Text(
+            modifier = Modifier.offset(y = lift),
             text = title,
-            color = contentColor,
+            color = labelColor,
             fontSize = 11.sp,
-            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+            fontWeight = FontWeight.Bold,
             maxLines = 1
         )
     }
