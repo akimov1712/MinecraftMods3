@@ -2,18 +2,23 @@ package dev.akmvxx.feature.mod
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -29,7 +34,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -225,61 +232,13 @@ private fun SuccessState(
                     )
                 }
 
-                Spacer(Modifier.height(8.dp))
-
-                CategoryPill(
-                    category = mod.category,
-                    modifier = Modifier.padding(horizontal = HorizontalPadding),
+                ModDetailSheet(
+                    mod = mod,
+                    accent = accent,
+                    onOpenInstallGuide = onOpenInstallGuide,
+                    onReport = { reportDialogVisible = true },
+                    onOpenFiles = onOpenFiles,
                 )
-
-                Spacer(Modifier.height(12.dp))
-
-                Text(
-                    text = mod.title,
-                    color = AppColors.TextWhite,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 28.sp,
-                    lineHeight = 32.sp,
-                    letterSpacing = (-0.5).sp,
-                    modifier = Modifier.padding(horizontal = HorizontalPadding),
-                )
-
-                Spacer(Modifier.height(16.dp))
-
-                ActionsRow(
-                    onHowToInstall = onOpenInstallGuide,
-                    onNotWorking = { reportDialogVisible = true },
-                    modifier = Modifier.padding(horizontal = HorizontalPadding),
-                )
-
-                if (mod.aboutModMessage.isNotBlank()) {
-                    Spacer(Modifier.height(24.dp))
-                    ModDescription(
-                        text = mod.aboutModMessage,
-                        modifier = Modifier.padding(horizontal = HorizontalPadding),
-                    )
-                }
-
-                if (mod.supportVersions.isNotEmpty()) {
-                    Spacer(Modifier.height(28.dp))
-                    SupportedVersionsSection(
-                        versions = mod.supportVersions,
-                        modifier = Modifier.padding(horizontal = HorizontalPadding),
-                    )
-                }
-
-                if (mod.downloadableFiles.isNotEmpty()) {
-                    Spacer(Modifier.height(28.dp))
-                    FilesSection(
-                        files = mod.downloadableFiles,
-                        category = mod.category,
-                        accent = accent,
-                        modifier = Modifier.padding(horizontal = HorizontalPadding),
-                        onFileClick = { onOpenFiles() },
-                    )
-                }
-
-                Spacer(Modifier.height(140.dp))
             }
         }
 
@@ -316,6 +275,108 @@ private fun SuccessState(
                 onDismiss = { reportDialogVisible = false },
             )
         }
+    }
+}
+
+@Composable
+private fun ModDetailSheet(
+    mod: ModEntity,
+    accent: Color,
+    onOpenInstallGuide: () -> Unit,
+    onReport: () -> Unit,
+    onOpenFiles: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .offset(y = (-28).dp)
+            .clip(RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp))
+            .background(AppColors.BackgroundPrimary)
+            .border(
+                width = 1.dp,
+                color = AppColors.White.copy(alpha = 0.06f),
+                shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
+            )
+            .padding(top = 14.dp),
+    ) {
+        Box(
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .size(width = 44.dp, height = 5.dp)
+                .clip(CircleShape)
+                .background(AppColors.White.copy(alpha = 0.18f)),
+        )
+
+        Spacer(Modifier.height(20.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = HorizontalPadding),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            CategoryPill(category = mod.category)
+            Spacer(Modifier.width(12.dp))
+            Text(
+                text = pluralStringResource(
+                    R.plurals.files,
+                    mod.downloadableFiles.size,
+                    mod.downloadableFiles.size,
+                ),
+                color = AppColors.TextWhite.copy(alpha = 0.55f),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Medium,
+            )
+        }
+
+        Spacer(Modifier.height(14.dp))
+
+        Text(
+            text = mod.title,
+            color = AppColors.TextWhite,
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 28.sp,
+            lineHeight = 32.sp,
+            letterSpacing = (-0.5).sp,
+            modifier = Modifier.padding(horizontal = HorizontalPadding),
+        )
+
+        Spacer(Modifier.height(18.dp))
+
+        ActionsRow(
+            onHowToInstall = onOpenInstallGuide,
+            onNotWorking = onReport,
+            modifier = Modifier.padding(horizontal = HorizontalPadding),
+        )
+
+        if (mod.aboutModMessage.isNotBlank()) {
+            Spacer(Modifier.height(24.dp))
+            ModDescription(
+                text = mod.aboutModMessage,
+                modifier = Modifier.padding(horizontal = HorizontalPadding),
+            )
+        }
+
+        if (mod.supportVersions.isNotEmpty()) {
+            Spacer(Modifier.height(28.dp))
+            SupportedVersionsSection(
+                versions = mod.supportVersions,
+                modifier = Modifier.padding(horizontal = HorizontalPadding),
+            )
+        }
+
+        if (mod.downloadableFiles.isNotEmpty()) {
+            Spacer(Modifier.height(28.dp))
+            FilesSection(
+                files = mod.downloadableFiles,
+                category = mod.category,
+                accent = accent,
+                modifier = Modifier.padding(horizontal = HorizontalPadding),
+                onFileClick = { onOpenFiles() },
+            )
+        }
+
+        Spacer(Modifier.height(150.dp))
     }
 }
 
