@@ -4,17 +4,17 @@ import androidx.compose.ui.graphics.Color
 
 object AppColors {
 
-    val Primary = Color(0xFFE53935)
-    val Outlined = Color(0xff3A3A3F)
+    val Primary = Color(0xFF3B82F6)
+    val Outlined = Color(0xff2A2F3A)
     val TextWhite = Color(0xffECEBE8)
 
-    val BackgroundPrimary = Color(0xFF0A0A0A)
-    val BackgroundSecondary = Color(0xFF1C1B20)
+    val BackgroundPrimary = Color(0xFF0A0E15)
+    val BackgroundSecondary = Color(0xFF161B26)
 
     val Green = Color(0xff65C281)
     val Red = Color(0xffFF6464)
     val White = Color(0xffF5F4F1)
-    val Black = Color(0xff0E0E10)
+    val Black = Color(0xff0B0E14)
 
     val Shimmer = Color(0xff5C6480)
 
