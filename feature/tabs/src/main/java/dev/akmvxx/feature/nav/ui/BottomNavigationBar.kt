@@ -1,27 +1,22 @@
 package dev.akmvxx.feature.nav.ui
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.expandHorizontally
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -45,6 +40,9 @@ import dev.akmvxx.navigation.tabsNavigator
 import dev.akmvxx.ui.AppColors
 import dev.akmvxx.ui.utils.onClick
 
+private val BarShape = RoundedCornerShape(26.dp)
+private val IndicatorShape = RoundedCornerShape(16.dp)
+
 @Composable
 internal fun BoxScope.BottomNavigationBar() {
     val navigator = tabsNavigator()
@@ -52,22 +50,23 @@ internal fun BoxScope.BottomNavigationBar() {
         modifier = Modifier
             .align(Alignment.BottomCenter)
             .systemBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 14.dp)
             .fillMaxWidth()
             .dropShadow(
-                shape = RoundedCornerShape(28.dp),
+                shape = BarShape,
                 shadow = Shadow(
-                    radius = 16.dp,
-                    color = AppColors.Black.copy(alpha = 0.35f)
+                    radius = 20.dp,
+                    color = AppColors.Black.copy(alpha = 0.5f)
                 )
             )
-            .clip(RoundedCornerShape(28.dp))
+            .clip(BarShape)
             .background(AppColors.BackgroundSecondary)
-            .padding(horizontal = 8.dp, vertical = 8.dp)
+            .border(width = 1.dp, color = AppColors.White.copy(alpha = 0.06f), shape = BarShape)
+            .padding(horizontal = 6.dp, vertical = 8.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Tabs.entries.forEach { tab ->
@@ -93,53 +92,46 @@ private fun RowScope.BottomNavigationBarItem(
         dampingRatio = Spring.DampingRatioNoBouncy,
         stiffness = Spring.StiffnessMediumLow
     )
-    val backgroundColor by animateColorAsState(
-        targetValue = if (isSelected) AppColors.Primary else Color.Transparent,
+    val indicatorColor by animateColorAsState(
+        targetValue = if (isSelected) AppColors.Primary.copy(alpha = 0.16f) else Color.Transparent,
         animationSpec = animationSpec,
-        label = "bg"
+        label = "indicator"
     )
     val contentColor by animateColorAsState(
-        targetValue = when {
-            isSelected -> AppColors.TextWhite
-            else -> AppColors.TextWhite.copy(alpha = 0.55f)
-        },
+        targetValue = if (isSelected) AppColors.Primary else AppColors.TextWhite.copy(alpha = 0.5f),
         animationSpec = animationSpec,
         label = "content"
     )
 
-    Row(
+    Column(
         modifier = Modifier
-            .then(if (isSelected) Modifier.weight(1f) else Modifier)
-            .height(48.dp)
-            .defaultMinSize(minWidth = 48.dp)
-            .clip(CircleShape)
-            .background(backgroundColor)
+            .weight(1f)
+            .clip(IndicatorShape)
             .onClick { onClick() }
-            .padding(horizontal = 14.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
+            .padding(vertical = 6.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(
-            modifier = Modifier.size(20.dp),
-            painter = icon,
-            contentDescription = title,
-            tint = contentColor
-        )
-        AnimatedVisibility(
-            visible = isSelected,
-            enter = fadeIn() + expandHorizontally(),
-            exit = fadeOut() + shrinkHorizontally()
+        Box(
+            modifier = Modifier
+                .size(width = 44.dp, height = 32.dp)
+                .clip(CircleShape)
+                .background(indicatorColor),
+            contentAlignment = Alignment.Center
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Spacer(Modifier.width(8.dp))
-                Text(
-                    text = title,
-                    color = contentColor,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    maxLines = 1
-                )
-            }
+            Icon(
+                modifier = Modifier.size(20.dp),
+                painter = icon,
+                contentDescription = title,
+                tint = contentColor
+            )
         }
+        Spacer(Modifier.height(5.dp))
+        Text(
+            text = title,
+            color = contentColor,
+            fontSize = 11.sp,
+            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+            maxLines = 1
+        )
     }
 }
